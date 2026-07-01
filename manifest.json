@@ -1,0 +1,25 @@
+{
+  "name": "Hebreo desde Cero - App de Aprendizaje",
+  "short_name": "Hebreo Cero",
+  "description": "Una aplicación interactiva de aprendizaje de hebreo-español con audio, videos, flashcards y juegos.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#030712",
+  "theme_color": "#1e1b4b",
+  "scope": ".",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
