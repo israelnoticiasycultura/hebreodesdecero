@@ -281,8 +281,6 @@ function getWordOfTheDay() {
   const dayOfYear = Math.floor(diff / oneDay);
   const index = (dayOfYear+1) % WORDS.length;
 
-  //const index = Math.floor(Math.random() * 205);
-
   return WORDS[index];
 }
 
