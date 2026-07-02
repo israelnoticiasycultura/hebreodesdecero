@@ -1,146 +1,3 @@
-// Base de datos de palabras (20 tarjetas esenciales)
-// const WORDS = [
-//   {
-//     hebrew: "שָׁלוֹם",
-//     translit: "Shalom",
-//     spanish: "Hola / Paz",
-//     category: "Saludos",
-//     icon: "message-square"
-//   },
-//   {
-//     hebrew: "תּוֹדָה",
-//     translit: "Toda",
-//     spanish: "Gracias",
-//     category: "Saludos",
-//     icon: "heart"
-//   },
-//   {
-//     hebrew: "בְּבַקָּשָׁה",
-//     translit: "Bevakasha",
-//     spanish: "Por favor / De nada",
-//     category: "Saludos",
-//     icon: "smile"
-//   },
-//   {
-//     hebrew: "בֹּקֶר טוֹב",
-//     translit: "Boker Tov",
-//     spanish: "Buenos días",
-//     category: "Saludos",
-//     icon: "sun"
-//   },
-//   {
-//     hebrew: "עֶרֶב טוֹב",
-//     translit: "Erev Tov",
-//     spanish: "Buenas noches",
-//     category: "Saludos",
-//     icon: "moon"
-//   },
-//   {
-//     hebrew: "מַה שְּׁלוֹמְךָ?",
-//     translit: "Ma shlomja? (Masc.)",
-//     spanish: "¿Cómo estás?",
-//     category: "Frases útiles",
-//     icon: "help-circle"
-//   },
-//   {
-//     hebrew: "אֲנִי מִצְטַעֵר",
-//     translit: "Ani mitzta'er",
-//     spanish: "Lo siento",
-//     category: "Frases útiles",
-//     icon: "alert-circle"
-//   },
-//   {
-//     hebrew: "כֵּן",
-//     translit: "Ken",
-//     spanish: "Sí",
-//     category: "Frases útiles",
-//     icon: "check-circle"
-//   },
-//   {
-//     hebrew: "לֹא",
-//     translit: "Lo",
-//     spanish: "No",
-//     category: "Frases útiles",
-//     icon: "x-circle"
-//   },
-//   {
-//     hebrew: "לְהִתְרָאוֹת",
-//     translit: "Lehitra'ot",
-//     spanish: "Adiós",
-//     category: "Saludos",
-//     icon: "log-out"
-//   },
-//   {
-//     hebrew: "אֵיךְ קוֹרְאִים לְךָ?",
-//     translit: "Eij kor'im leja?",
-//     spanish: "¿Cómo te llamas?",
-//     category: "Frases útiles",
-//     icon: "user-check"
-//   },
-//   {
-//     hebrew: "אֲנִי אוֹהֵב אוֹתְךָ",
-//     translit: "Ani ohev otja",
-//     spanish: "Te amo",
-//     category: "Frases útiles",
-//     icon: "heart"
-//   },
-//   {
-//     hebrew: "כַּמָּה זֶה עוֹלֶה?",
-//     translit: "Kama ze ole?",
-//     spanish: "¿Cuánto cuesta?",
-//     category: "Frases útiles",
-//     icon: "credit-card"
-//   },
-//   {
-//     hebrew: "אֵיפֹה הַשֵּׁרוּתִים?",
-//     translit: "Eifo hasherutim?",
-//     spanish: "¿Dónde están los baños?",
-//     category: "Frases útiles",
-//     icon: "map-pin"
-//   },
-//   {
-//     hebrew: "אֶחָד",
-//     translit: "Ejad",
-//     spanish: "Uno",
-//     category: "Números",
-//     icon: "hash"
-//   },
-//   {
-//     hebrew: "שְׁנַיִם",
-//     translit: "Shnayim",
-//     spanish: "Dos",
-//     category: "Números",
-//     icon: "hash"
-//   },
-//   {
-//     hebrew: "שָׁלֹשׁ",
-//     translit: "Shalosh",
-//     spanish: "Tres",
-//     category: "Números",
-//     icon: "hash"
-//   },
-//   {
-//     hebrew: "מַיִם",
-//     translit: "Mayim",
-//     spanish: "Agua",
-//     category: "Vocabulario",
-//     icon: "droplet"
-//   },
-//   {
-//     hebrew: "לֶחֶם",
-//     translit: "Lejem",
-//     spanish: "Pan",
-//     category: "Vocabulario",
-//     icon: "pocket"
-//   },
-//   {
-//     hebrew: "בַּיִת",
-//     translit: "Bayit",
-//     spanish: "Casa",
-//     category: "Vocabulario",
-//     icon: "home"
-//   }
-// ];
 let WORDS = [];
 
 async function loadWords() {
@@ -154,6 +11,36 @@ async function loadWords() {
   }
 
   state.flashcards.list = [...WORDS];
+}
+
+const COUNTER_API_URL_V1 = "https://api.counterapi.dev/v1/desmitifica/compartir";
+
+async function obtenerContadorV1() {
+  try {
+    const res = await fetch(COUNTER_API_URL_V1 + "/");
+    if (!res.ok) throw new Error('Error al cargar contador');
+    const data = await res.json();
+    const el = document.getElementById('contador-global');
+    if (el) {
+      el.textContent = `${data.count} verdades difundidas. ¡Ayuda a compartir!`;
+    }
+  } catch (error) {
+    console.error('Error al obtener contador:', error);
+    const el = document.getElementById('contador-global');
+    if (el) {
+      el.textContent = 'No se pudo cargar el contador.';
+    }
+  }
+}
+
+async function incrementarContadorV1() {
+  try {
+    const res = await fetch(COUNTER_API_URL_V1 + "/up");
+    if (!res.ok) throw new Error('Error al incrementar contador');
+    await obtenerContadorV1();
+  } catch (error) {
+    console.error('Error al incrementar contador:', error);
+  }
 }
 
 // Base de datos de videos (10 lecciones con IDs de YouTube válidos)
@@ -387,15 +274,15 @@ if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !=
 
 // --- CONFIGURACIÓN DE PANTALLA INICIO & PALABRA DEL DÍA ---
 function getWordOfTheDay() {
-  // const today = new Date();
-  // const start = new Date(today.getFullYear(), 0, 0);
-  // const diff = today - start;
-  // const oneDay = 1000 * 60 * 60 * 24;
-  // const dayOfYear = Math.floor(diff / oneDay);
-  // const index = (dayOfYear+1) % WORDS.length;
+  const today = new Date();
+  const start = new Date(today.getFullYear(), 0, 0);
+  const diff = today - start;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const dayOfYear = Math.floor(diff / oneDay);
+  const index = (dayOfYear+1) % WORDS.length;
 
-  const index = Math.floor(Math.random() * 205);
-  console.log(index);
+  //const index = Math.floor(Math.random() * 205);
+
   return WORDS[index];
 }
 
@@ -903,6 +790,7 @@ function renderMoreVideos() {
           <h4 class="text-sm font-bold text-slate-200 line-clamp-2 leading-normal">${video.title}</h4>
         </div>
         <div class="flex flex-wrap gap-2">
+          <span class="text-sm font-medium text-slate-300 self-center mr-2">Compartir:</span>
           <button type="button" class="share-btn px-2.5 py-2 rounded-xl border border-green-500/20 bg-green-500/10 text-green-400 hover:bg-green-500/20 transition-all" data-share-action="whatsapp" data-url="${video.url}">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
           </button>
@@ -913,7 +801,7 @@ function renderMoreVideos() {
             <i data-lucide="copy" class="w-4 h-4"></i>
           </button>
           <button type="button" class="share-btn px-2.5 py-2 rounded-xl border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 transition-all" data-share-action="facebook" data-url="${video.url}">
-            <i data-lucide="facebook" class="w-4 h-4"></i>
+            <i class="fab fa-facebook-f"></i>
           </button>
         </div>
       </div>
@@ -942,6 +830,8 @@ function renderMoreVideos() {
         } else {
           shareVideo(url, action);
         }
+
+        await incrementarContadorV1();
       };
     });
 
@@ -1308,5 +1198,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Renderizar Inicio por defecto
   handleRoute();
   updateHomeView();
+  await obtenerContadorV1();
   lucide.createIcons();
 });

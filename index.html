@@ -145,6 +145,10 @@
         }
     </style>
 
+    <!-- Icon libraries (Font Awesome + Iconify) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -152,29 +156,6 @@
 
     <!-- Mobile Device Container -->
     <div class="w-full h-full md:max-w-[412px] md:h-[840px] md:rounded-[48px] md:border-[10px] md:border-slate-800 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] md:relative md:overflow-hidden bg-slate-950 flex flex-col z-10 transition-all duration-300">
-        
-        <!-- Simulated Device Status Bar -->
-        <!-- <div class="h-9 px-6 pt-2 flex justify-between items-center bg-slate-950/80 text-xs font-semibold select-none z-40 relative md:mt-2">
-            <span id="statusBarClock" class="text-slate-200">09:41</span>
-            <div class="flex items-center space-x-1.5 text-slate-200">
-                
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <rect x="2" y="16" width="3" height="4" rx="0.5"/>
-                    <rect x="7" y="12" width="3" height="8" rx="0.5"/>
-                    <rect x="12" y="8" width="3" height="12" rx="0.5"/>
-                    <rect x="17" y="4" width="3" height="16" rx="0.5"/>
-                </svg>
-                
-                <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
-                
-                <div class="flex items-center space-x-0.5">
-                    <div class="w-5 h-2.5 border border-slate-400 rounded-sm p-0.5 flex items-center">
-                        <div class="h-full w-4/5 bg-slate-200 rounded-2xs"></div>
-                    </div>
-                    <div class="w-0.5 h-1 bg-slate-400 rounded-r-2xs"></div>
-                </div>
-            </div>
-        </div> -->
 
         <!-- App Header (Dynamic contents depending on view) -->
         <header class="px-5 py-3 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md flex items-center justify-between z-30 select-none">
@@ -507,11 +488,40 @@
 
             <!-- SCREEN: MÁS -->
             <section id="screen-more" class="app-screen p-5 space-y-5 hidden">
-                <div class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg">
-                    <h2 class="text-lg font-extrabold text-slate-100">ISRAEL NECESITA TU AYUDA</h2>
-                    <p class="text-xs text-slate-200 font-medium">Comparte estos videos en tus redes sociales para difundir la verdad.</p>
+                <div class="sticky top-0 left-0 z-40 bg-slate-900/95 border border-slate-800 rounded-3xl p-4 backdrop-blur-xl flex flex-wrap justify-center gap-4 text-xl text-white shadow-md">
+                        <a href="https://whatsapp.com/channel/0029VaKL2jc5K3zeIbpYCn0x" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@israelnoticiasycultura" target="_blank" aria-label="YouTube" class="hover:text-red-500 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/israelnoticiasycultura/" target="_blank" aria-label="Facebook" class="hover:text-blue-400 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/israelnoticiasycultura" target="_blank" aria-label="Instagram" class="hover:text-pink-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://t.me/israelnoticiasycultura" target="_blank" aria-label="Telegram" class="hover:text-blue-300 transition">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@israelnoticiasycultura" target="_blank" aria-label="TikTok" class="hover:text-pink-400 transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://x.com/israelnoticult" target="_blank" aria-label="Twitter" class="hover:text-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://paypal.me/israeljai" target="_blank" aria-label="Donar en PayPal" class="hover:text-blue-500 transition">
+                            <i class="fab fa-paypal"></i>
+                        </a>
+                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" aria-label="Ko-fi" class="hover:text-red-400 transition">
+                            <iconify-icon icon="simple-icons:kofi" class="w-6 h-6 align-middle"></iconify-icon>
+                        </a>
                 </div>
-
+                <div class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg text-center pt-3">
+                        <h2 class="text-lg font-extrabold text-slate-100">ISRAEL NECESITA TU AYUDA</h2>
+                        <p class="text-xs text-slate-200 font-medium text-center">Comparte estos videos en tus redes sociales.</p>
+                        <p id="contador-global" class="text-sm text-slate-300 mt-3 font-medium text-center">Cargando contador...</p>
+                </div>
                 <div class="grid grid-cols-1 gap-4" id="moreVideosList">
                     <!-- Dynamic rendering by js/app.js -->
                 </div>
@@ -578,20 +588,21 @@
                 </div>
 
                 <!-- Section: Donate -->
-                <div class="bg-gradient-to-tr from-amber-500/10 to-purple-500/10 border border-amber-500/20 rounded-3xl p-5 shadow-md flex flex-col space-y-4">
+                <div class="bg-gradient-to-tr from-amber-500/10 to-purple-500/10 border border-amber-500/20 rounded-3xl p-3 shadow-md flex flex-col space-y-2">
                     <div class="flex space-x-3.5">
                         <div class="text-2xl select-none">☕</div>
-                        <div class="space-y-1">
-                            <h4 class="text-sm font-bold text-slate-200">¿Te es de ayuda Hebreo desde Cero?</h4>
-                            <p class="text-xs text-slate-400 leading-normal">Considera apoyar este proyecto.</p>
+                        <div class="space-y-1 text-center">
+                            <!-- <h4 class="text-sm font-bold text-slate-200">¿Te es de ayuda Hebreo desde Cero?</h4> -->
+                            <h4 class="text-sm font-bold text-slate-200">Considera apoyar este proyecto.</h4>
+                            <!-- <p class="text-xs text-slate-400 leading-normal">Considera apoyar este proyecto.</p> -->
                         </div>
                     </div>
-                    <div class="flex flex-col gap-2 sm:flex-row sm:items-stretch">
-                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" rel="noopener noreferrer" class="w-[50%] sm:w-[50%] min-w-0 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-lg shadow-amber-500/10 flex items-center justify-center space-x-1.5">
+                    <div class="flex flex-wrap gap-2 items-stretch">
+                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" rel="noopener noreferrer" class="w-3/5 sm:flex-1 min-w-0 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-lg shadow-amber-500/10 flex items-center justify-center space-x-1.5">
                             <i data-lucide="coffee" class="w-4 h-4 fill-current"></i>
                             <span>Regálame un Cafecito</span>
                         </a>
-                        <a href="http://paypal.me/israeljai" target="_blank" rel="noopener noreferrer" class="w-[32%] sm:w-[32%] min-w-0 ml-2 py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-sky-600/10 flex items-center justify-center space-x-1.5">
+                        <a href="http://paypal.me/israeljai" target="_blank" rel="noopener noreferrer" class="w-28 sm:w-[32%] min-w-0 ml-0 sm:ml-2 py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-sky-600/10 flex items-center justify-center space-x-1.5">
                             <i data-lucide="credit-card" class="w-4 h-4"></i>
                             <span>PayPal</span>
                         </a>
@@ -692,7 +703,7 @@
 
                 <!-- Footer / Info -->
                 <div class="text-center text-[10px] text-slate-600 space-y-1 pt-2">
-                    <p>Hebreo desde Cero - Desarrollado con cariño 🇮🇱</p>
+                    <p>Hebreo desde Cero - Proyecto Gratuito de @israelnoticiasycultura 🇮🇱</p>
                 </div>
             </section>
         </main>
