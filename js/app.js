@@ -43,79 +43,6 @@ async function incrementarContadorV1() {
   }
 }
 
-// Base de datos de videos (10 lecciones con IDs de YouTube válidos)
-const VIDEOS = [
-  {
-    id: "I5QiGA9Smpg",
-    title: "Aprende el Alfabeto Hebreo Completo en 10 Minutos",
-    category: "alphabet",
-    duration: "10:14",
-    author: "Aprende Hebreo"
-  },
-  {
-    id: "_kM6VfI-z08",
-    title: "Aprende Hebreo mientras duermes: 100 Frases Básicas",
-    category: "phrases",
-    duration: "3:00:15",
-    author: "Idiomas del Mundo"
-  },
-  {
-    id: "q_7_jF6mZ6Y",
-    title: "100 palabras indispensables en Hebreo Moderno",
-    category: "phrases",
-    duration: "15:32",
-    author: "Aprende con Rut"
-  },
-  {
-    id: "Gnyh7y_oH-E",
-    title: "Vocabulario Hebreo: Saludos y expresiones básicas",
-    category: "phrases",
-    duration: "08:45",
-    author: "Israel & Hebreo"
-  },
-  {
-    id: "U0p84Hj5zR4",
-    title: "Clase 1 de Hebreo Moderno para Principiantes",
-    category: "grammar",
-    duration: "22:11",
-    author: "Hebreo de la Biblia"
-  },
-  {
-    id: "GZshsFpC0gE",
-    title: "Aprende los Verbos más comunes en Hebreo Moderno",
-    category: "grammar",
-    duration: "12:50",
-    author: "Verbos en Hebreo"
-  },
-  {
-    id: "q8rI_sAcrZ4",
-    title: "Hebreo para principiantes: Guía de conversación real",
-    category: "phrases",
-    duration: "18:22",
-    author: "Conversa Hebreo"
-  },
-  {
-    id: "i6bTqEaUqXk",
-    title: "Cómo pronunciar las consonantes del Hebreo correctamente",
-    category: "alphabet",
-    duration: "09:40",
-    author: "Fonética Hebrea"
-  },
-  {
-    id: "uXzM4pUj4gY",
-    title: "Conversación básica en Hebreo: Frases útiles de viaje",
-    category: "phrases",
-    duration: "14:15",
-    author: "Israel Guía"
-  },
-  {
-    id: "uU6xL28iL-s",
-    title: "Estructuras Gramaticales y Sufijos en el Idioma Hebreo",
-    category: "grammar",
-    duration: "25:30",
-    author: "Gramática Simple"
-  }
-];
 
 // Estado global de la aplicación
 const state = {
@@ -149,6 +76,21 @@ const state = {
   videoFilter: "all",
   moreVideos: []
 };
+
+let VIDEOS = [];
+
+async function loadVideos() {
+  try {
+    const response = await fetch('./js/videos.json');
+    if (!response.ok) throw new Error('No se pudo cargar videos.json');
+    VIDEOS = await response.json();
+  } catch (error) {
+    console.error('Error cargando videos:', error);
+    VIDEOS = [];
+  }
+
+  state.flashcards.list = [...VIDEOS];
+}
 
 // --- MÓDULO AUDIO SINTETIZADO (Web Audio API) ---
 let audioCtx = null;
@@ -690,7 +632,7 @@ function buildYouTubeThumbnail(url) {
   return videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : "";
 }
 
-async function loadMoreVideos() {
+async function loadVideosIsraelNoticias() {
   try {
     const response = await fetch('https://raw.githubusercontent.com/israelnoticiasycultura/desmitifica/main/preguntas.json');
     if (!response.ok) throw new Error('No se pudo cargar preguntas.json');
@@ -770,7 +712,11 @@ function renderMoreVideos() {
     return;
   }
 
-  state.moreVideos.forEach(video => {
+  // Seleccionar aleatoriamente máximo 10 videos
+  const shuffled = [...state.moreVideos].sort(() => Math.random() - 0.5);
+  const selectedVideos = shuffled.slice(0, 10);
+
+  selectedVideos.forEach(video => {
     const card = document.createElement('div');
     card.className = 'bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-purple-500/40 transition-all flex flex-col group';
 
@@ -872,7 +818,6 @@ function renderVideos() {
           <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2 py-0.5 rounded-full">${video.category === 'alphabet' ? 'Alfabeto' : video.category === 'phrases' ? 'Vocabulario' : 'Gramática'}</span>
           <h4 class="text-sm font-bold text-slate-200 line-clamp-2 pt-1 leading-normal group-hover:text-purple-300 transition-colors">${video.title}</h4>
         </div>
-        <p class="text-xs text-slate-500 mt-2">${video.author}</p>
       </div>
     `;
     
@@ -1043,17 +988,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 // --- INICIALIZACIÓN GLOBAL ---
 document.addEventListener("DOMContentLoaded", async () => {
-  await Promise.all([loadWords(), loadMoreVideos()]);
-
-  // Inicializar reloj de barra de estado
-  // const updateClock = () => {
-  //   const now = new Date();
-  //   const hours = String(now.getHours()).padStart(2, '0');
-  //   const minutes = String(now.getMinutes()).padStart(2, '0');
-  //   document.getElementById("statusBarClock").textContent = `${hours}:${minutes}`;
-  // };
-  // updateClock();
-  // setInterval(updateClock, 30000);
+  await Promise.all([loadWords(), loadVideos(),loadVideosIsraelNoticias()]);
 
   // Inicializar voces TTS
   loadVoices();
