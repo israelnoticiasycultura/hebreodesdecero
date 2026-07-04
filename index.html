@@ -10,6 +10,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Hebreo desde Cero">
+    <link rel="icon" type="image/svg+xml" href="assets/alef.svg">
+    <link rel="shortcut icon" type="image/svg+xml" href="assets/alef.svg">
     <link class="pwa-icon" rel="apple-touch-icon" href="assets/icon-192.png">
     <link rel="manifest" href="manifest.json">
     
@@ -293,8 +295,7 @@
                                 </div>
 
                                 <div class="flex-1 flex flex-col items-center justify-center space-y-2 mt-4">
-                                    <h2 id="cardHebrew" class="text-5xl font-extrabold tracking-wide text-slate-100 font-hebrew">שָׁלוֹם</h2>
-                                    <!-- <p id="cardTranslit" class="text-sm text-slate-400 italic">Shalom</p>-->
+                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100">Hola / Paz</h2>
                                 </div>
 
                                 <div class="flex justify-center items-center">
@@ -308,7 +309,7 @@
                             <!-- CARD BACK FACE -->
                             <div class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-bl from-purple-950/90 via-slate-900 to-indigo-950/90">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Traducción</span>
+                                    <span class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Hebreo</span>
                                     <span class="text-xs text-slate-500 flex items-center space-x-1">
                                         <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
                                         <span>¡Buen trabajo!</span>
@@ -321,8 +322,8 @@
                                         <i id="cardEmoji" data-lucide="book-open" class="w-8 h-8"></i>
                                     </div>
                                     <div>
-                                        <h3 id="cardSpanish" class="text-2xl font-extrabold text-slate-100">Hola / Paz</h3>
-                                        <p class="text-xs text-slate-400 mt-1">Escribe o repite esta frase en voz alta.</p>
+                                        <h3 id="cardBackText" class="text-3xl font-extrabold text-slate-100 font-hebrew">שָׁלוֹם</h3>
+                                        <p class="text-xs text-slate-400 mt-1">Escucha o repite esta frase en voz alta.</p>
                                     </div>
                                 </div>
 
@@ -715,22 +716,22 @@
                 <i data-lucide="home" class="w-5 h-5 fill-current"></i>
                 <span class="text-[10px] font-bold tracking-tight">Inicio</span>
             </a>
-            <!-- Nav: Flashcards -->
-            <a href="#flashcards" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-flashcards">
-                <i data-lucide="layers" class="w-5 h-5"></i>
-                <span class="text-[10px] font-bold tracking-tight">Practicar</span>
-            </a>
-            <!-- Nav: Videos -->
+            <!-- Nav: Clases -->
             <a href="#videos" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-videos">
                 <i data-lucide="video" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Clases</span>
             </a>
-            <!-- Nav: Más -->
+            <!-- Nav: Practicar -->
+            <a href="#flashcards" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-flashcards">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+                <span class="text-[10px] font-bold tracking-tight">Practicar</span>
+            </a>
+            <!-- Nav: Perfil -->
             <a href="#profile" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-profile">
                 <i data-lucide="user" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Perfil</span>
             </a>
-            <!-- Nav: Mas -->
+            <!-- Nav: Más -->
             <a href="#more" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-more">
                 <i data-lucide="more-horizontal" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Más</span>
@@ -759,7 +760,8 @@
             </div>
 
             <!-- Modal Footer options -->
-            <div class="p-4 bg-slate-950/30 flex justify-end space-x-2 text-xs">
+            <div class="p-4 bg-slate-950/30 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <div id="youtubeShareActions" class="flex flex-wrap items-center gap-2"></div>
                 <a id="youtubeOpenAppBtn" href="#" target="_blank" class="px-4 py-2.5 rounded-xl bg-red-600/10 border border-red-500/20 text-red-500 hover:bg-red-600 hover:text-white transition-all font-bold flex items-center space-x-1">
                     <i data-lucide="youtube" class="w-4.5 h-4.5 fill-current"></i>
                     <span>Abrir en YouTube</span>

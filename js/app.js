@@ -14,30 +14,31 @@ async function loadWords() {
 }
 
 const COUNTER_API_URL_V1 = "https://api.counterapi.dev/v1/desmitifica/compartir";
+const COUNTER_API_URL_CLASS_VIDEOS = "https://api.counterapi.dev/v1/desmitifica/videos-clases";
 
-async function obtenerContadorV1() {
+async function obtenerContadorV1(counterApiUrl = COUNTER_API_URL_V1, elementId = 'contador-global') {
   try {
-    const res = await fetch(COUNTER_API_URL_V1 + "/");
+    const res = await fetch(counterApiUrl + "/");
     if (!res.ok) throw new Error('Error al cargar contador');
     const data = await res.json();
-    const el = document.getElementById('contador-global');
+    const el = document.getElementById(elementId);
     if (el) {
       el.textContent = `${data.count} verdades difundidas. ¡Ayuda a compartir!`;
     }
   } catch (error) {
     console.error('Error al obtener contador:', error);
-    const el = document.getElementById('contador-global');
+    const el = document.getElementById(elementId);
     if (el) {
       el.textContent = 'No se pudo cargar el contador.';
     }
   }
 }
 
-async function incrementarContadorV1() {
+async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1, elementId = 'contador-global') {
   try {
-    const res = await fetch(COUNTER_API_URL_V1 + "/up");
+    const res = await fetch(counterApiUrl + "/up");
     if (!res.ok) throw new Error('Error al incrementar contador');
-    await obtenerContadorV1();
+    await obtenerContadorV1(counterApiUrl, elementId);
   } catch (error) {
     console.error('Error al incrementar contador:', error);
   }
@@ -325,8 +326,8 @@ function renderFlashcard() {
   state.flashcards.isFlipped = false;
 
   // Actualizar datos
-  document.getElementById("cardHebrew").textContent = card.hebrew;
-  document.getElementById("cardSpanish").textContent = card.spanish;
+  document.getElementById("cardFrontText").textContent = card.hebrew;
+  document.getElementById("cardBackText").textContent = card.spanish;
   document.getElementById("cardCategory").textContent = card.category;
   document.getElementById("cardEmoji").textContent = card.emoji;
   // Icono dinámico según Lucide
@@ -701,6 +702,57 @@ async function copyVideoUrl(url, button) {
   }
 }
 
+function createShareButtonGroup(url, counterApiUrl, { includeLabel = false } = {}) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'flex flex-wrap items-center gap-2';
+
+  if (includeLabel) {
+    const label = document.createElement('span');
+    label.className = 'text-sm font-medium text-slate-300 self-center mr-1';
+    label.textContent = 'Compartir:';
+    wrapper.appendChild(label);
+  }
+
+  const actions = [
+    { action: 'whatsapp', className: 'border border-green-500/20 bg-green-500/10 text-green-400 hover:bg-green-500/20', icon: 'message-circle' },
+    { action: 'telegram', className: 'border border-sky-500/20 bg-sky-500/10 text-sky-400 hover:bg-sky-500/20', icon: 'send' },
+    { action: 'copy', className: 'border border-amber-500/20 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20', icon: 'copy' },
+    { action: 'facebook', className: 'border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20', icon: 'facebook' }
+  ];
+
+  actions.forEach(({ action, className, icon }) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `share-btn px-2.5 py-2 rounded-xl transition-all ${className}`;
+    button.setAttribute('data-share-action', action);
+    button.setAttribute('data-url', url);
+
+    if (action === 'facebook') {
+      button.innerHTML = '<i class="fab fa-facebook-f"></i>';
+    } else {
+      button.innerHTML = `<i data-lucide="${icon}" class="w-4 h-4"></i>`;
+    }
+
+    button.onclick = async (event) => {
+      event.stopPropagation();
+      const shareAction = button.getAttribute('data-share-action');
+      const shareUrl = button.getAttribute('data-url');
+
+      if (shareAction === 'copy') {
+        await copyVideoUrl(shareUrl, button);
+      } else {
+        shareVideo(shareUrl, shareAction);
+      }
+
+      await incrementarContadorV1(counterApiUrl);
+    };
+
+    wrapper.appendChild(button);
+  });
+
+  return wrapper;
+}
+
 function renderMoreVideos() {
   const container = document.getElementById('moreVideosList');
   if (!container) return;
@@ -775,7 +827,7 @@ function renderMoreVideos() {
           shareVideo(url, action);
         }
 
-        await incrementarContadorV1();
+        await incrementarContadorV1(COUNTER_API_URL_V1);
       };
     });
 
@@ -802,6 +854,7 @@ function renderVideos() {
   filtered.forEach(video => {
     const card = document.createElement("div");
     card.className = "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-purple-500/40 transition-all flex flex-col group relative";
+    const shareUrl = video.urlList || video.url || `https://youtu.be/${video.id}`;
     
     card.innerHTML = `
       <div class="relative aspect-video w-full overflow-hidden bg-slate-950">
@@ -814,15 +867,19 @@ function renderVideos() {
         <span class="absolute bottom-2 right-2 bg-slate-950/80 px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 z-20">${video.duration}</span>
       </div>
       <div class="p-4 flex-1 flex flex-col justify-between">
-        <div class="space-y-1">
+        <div class="space-y-2">
           <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2 py-0.5 rounded-full">${video.category === 'alphabet' ? 'Alfabeto' : video.category === 'phrases' ? 'Vocabulario' : 'Gramática'}</span>
           <h4 class="text-sm font-bold text-slate-200 line-clamp-2 pt-1 leading-normal group-hover:text-purple-300 transition-colors">${video.title}</h4>
+          <div class="video-share-actions"></div>
         </div>
       </div>
     `;
+
+    const shareContainer = card.querySelector('.video-share-actions');
+    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_CLASS_VIDEOS));
     
     card.onclick = () => {
-      openVideoModal(video.id, video.title);
+      openVideoModal(video.id, video.title, shareUrl);
     };
 
     container.appendChild(card);
@@ -844,23 +901,30 @@ function handleVideoFilter(filterName, btn) {
 }
 
 // --- MODAL DE YOUTUBE ---
-function openVideoModal(videoId, title) {
+function openVideoModal(videoId, title, shareUrl = `https://youtu.be/${videoId}`) {
   playSound('click');
   
   const modal = document.getElementById("youtubeModal");
   const iframe = document.getElementById("youtubeIframe");
   const titleEl = document.getElementById("youtubeModalTitle");
   const openAppBtn = document.getElementById("youtubeOpenAppBtn");
+  const shareActionsContainer = document.getElementById("youtubeShareActions");
 
   titleEl.textContent = title;
   iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
   openAppBtn.href = `https://youtu.be/${videoId}`;
+
+  if (shareActionsContainer) {
+    shareActionsContainer.innerHTML = '';
+    shareActionsContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_CLASS_VIDEOS));
+  }
 
   modal.classList.remove("hidden");
   // Retraso para disparar la animación CSS de fade in + scale
   setTimeout(() => {
     modal.classList.remove("opacity-0", "scale-95");
   }, 10);
+  lucide.createIcons();
 }
 
 function closeVideoModal() {
