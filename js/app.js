@@ -13,17 +13,39 @@ async function loadWords() {
   state.flashcards.list = [...WORDS];
 }
 
-const COUNTER_API_URL_V1 = "https://api.counterapi.dev/v1/desmitifica/compartir";
-const COUNTER_API_URL_CLASS_VIDEOS = "https://api.counterapi.dev/v1/desmitifica/videos-clases";
+const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
+const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
 
-async function obtenerContadorV1(counterApiUrl = COUNTER_API_URL_V1, elementId = 'contador-global') {
+async function obtenerContador(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
   try {
     const res = await fetch(counterApiUrl + "/");
     if (!res.ok) throw new Error('Error al cargar contador');
     const data = await res.json();
+    return data.count || 0;
+  } catch (error) {
+    console.error('Error al obtener contador:', error);
+  }
+}
+
+async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
+  try {
+    const res = await fetch(counterApiUrl + "/up");
+    if (!res.ok) throw new Error('Error al incrementar contador');
+    await obtenerContador(counterApiUrl, elementId);
+  } catch (error) {
+    console.error('Error al incrementar contador:', error);
+  }
+}
+
+async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {  
+  try {
+    const currentCounter = await obtenerContador(counterApiUrl, elementId);
     const el = document.getElementById(elementId);
-    if (el) {
-      el.textContent = `${data.count} verdades difundidas. ¡Ayuda a compartir!`;
+    if (el && elementId === 'contador-global') {
+      el.textContent = `${currentCounter} verdades difundidas. ¡Ayuda a compartir!`;
+    }
+    if (el && elementId === 'contador-hdc') {
+      el.textContent = `${currentCounter} veces compartidas por amigos del canal!`;
     }
   } catch (error) {
     console.error('Error al obtener contador:', error);
@@ -31,16 +53,6 @@ async function obtenerContadorV1(counterApiUrl = COUNTER_API_URL_V1, elementId =
     if (el) {
       el.textContent = 'No se pudo cargar el contador.';
     }
-  }
-}
-
-async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1, elementId = 'contador-global') {
-  try {
-    const res = await fetch(counterApiUrl + "/up");
-    if (!res.ok) throw new Error('Error al incrementar contador');
-    await obtenerContadorV1(counterApiUrl, elementId);
-  } catch (error) {
-    console.error('Error al incrementar contador:', error);
   }
 }
 
@@ -827,7 +839,7 @@ function renderMoreVideos() {
           shareVideo(url, action);
         }
 
-        await incrementarContadorV1(COUNTER_API_URL_V1);
+        await incrementarContadorV1(COUNTER_API_URL_V1_INC);
       };
     });
 
@@ -837,7 +849,7 @@ function renderMoreVideos() {
   lucide.createIcons();
 }
 
-// --- SCREEN: VIDEOS ---
+// --- SCREEN: CLASES ---
 function renderVideos() {
   const container = document.getElementById("videosListContainer");
   if (!container) return;
@@ -876,7 +888,7 @@ function renderVideos() {
     `;
 
     const shareContainer = card.querySelector('.video-share-actions');
-    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_CLASS_VIDEOS));
+    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC));
     
     card.onclick = () => {
       openVideoModal(video.id, video.title, shareUrl);
@@ -916,7 +928,7 @@ function openVideoModal(videoId, title, shareUrl = `https://youtu.be/${videoId}`
 
   if (shareActionsContainer) {
     shareActionsContainer.innerHTML = '';
-    shareActionsContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_CLASS_VIDEOS));
+    shareActionsContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC));
   }
 
   modal.classList.remove("hidden");
@@ -1195,6 +1207,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Renderizar Inicio por defecto
   handleRoute();
   updateHomeView();
-  await obtenerContadorV1();
+  await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
+  await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
   lucide.createIcons();
 });
