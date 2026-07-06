@@ -2,9 +2,25 @@
   {
     "id": "I5QiGA9Smpg",
     "urlList": "https://www.youtube.com/watch?v=I5QiGA9Smpg&list=PLuIlwHey28IlyA3WKs9GiDQeHnCGQ4Dve&index=2",
-    "category": "alphabet",
+    "category": "alfabeto",
     "author": "Aprender Hebreo",
-    "duration": "5:30",
-    "title": "Aprender Hebreo - Alfabeto Hebreo"
+    "duration": "6:41",
+    "title": "Alefato Hebreo"
+    },
+    {
+    "id": "lUF-mhdg2rU",
+    "urlList": "https://www.youtube.com/watch?v=lUF-mhdg2rU&list=PLuIlwHey28IlyA3WKs9GiDQeHnCGQ4Dve&index=3",
+    "category": "alfabeto",
+    "author": "Aprender Hebreo",
+    "duration": "7:05",
+    "title": "Vocales Hebreas"
+    },
+    {
+    "id": "RZTbY61eqUc",
+    "urlList": "https://www.youtube.com/watch?v=RZTbY61eqUc&list=PLuIlwHey28IlyA3WKs9GiDQeHnCGQ4Dve&index=4",
+    "category": "alfabeto",
+    "author": "Aprender Hebreo",
+    "duration": "6:33",
+    "title": "Lectura en Hebreo"
     }
 ]

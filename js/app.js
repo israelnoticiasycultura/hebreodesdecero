@@ -264,15 +264,46 @@ function updateHomeView() {
     speakHebrew(pdd.hebrew);
   };
   
-  // Vincular thumbnail youtube
-  const ytCard = document.getElementById("pddYoutubeCard");
-  // Buscamos si hay un video del alfabeto o usamos el primero
-  const matchVideo = VIDEOS[0];
-  document.getElementById("pddYoutubeThumb").src = `https://img.youtube.com/vi/${matchVideo.id}/hqdefault.jpg`;
-  
-  ytCard.onclick = () => {
-    openVideoModal(matchVideo.id, matchVideo.title);
-  };
+  // Vincular thumbnails de YouTube para la palabra del día
+  const thumbsContainer = document.getElementById("pddYoutubeThumbs");
+  if (thumbsContainer) {
+    const videoIds = Array.isArray(pdd.videos) && pdd.videos.length > 0
+      ? pdd.videos
+      : (VIDEOS[0] ? [VIDEOS[0].id] : []);
+
+    thumbsContainer.innerHTML = "";
+
+    const videosToShow = videoIds
+      .map(id => {
+        const match = VIDEOS.find(video => video.id === id);
+        return {
+          id,
+          title: match?.title || "Video de Hebreo",
+        };
+      })
+      .filter(video => video.id);
+
+    videosToShow.forEach(video => {
+      const thumbCard = document.createElement('div');
+      thumbCard.className = 'relative overflow-hidden rounded-2xl cursor-pointer hover:border-purple-500/40 border border-slate-800 transition-all group';
+      thumbCard.innerHTML = `
+        <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all flex items-center justify-center z-10">
+          <div class="w-10 h-10 rounded-full bg-red-600/90 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all">
+            <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
+          </div>
+        </div>
+        <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" class="w-full h-24 object-cover filter brightness-75 group-hover:scale-105 transition-all duration-500">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950 to-transparent p-2.5 z-20">
+          <p class="text-[11px] font-bold text-slate-200 line-clamp-1">${video.title}</p>
+        </div>
+      `;
+
+      thumbCard.onclick = () => openVideoModal(video.id, video.title);
+      thumbsContainer.appendChild(thumbCard);
+    });
+
+    lucide.createIcons();
+  }
 
   // Racha y progreso diario
   updateStatsHeader();
@@ -880,7 +911,7 @@ function renderVideos() {
       </div>
       <div class="p-4 flex-1 flex flex-col justify-between">
         <div class="space-y-2">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2 py-0.5 rounded-full">${video.category === 'alphabet' ? 'Alfabeto' : video.category === 'phrases' ? 'Vocabulario' : 'Gramática'}</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2 py-0.5 rounded-full">${video.category === 'alfabeto' ? 'Alfabeto' : video.category === 'phrases' ? 'Vocabulario' : 'Gramática'}</span>
           <h4 class="text-sm font-bold text-slate-200 line-clamp-2 pt-1 leading-normal group-hover:text-purple-300 transition-colors">${video.title}</h4>
           <div class="video-share-actions"></div>
         </div>
@@ -888,7 +919,7 @@ function renderVideos() {
     `;
 
     const shareContainer = card.querySelector('.video-share-actions');
-    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC));
+    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, { includeLabel: true }));
     
     card.onclick = () => {
       openVideoModal(video.id, video.title, shareUrl);

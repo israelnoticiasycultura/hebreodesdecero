@@ -126,10 +126,38 @@
     "emoji": "👩"
   },
   {
+    "hebrew": "אָב",
+    "spanish": "Padre",
+    "category": "Familia",
+    "videos": ["RZTbY61eqUc"],
+    "emoji": "👨"
+  },
+  {
+    "hebrew": "בָּא",
+    "spanish": "Venir (M.S.): vengo, viene, va",
+    "category": "Verbos",
+    "videos": ["RZTbY61eqUc"],
+    "emoji": "🚶"
+  },
+  {
     "hebrew": "אַבָּא",
     "spanish": "Papá",
     "category": "Familia",
+    "videos": ["RZTbY61eqUc"],
     "emoji": "👨"
+  },
+  {
+    "hebrew": "בּוּבָּה",
+    "spanish": "Muñeca",
+    "category": "Vocabulario",
+    "videos": ["RZTbY61eqUc"],
+    "emoji": "🪆"
+  },  {
+    "hebrew": "דִּגְדּוּג",
+    "spanish": "Cosquillas",
+    "category": "Vocabulario",
+    "videos": ["RZTbY61eqUc", "I5QiGA9Smpg"],
+    "emoji": "🤣"
   },
   {
     "hebrew": "יֶלֶד",
@@ -291,6 +319,7 @@
     "hebrew": "דָּג",
     "spanish": "Pescado / Pez",
     "category": "Alimentos",
+    "videos": ["RZTbY61eqUc"],
     "emoji": "🐟"
   },
   {
