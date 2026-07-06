@@ -147,6 +147,47 @@
     "emoji": "👨"
   },
   {
+    "hebrew": "דוֹד",
+    "spanish": "Tío",
+    "category": "Familia",
+    "videos": ["O3322zCgqhQ"],
+    "emoji": "👨"
+  },
+  {
+    "hebrew": "חַג",
+    "spanish": "Fiesta / Día festivo",
+    "category": "Vocabulario",
+    "videos": ["O3322zCgqhQ"],
+    "emoji": "🥳"
+  },
+  {
+    "hebrew": "ַבַּטוּחַ",
+    "spanish": "Seguro (certeza)",
+    "category": "Vocabulario",
+    "videos": ["O3322zCgqhQ"],
+    "emoji": "👍"
+  },
+  {
+    "hebrew": "כַּד",
+    "spanish": "Jarra",
+    "category": "Vocabulario",
+    "videos": ["LlEfUCWwvU4"],
+    "emoji": "🏺"
+  },
+  {
+    "hebrew": "כָּכָה",
+    "spanish": "Así / De esta manera",
+    "category": "Vocabulario",
+    "videos": ["LlEfUCWwvU4"],
+    "emoji": "🏺"
+  },  {
+    "hebrew": "בַּחוּץ",
+    "spanish": "Afuera / Exterior",
+    "category": "Vocabulario",
+    "videos": ["cbiMZFt_ACQ"],
+    "emoji": "⛰️"
+  },
+  {
     "hebrew": "בּוּבָּה",
     "spanish": "Muñeca",
     "category": "Vocabulario",
@@ -175,6 +216,7 @@
     "hebrew": "אָח",
     "spanish": "Hermano",
     "category": "Familia",
+    "videos": ["O3322zCgqhQ"],
     "emoji": "👦"
   },
   {
@@ -187,7 +229,29 @@
     "hebrew": "סַבָּא",
     "spanish": "Abuelo",
     "category": "Familia",
+    "videos": ["cbiMZFt_ACQ"],
     "emoji": "👴"
+  },
+  {
+    "hebrew": "עוֹד",
+    "spanish": "Aún / Más / Otro",
+    "category": "Vocabulario",
+    "videos": ["cbiMZFt_ACQ"],
+    "emoji": "⏳"
+  },
+  {
+    "hebrew": "פָּנוּי",
+    "spanish": "Libre / Desocupado",
+    "category": "Vocabulario",
+    "videos": ["cbiMZFt_ACQ"],
+    "emoji": "🆓"
+  },
+  {
+    "hebrew": "פָלָאפֶל",
+    "spanish": "Falafel (comida típica)",
+    "category": "Vocabulario",
+    "videos": ["cbiMZFt_ACQ"],
+    "emoji": "🧆"
   },
   {
     "hebrew": "סָבְתָא",
@@ -806,7 +870,21 @@
     "hebrew": "לֵב",
     "spanish": "Corazón",
     "category": "Cuerpo",
+    "videos": ["LlEfUCWwvU4"],
     "emoji": "❤️"
+  },
+  {
+    "hebrew": "מוּל",
+    "spanish": "Enfrente / Opuesto",
+    "category": "Vocabulario",
+    "videos": ["LlEfUCWwvU4"],
+    "emoji": "↔️"
+  },{
+    "hebrew": "נָכוֹן",
+    "spanish": "Correcto",
+    "category": "Vocabulario",
+    "videos": ["LlEfUCWwvU4"],
+    "emoji": "✅"
   },
   {
     "hebrew": "דָּם",
@@ -1098,8 +1176,16 @@
   },
   {
     "hebrew": "כֶּסֶף",
-    "spanish": "Dinero / Plata",
+    "spanish": "Dinero",
     "category": "Finanzas",
+    "videos": ["cbiMZFt_ACQ"],
+    "emoji": "💵"
+  },
+  {
+    "hebrew": "צד",
+    "spanish": "Lado",
+    "category": "Vocabulario",
+    "videos": ["cbiMZFt_ACQ"],
     "emoji": "💵"
   },
   {
