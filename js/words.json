@@ -3,12 +3,63 @@
     "hebrew": "שָׁלוֹם",
     "spanish": "Hola / Paz",
     "category": "Saludos",
-    "emoji": "🕊️"
+    "videos": ["kSCVWv1i8Fo"],
+    "emoji": "👋 / 🕊️"
+  },
+  {
+    "hebrew": "שַׂמֵחַ",
+    "spanish": "Feliz",
+    "category": "Vocabulario",
+    "videos": ["kSCVWv1i8Fo"],
+    "emoji": "😊"
+  },
+  {
+    "hebrew": "אֲנִי",
+    "spanish": "Yo",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "🙋‍♂️ / 🙋‍♀️"
+  },
+  {
+    "hebrew": "אַתָּה",
+    "spanish": "Tú (M)",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "🫵"
+  },
+  {
+    "hebrew": "הוּא",
+    "spanish": "Él",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "👨‍💼"
+  },
+  {
+    "hebrew": "הִיא",
+    "spanish": "Ella",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "👩‍💼"
+  },
+  {
+    "hebrew": "יָפָה",
+    "spanish": "Linda",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "✨"
+  },
+  {
+    "hebrew": "אַתְּ",
+    "spanish": "Tú (Femenino)",
+    "category": "Vocabulario",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "🫵"
   },
   {
     "hebrew": "תּוֹדָה",
     "spanish": "Gracias",
     "category": "Saludos",
+    "videos": ["kSCVWv1i8Fo"],    
     "emoji": "🙏"
   },
   {
@@ -175,11 +226,18 @@
     "emoji": "🏺"
   },
   {
+    "hebrew": "קַל",
+    "spanish": "Fácil / Ligero",
+    "category": "Vocabulario",
+    "videos": ["kSCVWv1i8Fo"],
+    "emoji": "👌"
+  },
+  {
     "hebrew": "כָּכָה",
     "spanish": "Así / De esta manera",
     "category": "Vocabulario",
     "videos": ["LlEfUCWwvU4"],
-    "emoji": "🏺"
+    "emoji": "👌"
   },  {
     "hebrew": "בַּחוּץ",
     "spanish": "Afuera / Exterior",
@@ -862,9 +920,10 @@
   },
   {
     "hebrew": "רֶגֶל",
-    "spanish": "Pie / Pierna",
+    "spanish": "Pierna",
     "category": "Cuerpo",
-    "emoji": "🦶"
+    "videos": ["kSCVWv1i8Fo"],
+    "emoji": "🦵"
   },
   {
     "hebrew": "לֵב",
@@ -1110,9 +1169,17 @@
   },
   {
     "hebrew": "מוֹרֶה",
-    "spanish": "Profesor / Maestro",
+    "spanish": "Maestro",
     "category": "Profesiones",
+    "videos": ["f3w56JfwzBs"],
     "emoji": "👨‍🏫"
+  },
+  {
+    "hebrew": "סְטוּדֶנְטית",
+    "spanish": "Estudiante (F)",
+    "category": "Profesiones",
+    "videos": ["f3w56JfwzBs"],
+    "emoji": "👩‍🎓"
   },
   {
     "hebrew": "תַּלְמִיד",
