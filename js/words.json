@@ -42,6 +42,69 @@
     "emoji": "👩‍💼"
   },
   {
+    "hebrew": "אֲנַחְנוּ",
+    "spanish": "Nosotros",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "👨‍👩‍👧‍👦"
+  },
+  {
+    "hebrew": "פֹּה",
+    "spanish": "Aquí",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "📍"
+  },
+  {
+    "hebrew": "אַתֶם",
+    "spanish": "Ustedes (M)",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "👥"
+  },
+  {
+    "hebrew": "הֵם",
+    "spanish": "Ellos",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "🧑‍🤝‍🧑"
+  },
+  {
+    "hebrew": "הֵן",
+    "spanish": "Ellas",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "👭"
+  },
+  {
+    "hebrew": "יָפוֹת",
+    "spanish": "Bonitas",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "👭✨"
+  },
+  {
+    "hebrew": "מִשְׁפָּחָה",
+    "spanish": "Familia",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "👨‍👩‍👧‍👦"
+  },
+  {
+    "hebrew": "שָׁם",
+    "spanish": "Allí / Allá",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "↗️"
+  },
+  {
+    "hebrew": "חֲבֵרִים",
+    "spanish": "Amigos",
+    "category": "Vocabulario",
+    "videos": ["rTvBnREs-po"],
+    "emoji": "🤝"
+  },
+  {
     "hebrew": "יָפָה",
     "spanish": "Linda",
     "category": "Vocabulario",
