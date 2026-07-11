@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-950 text-slate-100 antialiased selection:bg-purple-500/30 selection:text-purple-200">
+<html lang="es"
+    class="h-full bg-slate-950 text-slate-100 antialiased selection:bg-purple-500/30 selection:text-purple-200">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Hebreo desde Cero</title>
-    
+
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#1e1b4b">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,16 +16,19 @@
     <link rel="shortcut icon" type="image/svg+xml" href="assets/alef.svg">
     <link class="pwa-icon" rel="apple-touch-icon" href="assets/icon-192.png">
     <link rel="manifest" href="manifest.json">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Aprende hebreo de forma interactiva y gratuita. Flashcards con audio, lecciones en video, palabra del día y cuestionarios estilo Duolingo.">
-    <meta name="keywords" content="aprender hebreo, hebreo desde cero, vocabulario hebreo, flashcards hebreo, clases de hebreo, hebreo online gratis">
+    <meta name="description"
+        content="Aprende hebreo de forma interactiva y gratuita. Flashcards con audio, lecciones en video, palabra del día y cuestionarios estilo Duolingo.">
+    <meta name="keywords"
+        content="aprender hebreo, hebreo desde cero, vocabulario hebreo, flashcards hebreo, clases de hebreo, hebreo online gratis">
     <meta property="og:title" content="Hebreo desde Cero">
     <!-- Etiquetas Open Graph (Miniatura para compartir) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://github.io" />
     <meta property="og:title" content="Hebreo desde Cero 🇮🇱" />
-    <meta property="og:description" content="Aprende hebreo de forma interactiva y gratuita con quizzes, flashcards y lecciones dinámicas." />
+    <meta property="og:description"
+        content="Aprende hebreo de forma interactiva y gratuita con quizzes, flashcards y lecciones dinámicas." />
     <meta property="og:image" content="https://github.iominiaturaWeb.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -31,17 +36,20 @@
     <!-- Etiquetas específicas para X (Twitter) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hebreo desde Cero 🇮🇱" />
-    <meta name="twitter:description" content="Aprende hebreo de forma interactiva y gratuita con quizzes, flashcards y lecciones dinámicas." />
+    <meta name="twitter:description"
+        content="Aprende hebreo de forma interactiva y gratuita con quizzes, flashcards y lecciones dinámicas." />
     <meta name="twitter:image" content="https://github.iominiaturaWeb.png" />
-        
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -84,44 +92,64 @@
         .perspective-1000 {
             perspective: 1000px;
         }
+
         .transform-style-3d {
             transform-style: preserve-3d;
         }
+
         .backface-hidden {
             backface-visibility: hidden;
         }
+
         .rotate-y-180 {
             transform: rotateY(180deg);
         }
 
         /* View Transitions */
         @keyframes slide-to-left {
-            to { transform: translateX(-100%); opacity: 0; }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
         }
+
         @keyframes slide-from-right {
-            from { transform: translateX(100%); opacity: 0; }
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
         }
+
         @keyframes slide-to-right {
-            to { transform: translateX(100%); opacity: 0; }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
         }
+
         @keyframes slide-from-left {
-            from { transform: translateX(-100%); opacity: 0; }
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
         }
-        
+
         ::view-transition-group(root) {
             animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
-        
+
         html:active-view-transition-type(forward)::view-transition-old(root) {
             animation-name: slide-to-left;
         }
+
         html:active-view-transition-type(forward)::view-transition-new(root) {
             animation-name: slide-from-right;
         }
-        
+
         html:active-view-transition-type(backward)::view-transition-old(root) {
             animation-name: slide-to-right;
         }
+
         html:active-view-transition-type(backward)::view-transition-new(root) {
             animation-name: slide-from-left;
         }
@@ -130,13 +158,16 @@
         .custom-scrollbar::-webkit-scrollbar {
             width: 4px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: rgba(139, 92, 246, 0.2);
             border-radius: 10px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: rgba(139, 92, 246, 0.4);
         }
@@ -154,29 +185,38 @@
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="h-full flex items-center justify-center md:bg-slate-900 md:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))] font-sans overflow-hidden">
+
+<body
+    class="h-full flex items-center justify-center md:bg-slate-900 md:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))] font-sans overflow-hidden">
 
     <!-- Mobile Device Container -->
-    <div class="w-full h-full md:max-w-[412px] md:h-[840px] md:rounded-[48px] md:border-[10px] md:border-slate-800 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] md:relative md:overflow-hidden bg-slate-950 flex flex-col z-10 transition-all duration-300">
+    <div
+        class="w-full h-full md:max-w-[412px] md:h-[840px] md:rounded-[48px] md:border-[10px] md:border-slate-800 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] md:relative md:overflow-hidden bg-slate-950 flex flex-col z-10 transition-all duration-300">
 
         <!-- App Header (Dynamic contents depending on view) -->
-        <header class="px-5 py-3 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md flex items-center justify-between z-30 select-none">
+        <header
+            class="px-5 py-3 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md flex items-center justify-between z-30 select-none">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-purple-900/30">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-purple-900/30">
                     <span class="text-white font-extrabold text-sm font-hebrew">א</span>
                 </div>
-                <h1 class="text-base font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Hebreo desde Cero</h1>
+                <h1
+                    class="text-base font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    Hebreo desde Cero</h1>
             </div>
-            
+
             <!-- Global Stats indicators (XP and Streak) -->
             <div class="flex items-center space-x-3 text-sm">
                 <!-- Streak -->
-                <div class="flex items-center space-x-1 bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded-full border border-amber-500/20 font-bold transition-all" title="Racha de días">
+                <div class="flex items-center space-x-1 bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded-full border border-amber-500/20 font-bold transition-all"
+                    title="Racha de días">
                     <i data-lucide="flame" class="w-3.5 h-3.5 fill-current"></i>
                     <span id="headerStreak">0</span>
                 </div>
                 <!-- XP -->
-                <div class="flex items-center space-x-1 bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full border border-purple-500/20 font-bold transition-all" title="Puntos de Experiencia (XP)">
+                <div class="flex items-center space-x-1 bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full border border-purple-500/20 font-bold transition-all"
+                    title="Puntos de Experiencia (XP)">
                     <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-purple-400"></i>
                     <span id="headerXp">0</span>
                 </div>
@@ -185,15 +225,16 @@
 
         <!-- Main Scrollable Screen Content Container -->
         <main class="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-950 relative pb-20">
-            
+
             <!-- SCREEN: INICIO (HOME) -->
             <section id="screen-home" class="app-screen p-5 space-y-6">
                 <!-- Greeting card -->
-                <div class="relative overflow-hidden rounded-3xl bg-gradient-to-tr from-indigo-950 via-slate-950 to-purple-950 border border-slate-800 p-5 shadow-xl">
+                <div
+                    class="relative overflow-hidden rounded-3xl bg-gradient-to-tr from-indigo-950 via-slate-950 to-purple-950 border border-slate-800 p-5 shadow-xl">
                     <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl"></div>
                     <h2 class="text-xl font-bold text-slate-100" id="welcomeGreeting">¡Hola, Estudiante!</h2>
                     <!-- <p class="text-xs text-slate-400 mt-1">Tu viaje con el idioma hebreo continúa hoy. ¡Que tengas un gran aprendizaje!</p> -->
-                    
+
                     <!-- Progress bar -->
                     <div class="mt-4 space-y-1.5">
                         <div class="flex justify-between text-xs text-slate-400">
@@ -201,7 +242,9 @@
                             <span id="dailyProgressText">0% completado</span>
                         </div>
                         <div class="h-2.5 w-full bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                            <div id="dailyProgressBar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            <div id="dailyProgressBar"
+                                class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-500"
+                                style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -209,32 +252,40 @@
                 <!-- Palabra del Día Section -->
                 <div class="space-y-3">
                     <h3 class="text-sm font-extrabold tracking-wider text-slate-400 uppercase">Palabra del Día</h3>
-                    <div class="bg-gradient-to-tr from-slate-950 to-slate-900 border border-slate-800 rounded-3xl p-5 shadow-lg relative overflow-hidden flex flex-col justify-between">
+                    <div
+                        class="bg-gradient-to-tr from-slate-950 to-slate-900 border border-slate-800 rounded-3xl p-5 shadow-lg relative overflow-hidden flex flex-col justify-between">
                         <!-- Play TTS Button floating top-right -->
-                        <button id="pddAudioBtn" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-95 shadow-md">
+                        <button id="pddAudioBtn"
+                            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-95 shadow-md">
                             <i data-lucide="volume-2" class="w-5 h-5"></i>
                         </button>
-                        
+
                         <div>
-                            <span class="text-xs font-bold text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2.5 py-0.5 rounded-full" id="pddCategory">Vocabulario</span>
+                            <span
+                                class="text-xs font-bold text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2.5 py-0.5 rounded-full"
+                                id="pddCategory">Vocabulario</span>
                             <div class="mt-3 text-center">
                                 <span class="text-3xl block mb-1" id="pddIcon">🕊️</span>
-                                <h4 class="text-4xl font-extrabold tracking-wide text-slate-100 font-hebrew" id="pddHebrew">שָׁלוֹם</h4>
+                                <h4 class="text-4xl font-extrabold tracking-wide text-slate-100 font-hebrew"
+                                    id="pddHebrew">שָׁלוֹם</h4>
                                 <p class="text-lg font-bold text-slate-200 mt-2" id="pddSpanish">Hola / Paz</p>
                             </div>
                         </div>
 
                         <!-- Youtube Video Thumbnail Reference -->
-                        <div id="pddYoutubeCard" class="mt-5 border border-slate-800 rounded-2xl overflow-hidden transition-all group">
+                        <div id="pddYoutubeCard"
+                            class="mt-5 border border-slate-800 rounded-2xl overflow-hidden transition-all group">
                             <div id="pddYoutubeThumbs" class="grid gap-2 p-2.5"></div>
                             <div class="bg-slate-950/90 p-2.5">
-                                <p class="text-[11px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en video</p>
+                                <p class="text-[11px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en
+                                    video</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Quick Action Buttons -->
+                <!-- Quick Action Buttons (Temporarily Hidden) -->
+                <!--
                 <div class="grid grid-cols-2 gap-3">
                     <button onclick="window.location.hash = '#flashcards'; setFlashcardTab('learn');" class="bg-gradient-to-br from-indigo-950 to-slate-900 border border-slate-800 p-4 rounded-2xl text-left hover:border-purple-500/30 hover:shadow-neon-purple transition-all active:scale-98 flex flex-col justify-between h-28 group">
                         <i data-lucide="layers" class="w-6 h-6 text-purple-400 group-hover:scale-110 transition-all"></i>
@@ -251,16 +302,19 @@
                         </div>
                     </button>
                 </div>
+                -->
             </section>
 
             <!-- SCREEN: FLASHCARDS (STUDY AND QUIZ) -->
             <section id="screen-flashcards" class="app-screen p-5 space-y-5 hidden">
                 <!-- Sub navigation selector (Aprender vs Quiz) -->
                 <div class="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800 relative">
-                    <button id="tabBtnLearn" class="flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-white bg-purple-600 shadow-md">
+                    <button id="tabBtnLearn"
+                        class="flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-white bg-purple-600 shadow-md">
                         Aprender
                     </button>
-                    <button id="tabBtnQuiz" class="flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-slate-400">
+                    <button id="tabBtnQuiz"
+                        class="flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-slate-400">
                         Jugar Quiz
                     </button>
                 </div>
@@ -270,18 +324,22 @@
                     <!-- Session progress info -->
                     <div class="flex items-center justify-between text-xs text-slate-400">
                         <span id="learnProgressText">Tarjeta 1 de 20</span>
-                        <span class="flex items-center space-x-1"><i data-lucide="swipe" class="w-3.5 h-3.5 text-purple-400"></i><span>Desliza para pasar</span></span>
+                        <span class="flex items-center space-x-1"><i data-lucide="swipe"
+                                class="w-3.5 h-3.5 text-purple-400"></i><span>Desliza para pasar</span></span>
                     </div>
 
                     <!-- Flip Card Outer Container (with 3D perspective) -->
                     <div class="w-full h-80 perspective-1000 cursor-pointer" id="flipCardContainer">
                         <!-- Card Inner Box -->
-                        <div class="w-full h-full transform-style-3d transition-transform duration-500 relative rounded-3xl shadow-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-sm" id="flipCard">
-                            
+                        <div class="w-full h-full transform-style-3d transition-transform duration-500 relative rounded-3xl shadow-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-sm"
+                            id="flipCard">
+
                             <!-- CARD FRONT FACE -->
-                            <div class="absolute inset-0 backface-hidden w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-tr from-slate-900 to-slate-950">
+                            <div
+                                class="absolute inset-0 backface-hidden w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-tr from-slate-900 to-slate-950">
                                 <div class="flex justify-between items-center">
-                                    <span id="cardCategory" class="text-xs font-bold text-purple-400 bg-purple-950/50 border border-purple-800/30 px-3 py-1 rounded-full">Categoría</span>
+                                    <span id="cardCategory"
+                                        class="text-xs font-bold text-purple-400 bg-purple-950/50 border border-purple-800/30 px-3 py-1 rounded-full">Categoría</span>
                                     <span class="text-xs text-slate-500 flex items-center space-x-1">
                                         <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
                                         <span>Click para voltear</span>
@@ -289,21 +347,25 @@
                                 </div>
 
                                 <div class="flex-1 flex flex-col items-center justify-center space-y-2 mt-4">
-                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100">Hola / Paz</h2>
+                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100">
+                                        Hola / Paz</h2>
                                 </div>
 
                                 <div class="flex justify-center items-center">
                                     <!-- TTS Audio Btn -->
-                                    <button id="cardAudioBtn" class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-90 shadow-lg shadow-purple-900/20">
+                                    <button id="cardAudioBtn"
+                                        class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-90 shadow-lg shadow-purple-900/20">
                                         <i data-lucide="volume-2" class="w-5 h-5"></i>
                                     </button>
                                 </div>
                             </div>
-                            
+
                             <!-- CARD BACK FACE -->
-                            <div class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-bl from-purple-950/90 via-slate-900 to-indigo-950/90">
+                            <div
+                                class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-bl from-purple-950/90 via-slate-900 to-indigo-950/90">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Hebreo</span>
+                                    <span
+                                        class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Hebreo</span>
                                     <span class="text-xs text-slate-500 flex items-center space-x-1">
                                         <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
                                         <span>¡Buen trabajo!</span>
@@ -312,12 +374,15 @@
 
                                 <div class="flex-1 flex flex-col items-center justify-center text-center space-y-4">
                                     <!-- Visual placeholder icon -->
-                                    <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                                    <div
+                                        class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
                                         <i id="cardEmoji" data-lucide="book-open" class="w-8 h-8"></i>
                                     </div>
                                     <div>
-                                        <h3 id="cardBackText" class="text-3xl font-extrabold text-slate-100 font-hebrew">שָׁלוֹם</h3>
-                                        <p class="text-xs text-slate-400 mt-1">Escucha o repite esta frase en voz alta.</p>
+                                        <h3 id="cardBackText"
+                                            class="text-3xl font-extrabold text-slate-100 font-hebrew">שָׁלוֹם</h3>
+                                        <p class="text-xs text-slate-400 mt-1">Escucha o repite esta frase en voz alta.
+                                        </p>
                                     </div>
                                 </div>
 
@@ -329,15 +394,19 @@
 
                     <!-- Actions Panel -->
                     <div class="flex items-center space-x-3">
-                        <button id="learnHardBtn" class="flex-1 py-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white transition-all active:scale-95 flex items-center justify-center space-x-1.5">
+                        <button id="learnHardBtn"
+                            class="flex-1 py-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-white transition-all active:scale-95 flex items-center justify-center space-x-1.5">
                             <i data-lucide="x-circle" class="w-4 h-4 text-brand-red"></i>
                             <span>Difícil</span>
                         </button>
-                        <button id="learnEasyBtn" class="flex-1 py-3.5 rounded-2xl bg-purple-600 text-xs font-bold text-white shadow-lg shadow-purple-900/30 hover:bg-purple-500 transition-all active:scale-95 flex items-center justify-center space-x-1.5">
+                        <button id="learnEasyBtn"
+                            class="flex-1 py-3.5 rounded-2xl bg-purple-600 text-xs font-bold text-white shadow-lg shadow-purple-900/30 hover:bg-purple-500 transition-all active:scale-95 flex items-center justify-center space-x-1.5">
                             <i data-lucide="check" class="w-4 h-4 text-white"></i>
                             <span>Fácil</span>
                         </button>
-                        <button id="learnNextBtn" class="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:bg-slate-700 transition-all active:scale-95" title="Siguiente Tarjeta">
+                        <button id="learnNextBtn"
+                            class="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200 hover:bg-slate-700 transition-all active:scale-95"
+                            title="Siguiente Tarjeta">
                             <i data-lucide="chevron-right" class="w-5 h-5"></i>
                         </button>
                     </div>
@@ -349,52 +418,74 @@
                     <div class="flex items-center justify-between space-x-4">
                         <!-- Progress bar -->
                         <div class="flex-1 h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
-                            <div id="quizProgressBar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            <div id="quizProgressBar"
+                                class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-300"
+                                style="width: 0%"></div>
                         </div>
                         <!-- Lives Hearts -->
-                        <div class="flex items-center space-x-1 text-brand-red text-lg select-none" id="quizHeartsContainer">
-                            <i data-lucide="heart" class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
-                            <i data-lucide="heart" class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
-                            <i data-lucide="heart" class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
+                        <div class="flex items-center space-x-1 text-brand-red text-lg select-none"
+                            id="quizHeartsContainer">
+                            <i data-lucide="heart"
+                                class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
+                            <i data-lucide="heart"
+                                class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
+                            <i data-lucide="heart"
+                                class="w-5 h-5 fill-current text-brand-red transition-all duration-300"></i>
                         </div>
                     </div>
 
                     <!-- Question Container -->
-                    <div class="bg-gradient-to-tr from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                        <span class="text-xs text-indigo-400 font-bold bg-indigo-950/40 border border-indigo-900/30 px-2.5 py-0.5 rounded-full" id="quizTypeBadge">Pregunta</span>
-                        <h3 id="quizQuestionText" class="text-xl font-extrabold text-slate-100 leading-snug">¿Cómo se dice 'Gracias' en hebreo?</h3>
+                    <div
+                        class="bg-gradient-to-tr from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+                        <span
+                            class="text-xs text-indigo-400 font-bold bg-indigo-950/40 border border-indigo-900/30 px-2.5 py-0.5 rounded-full"
+                            id="quizTypeBadge">Pregunta</span>
+                        <h3 id="quizQuestionText" class="text-xl font-extrabold text-slate-100 leading-snug">¿Cómo se
+                            dice 'Gracias' en hebreo?</h3>
                     </div>
 
                     <!-- Option Choices (4 options) -->
                     <div class="grid grid-cols-1 gap-3" id="quizOptionsContainer">
                         <!-- Option A -->
-                        <button class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group" data-option="0">
+                        <button
+                            class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group"
+                            data-option="0">
                             <div class="flex items-center space-x-3">
-                                <span class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">A</span>
+                                <span
+                                    class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">A</span>
                                 <span class="option-text font-hebrew text-lg font-bold">שָׁלוֹם</span>
                             </div>
                             <div class="option-status-icon hidden"></div>
                         </button>
                         <!-- Option B -->
-                        <button class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group" data-option="1">
+                        <button
+                            class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group"
+                            data-option="1">
                             <div class="flex items-center space-x-3">
-                                <span class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">B</span>
+                                <span
+                                    class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">B</span>
                                 <span class="option-text font-hebrew text-lg font-bold">תּוֹדָה</span>
                             </div>
                             <div class="option-status-icon hidden"></div>
                         </button>
                         <!-- Option C -->
-                        <button class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group" data-option="2">
+                        <button
+                            class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group"
+                            data-option="2">
                             <div class="flex items-center space-x-3">
-                                <span class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">C</span>
+                                <span
+                                    class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">C</span>
                                 <span class="option-text font-hebrew text-lg font-bold">בְּבַקָּשָׁה</span>
                             </div>
                             <div class="option-status-icon hidden"></div>
                         </button>
                         <!-- Option D -->
-                        <button class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group" data-option="3">
+                        <button
+                            class="quiz-option-btn w-full p-4 rounded-2xl bg-slate-900 border-2 border-slate-800 text-left text-sm font-bold text-slate-300 hover:border-slate-700 hover:bg-slate-900/80 transition-all active:scale-99 flex items-center justify-between group"
+                            data-option="3">
                             <div class="flex items-center space-x-3">
-                                <span class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">D</span>
+                                <span
+                                    class="w-7 h-7 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center text-xs font-black group-hover:bg-slate-700 transition-all">D</span>
                                 <span class="option-text font-hebrew text-lg font-bold">בֹּקֶר טוֹב</span>
                             </div>
                             <div class="option-status-icon hidden"></div>
@@ -403,30 +494,38 @@
 
                     <!-- Bottom check action bar -->
                     <div class="pt-2">
-                        <button id="quizActionBtn" class="w-full py-4 rounded-2xl bg-purple-600 text-sm font-bold text-white shadow-lg shadow-purple-900/20 hover:bg-purple-500 transition-all active:scale-98 flex items-center justify-center space-x-2" disabled>
+                        <button id="quizActionBtn"
+                            class="w-full py-4 rounded-2xl bg-purple-600 text-sm font-bold text-white shadow-lg shadow-purple-900/20 hover:bg-purple-500 transition-all active:scale-98 flex items-center justify-center space-x-2"
+                            disabled>
                             <span>Comprobar</span>
                         </button>
                     </div>
 
                     <!-- OVERLAY: GAME OVER SCREEN -->
-                    <div id="quizGameOverOverlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center p-6 text-center space-y-6 hidden z-20">
-                        <div class="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-brand-red text-4xl shadow-lg">
+                    <div id="quizGameOverOverlay"
+                        class="absolute inset-0 bg-slate-950/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center p-6 text-center space-y-6 hidden z-20">
+                        <div
+                            class="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-brand-red text-4xl shadow-lg">
                             💔
                         </div>
                         <div class="space-y-2">
                             <h3 class="text-2xl font-black text-slate-100">¡Te has quedado sin vidas!</h3>
-                            <p class="text-sm text-slate-400">No te preocupes, el fracaso es solo una oportunidad para volver a aprender.</p>
+                            <p class="text-sm text-slate-400">No te preocupes. ¡La práctica será nuestro camino al
+                                éxito!.</p>
                         </div>
                         <div class="w-full pt-4">
-                            <button id="quizRetryBtn" class="w-full py-4 rounded-2xl bg-purple-600 text-sm font-bold text-white hover:bg-purple-500 transition-all active:scale-95">
+                            <button id="quizRetryBtn"
+                                class="w-full py-4 rounded-2xl bg-purple-600 text-sm font-bold text-white hover:bg-purple-500 transition-all active:scale-95">
                                 Reintentar Quiz
                             </button>
                         </div>
                     </div>
 
                     <!-- OVERLAY: SUCCESS SCREEN -->
-                    <div id="quizSuccessOverlay" class="absolute inset-0 bg-slate-950/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center p-6 text-center space-y-6 hidden z-20">
-                        <div class="w-20 h-20 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-brand-gold text-4xl shadow-lg animate-bounce">
+                    <div id="quizSuccessOverlay"
+                        class="absolute inset-0 bg-slate-950/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center p-6 text-center space-y-6 hidden z-20">
+                        <div
+                            class="w-20 h-20 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-brand-gold text-4xl shadow-lg animate-bounce">
                             🏆
                         </div>
                         <div class="space-y-2">
@@ -444,7 +543,8 @@
                             </div>
                         </div>
                         <div class="w-full pt-4">
-                            <button id="quizCompleteBtn" class="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-bold text-white hover:from-purple-500 hover:to-indigo-500 transition-all active:scale-95 shadow-lg shadow-purple-900/30">
+                            <button id="quizCompleteBtn"
+                                class="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-bold text-white hover:from-purple-500 hover:to-indigo-500 transition-all active:scale-95 shadow-lg shadow-purple-900/30">
                                 Continuar
                             </button>
                         </div>
@@ -454,23 +554,32 @@
 
             <!-- SCREEN: VIDEOS -->
             <section id="screen-videos" class="app-screen p-5 space-y-5 hidden">
-                <div class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg text-center pt-3">
-                        <h2 class="text-lg font-extrabold text-slate-100">Curso gratuito Hebreo desde Cero</h2>
-                        <p id="contador-hdc" class="text-sm text-slate-400 mt-1 font-medium text-center"></p>
+                <div
+                    class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg text-center pt-3">
+                    <h2 class="text-lg font-extrabold text-slate-100">Curso gratuito Hebreo desde Cero</h2>
+                    <p id="contador-hdc" class="text-sm text-slate-400 mt-1 font-medium text-center"></p>
                 </div>
 
                 <!-- Video category filters -->
                 <div class="flex space-x-2 overflow-x-auto pb-1 custom-scrollbar scroll-smooth whitespace-nowrap">
-                    <button class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-purple-600 text-white shadow-sm border border-purple-500/20" data-filter="all">
+                    <button
+                        class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-purple-600 text-white shadow-sm border border-purple-500/20"
+                        data-filter="all">
                         Todos
                     </button>
-                    <button class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all" data-filter="alfabeto">
+                    <button
+                        class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all"
+                        data-filter="alfabeto">
                         Alfabeto
                     </button>
-                    <button class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all" data-filter="phrases">
+                    <button
+                        class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all"
+                        data-filter="phrases">
                         Frases
                     </button>
-                    <button class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all" data-filter="grammar">
+                    <button
+                        class="video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all"
+                        data-filter="grammar">
                         Gramática
                     </button>
                 </div>
@@ -483,39 +592,50 @@
 
             <!-- SCREEN: MÁS -->
             <section id="screen-more" class="app-screen p-5 space-y-5 hidden">
-                <div class="sticky top-0 left-0 z-40 bg-slate-900/95 border border-slate-800 rounded-3xl p-4 backdrop-blur-xl flex flex-wrap justify-center gap-4 text-xl text-white shadow-md">
-                        <a href="https://whatsapp.com/channel/0029VaKL2jc5K3zeIbpYCn0x" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@israelnoticiasycultura" target="_blank" aria-label="YouTube" class="hover:text-red-500 transition">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.facebook.com/israelnoticiasycultura/" target="_blank" aria-label="Facebook" class="hover:text-blue-400 transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com/israelnoticiasycultura" target="_blank" aria-label="Instagram" class="hover:text-pink-500 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://t.me/israelnoticiasycultura" target="_blank" aria-label="Telegram" class="hover:text-blue-300 transition">
-                            <i class="fab fa-telegram-plane"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@israelnoticiasycultura" target="_blank" aria-label="TikTok" class="hover:text-pink-400 transition">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://x.com/israelnoticult" target="_blank" aria-label="Twitter" class="hover:text-blue-400 transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://paypal.me/israeljai" target="_blank" aria-label="Donar en PayPal" class="hover:text-blue-500 transition">
-                            <i class="fab fa-paypal"></i>
-                        </a>
-                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" aria-label="Ko-fi" class="hover:text-red-400 transition">
-                            <iconify-icon icon="simple-icons:kofi" class="w-6 h-6 align-middle"></iconify-icon>
-                        </a>
+                <div
+                    class="sticky top-0 left-0 z-40 bg-slate-900/95 border border-slate-800 rounded-3xl p-4 backdrop-blur-xl flex flex-wrap justify-center gap-4 text-xl text-white shadow-md">
+                    <a href="https://whatsapp.com/channel/0029VaKL2jc5K3zeIbpYCn0x" target="_blank"
+                        aria-label="WhatsApp" class="hover:text-green-400 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@israelnoticiasycultura" target="_blank" aria-label="YouTube"
+                        class="hover:text-red-500 transition">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com/israelnoticiasycultura/" target="_blank" aria-label="Facebook"
+                        class="hover:text-blue-400 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/israelnoticiasycultura" target="_blank" aria-label="Instagram"
+                        class="hover:text-pink-500 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://t.me/israelnoticiasycultura" target="_blank" aria-label="Telegram"
+                        class="hover:text-blue-300 transition">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@israelnoticiasycultura" target="_blank" aria-label="TikTok"
+                        class="hover:text-pink-400 transition">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://x.com/israelnoticult" target="_blank" aria-label="Twitter"
+                        class="hover:text-blue-400 transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://paypal.me/israeljai" target="_blank" aria-label="Donar en PayPal"
+                        class="hover:text-blue-500 transition">
+                        <i class="fab fa-paypal"></i>
+                    </a>
+                    <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" aria-label="Ko-fi"
+                        class="hover:text-red-400 transition">
+                        <iconify-icon icon="simple-icons:kofi" class="w-6 h-6 align-middle"></iconify-icon>
+                    </a>
                 </div>
-                <div class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg text-center pt-3">
-                        <h2 class="text-lg font-extrabold text-slate-100">ISRAEL NECESITA TU AYUDA</h2>
-                        <!-- <p class="text-xs text-slate-200 font-medium text-center">Comparte estos videos en tus redes sociales.</p> -->
-                        <p id="contador-global" class="text-sm text-slate-300 mt-1 font-medium text-center"></p>
+                <div
+                    class="bg-gradient-to-tr from-purple-900/20 to-indigo-900/20 border border-purple-500/20 rounded-3xl p-4 shadow-lg text-center pt-3">
+                    <h2 class="text-lg font-extrabold text-slate-100">ISRAEL NECESITA TU AYUDA</h2>
+                    <!-- <p class="text-xs text-slate-200 font-medium text-center">Comparte estos videos en tus redes sociales.</p> -->
+                    <p id="contador-global" class="text-sm text-slate-300 mt-1 font-medium text-center"></p>
                 </div>
                 <div class="grid grid-cols-1 gap-4" id="moreVideosList">
                     <!-- Dynamic rendering by js/app.js -->
@@ -524,17 +644,21 @@
 
             <!-- SCREEN: PERFIL -->
             <section id="screen-profile" class="app-screen p-5 space-y-6 hidden">
-                
+
                 <!-- Profile Card -->
-                <div class="flex items-center space-x-4 bg-gradient-to-tr from-slate-900 to-slate-950 border border-slate-800 p-5 rounded-3xl shadow-lg relative overflow-hidden">
+                <div
+                    class="flex items-center space-x-4 bg-gradient-to-tr from-slate-900 to-slate-950 border border-slate-800 p-5 rounded-3xl shadow-lg relative overflow-hidden">
                     <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-indigo-600/10 rounded-full blur-2xl"></div>
                     <!-- Avatar visual representation -->
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg border border-purple-400/20 select-none">
+                    <div
+                        class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg border border-purple-400/20 select-none">
                         <span class="text-white font-extrabold text-2xl" id="profileAvatarInitial">A</span>
                     </div>
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center space-x-1.5">
-                            <input type="text" id="usernameInput" value="Aprendiz" class="bg-transparent border-b border-transparent hover:border-slate-700 focus:border-purple-500 focus:outline-none font-bold text-slate-200 text-base max-w-[140px] truncate transition-all py-0.5" title="Haga clic para editar su nombre">
+                            <input type="text" id="usernameInput" value="Aprendiz"
+                                class="bg-transparent border-b border-transparent hover:border-slate-700 focus:border-purple-500 focus:outline-none font-bold text-slate-200 text-base max-w-[140px] truncate transition-all py-0.5"
+                                title="Haga clic para editar su nombre">
                             <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-500 pointer-events-none"></i>
                         </div>
                         <p class="text-xs text-slate-400 mt-0.5">Estudiante de Hebreo</p>
@@ -545,21 +669,24 @@
                 <div class="grid grid-cols-3 gap-3">
                     <div class="bg-slate-900/50 border border-slate-800/80 p-3 rounded-2xl text-center">
                         <span class="text-xs text-slate-400 block">Racha</span>
-                        <span class="text-lg font-extrabold text-amber-500 mt-1 block flex items-center justify-center space-x-1">
+                        <span
+                            class="text-lg font-extrabold text-amber-500 mt-1 block flex items-center justify-center space-x-1">
                             <i data-lucide="flame" class="w-4 h-4 fill-current"></i>
                             <span id="profileStatStreak">0</span>
                         </span>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/80 p-3 rounded-2xl text-center">
                         <span class="text-xs text-slate-400 block">Total XP</span>
-                        <span class="text-lg font-extrabold text-purple-400 mt-1 block flex items-center justify-center space-x-1">
+                        <span
+                            class="text-lg font-extrabold text-purple-400 mt-1 block flex items-center justify-center space-x-1">
                             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                             <span id="profileStatXp">0</span>
                         </span>
                     </div>
                     <div class="bg-slate-900/50 border border-slate-800/80 p-3 rounded-2xl text-center">
                         <span class="text-xs text-slate-400 block">Quizzes</span>
-                        <span class="text-lg font-extrabold text-emerald-500 mt-1 block flex items-center justify-center space-x-1">
+                        <span
+                            class="text-lg font-extrabold text-emerald-500 mt-1 block flex items-center justify-center space-x-1">
                             <i data-lucide="trophy" class="w-4 h-4"></i>
                             <span id="profileStatQuizzes">0</span>
                         </span>
@@ -567,9 +694,11 @@
                 </div>
 
                 <!-- PWA Installation Banner (conditional view in JS) -->
-                <div id="pwaInstallBanner" class="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20 rounded-3xl p-4 flex items-center justify-between hidden">
+                <div id="pwaInstallBanner"
+                    class="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20 rounded-3xl p-4 flex items-center justify-between hidden">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
                             <i data-lucide="download-cloud" class="w-5 h-5"></i>
                         </div>
                         <div>
@@ -577,84 +706,137 @@
                             <p class="text-[11px] text-slate-400">Acceso directo en tu pantalla</p>
                         </div>
                     </div>
-                    <button id="pwaInstallBtn" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all active:scale-95 shadow-md">
+                    <button id="pwaInstallBtn"
+                        class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all active:scale-95 shadow-md">
                         Instalar
                     </button>
                 </div>
 
                 <!-- Section: Donate -->
-                <div class="bg-gradient-to-tr from-amber-500/10 to-purple-500/10 border border-amber-500/20 rounded-3xl p-3 shadow-md flex flex-col space-y-2">
+                <div
+                    class="bg-gradient-to-tr from-amber-500/10 to-purple-500/10 border border-amber-500/20 rounded-3xl p-3 shadow-md flex flex-col space-y-2">
                     <div class="flex space-x-3.5">
                         <div class="text-2xl select-none">☕</div>
                         <div class="space-y-1 text-center">
                             <!-- <h4 class="text-sm font-bold text-slate-200">¿Te es de ayuda Hebreo desde Cero?</h4> -->
-                            <h4 class="text-sm font-bold text-slate-200">Considera apoyar este proyecto.</h4>
+                            <h4 class="text-sm font-bold text-slate-200">Apoya este proyecto</h4>
                             <!-- <p class="text-xs text-slate-400 leading-normal">Considera apoyar este proyecto.</p> -->
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-2 items-stretch">
-                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" rel="noopener noreferrer" class="w-3/5 sm:flex-1 min-w-0 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-lg shadow-amber-500/10 flex items-center justify-center space-x-1.5">
+                        <a href="https://bit.ly/3Spbwnq" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-red-600/10 flex items-center justify-center space-x-1.5">
+                            <i class="fab fa-youtube text-sm"></i>
+                            <span>Apoyar con Membrecía en YouTube</span>
+                        </a>
+                        <a href="https://ko-fi.com/israelnoticiasycultura" target="_blank" rel="noopener noreferrer"
+                            class="flex-1 min-w-0 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all active:scale-95 shadow-lg shadow-amber-500/10 flex items-center justify-center space-x-1.5">
                             <i data-lucide="coffee" class="w-4 h-4 fill-current"></i>
                             <span>Regálame un Cafecito</span>
                         </a>
-                        <a href="http://paypal.me/israeljai" target="_blank" rel="noopener noreferrer" class="w-28 sm:w-[32%] min-w-0 ml-0 sm:ml-2 py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-sky-600/10 flex items-center justify-center space-x-1.5">
+                        <a href="http://paypal.me/israeljai" target="_blank" rel="noopener noreferrer"
+                            class="flex-1 min-w-0 py-3 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-sky-600/10 flex items-center justify-center space-x-1.5">
                             <i data-lucide="credit-card" class="w-4 h-4"></i>
                             <span>PayPal</span>
                         </a>
                     </div>
                 </div>
-                
+
+                <!-- Section: Share Project -->
+                <div class="space-y-3">
+                    <!--<h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase">Comparte con otros</h3>-->
+                    <div
+                        class="bg-gradient-to-tr from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-3 shadow-md flex flex-col space-y-2">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="text-2xl select-none">✨</div>
+                            <div class="space-y-0.5">
+                                <h4 class="text-sm font-bold text-slate-200">Comparte esta aplicación con tus amigos
+                                </h4>
+                                <!--<p class="text-[11px] text-slate-400 leading-normal">Invita a otros a aprender
+                                    compartiendo el proyecto.</p>-->
+                            </div>
+                        </div>
+                        <div class="flex gap-2 items-stretch pt-1">
+                            <button onclick="copyVideoUrl('https://tinyurl.com/hebreodesdecero', this)"
+                                class="flex-1 py-3 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-purple-600/10 flex items-center justify-center space-x-1.5">
+                                <i class="fas fa-link text-sm"></i>
+                                <span>Copiar Enlace</span>
+                            </button>
+                            <a href="https://api.whatsapp.com/send?text=%C2%A1Te%20comparto%20esta%20aplicaci%C3%B3n%20gratuita%20para%20aprender%20Hebreo%20desde%20Cero!%20%F0%9F%91%89%20https%3A%2F%2Ftinyurl.com%2Fhebreodesdecero%0A%F0%9F%87%AE%F0%9F%87%B1%20Es%20parte%20del%20curso%20de%20YouTube%3A%20https%3A%2F%2Fbit.ly%2F3C1OOMR"
+                                target="_blank" rel="noopener noreferrer"
+                                class="flex-1 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all active:scale-95 shadow-lg shadow-emerald-600/10 flex items-center justify-center space-x-1.5">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section: Community / Social -->
                 <div class="space-y-3">
-                    <h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase">Únete a la Comunidad en las Redes Sociales</h3>
-                    <div class="bg-slate-900/30 border border-slate-800 rounded-3xl p-2.5 divide-y divide-slate-800/50 text-sm">
+                    <h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase">Únete a la Comunidad</h3>
+                    <div
+                        class="bg-slate-900/30 border border-slate-800 rounded-3xl p-2.5 divide-y divide-slate-800/50 text-sm">
                         <!-- Instagram Link -->
-                        <a href="https://instagram.com/hebreodesdecero" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
+                        <a href="https://instagram.com/hebreodesdecero" target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="instagram" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Instagram</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal">@hebreodesdecero <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal">@hebreodesdecero <i
+                                    data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                         <!-- Página de Facebook -->
-                        <a href="https://www.facebook.com/hebreodesdecero" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
+                        <a href="https://www.facebook.com/hebreodesdecero" target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="facebook" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Página de Facebook</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal">Seguir <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal">Seguir <i
+                                    data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                         <!-- Grupo de Facebook -->
-                        <a href="https://www.facebook.com/groups/aprenderhebreo/" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
+                        <a href="https://www.facebook.com/groups/aprenderhebreo/" target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="message-circle" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Grupo de Facebook</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal">Unirse <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal">Unirse <i
+                                    data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                         <!-- Canal de YouTube -->
-                        <a href="https://www.youtube.com/channel/UCrFjzdNdovn8YugaKtsKiaQ?sub_confirmation=1" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
+                        <a href="https://www.youtube.com/channel/UCrFjzdNdovn8YugaKtsKiaQ?sub_confirmation=1"
+                            target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="play" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Canal de YouTube</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal">Suscribirse <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal">Suscribirse <i
+                                    data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                         <!-- WhatsApp Link -->
-                        <a href="https://whatsapp.com/channel/0029VaKFTf4KbYMNUrnenU3p" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
+                        <a href="https://whatsapp.com/channel/0029VaKFTf4KbYMNUrnenU3p" target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="phone-call" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Canal de WhatsApp</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal">Suscribirse <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal">Suscribirse <i
+                                    data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                         <!-- Telegram Link -->
-                        <a href="https://t.me/hebreodesdecero" target="_blank" class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold font-bold">
+                        <a href="https://t.me/hebreodesdecero" target="_blank"
+                            class="flex items-center justify-between py-3 px-3 hover:bg-slate-900/40 rounded-xl transition-all font-bold font-bold">
                             <div class="flex items-center space-x-2.5 text-slate-300">
                                 <i data-lucide="send" class="w-4.5 h-4.5 text-purple-400"></i>
                                 <span>Canal de Telegram</span>
                             </div>
-                            <span class="text-xs text-slate-500 flex items-center font-normal font-normal">Suscribirse <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
+                            <span class="text-xs text-slate-500 flex items-center font-normal font-normal">Suscribirse
+                                <i data-lucide="external-link" class="w-3 h-3 ml-1"></i></span>
                         </a>
                     </div>
                 </div>
@@ -662,7 +844,8 @@
                 <!-- Section: Settings -->
                 <div class="space-y-3">
                     <h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase">Configuración</h3>
-                    <div class="bg-slate-900/30 border border-slate-800 rounded-3xl p-2.5 divide-y divide-slate-800/50 text-sm">
+                    <div
+                        class="bg-slate-900/30 border border-slate-800 rounded-3xl p-2.5 divide-y divide-slate-800/50 text-sm">
                         <!-- Sound FX switch -->
                         <div class="flex items-center justify-between py-3 px-3">
                             <div class="flex items-center space-x-2.5">
@@ -671,10 +854,12 @@
                             </div>
                             <label class="relative inline-flex items-center cursor-pointer select-none">
                                 <input type="checkbox" id="soundToggle" class="sr-only peer" checked>
-                                <div class="w-10 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600 peer-checked:after:bg-white"></div>
+                                <div
+                                    class="w-10 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600 peer-checked:after:bg-white">
+                                </div>
                             </label>
                         </div>
-                        
+
                         <!-- Voices list setting (TTS voice option selector) 
                         <div class="flex flex-col py-3 px-3 space-y-2">
                             <div class="flex items-center space-x-2.5">
@@ -687,9 +872,11 @@
                         </div>-->
 
                         <!-- Reset progression data -->
-                        <div class="flex items-center justify-between py-3.5 px-3 cursor-pointer group text-slate-400 hover:text-red-400 transition-all" id="resetDataBtn">
+                        <div class="flex items-center justify-between py-3.5 px-3 cursor-pointer group text-slate-400 hover:text-red-400 transition-all"
+                            id="resetDataBtn">
                             <div class="flex items-center space-x-2.5">
-                                <i data-lucide="trash-2" class="w-4.5 h-4.5 group-hover:text-red-400 text-slate-400"></i>
+                                <i data-lucide="trash-2"
+                                    class="w-4.5 h-4.5 group-hover:text-red-400 text-slate-400"></i>
                                 <span>Restablecer datos de racha y XP</span>
                             </div>
                         </div>
@@ -704,59 +891,79 @@
         </main>
 
         <!-- Bottom Navigation Bar -->
-        <nav class="absolute bottom-0 left-0 right-0 h-16 bg-slate-950/85 backdrop-blur-lg border-t border-slate-900/60 flex items-center justify-around px-4 select-none z-30 pb-safe">
+        <nav
+            class="absolute bottom-0 left-0 right-0 h-16 bg-slate-950/85 backdrop-blur-lg border-t border-slate-900/60 flex items-center justify-around px-4 select-none z-30 pb-safe">
             <!-- Nav: Inicio -->
-            <a href="#home" class="nav-link flex flex-col items-center justify-center space-y-1 text-purple-500 transition-colors w-16" data-tab="screen-home">
+            <a href="#home"
+                class="nav-link flex flex-col items-center justify-center space-y-1 text-purple-500 transition-colors w-16"
+                data-tab="screen-home">
                 <i data-lucide="home" class="w-5 h-5 fill-current"></i>
                 <span class="text-[10px] font-bold tracking-tight">Inicio</span>
             </a>
             <!-- Nav: Clases -->
-            <a href="#videos" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-videos">
+            <a href="#videos"
+                class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
+                data-tab="screen-videos">
                 <i data-lucide="video" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Clases</span>
             </a>
-            <!-- Nav: Practicar -->
+            <!-- Nav: Practicar (Temporarily Hidden) -->
+            <!--
             <a href="#flashcards" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-flashcards">
                 <i data-lucide="layers" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Practicar</span>
             </a>
+            -->
             <!-- Nav: Perfil -->
-            <a href="#profile" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-profile">
+            <a href="#profile"
+                class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
+                data-tab="screen-profile">
                 <i data-lucide="user" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Perfil</span>
             </a>
             <!-- Nav: Más -->
-            <a href="#more" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-more">
+            <a href="#more"
+                class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
+                data-tab="screen-more">
                 <i data-lucide="more-horizontal" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Más</span>
             </a>
         </nav>
 
         <!-- iOS Simulated Bottom Home Indicator -->
-        <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-700/60 rounded-full md:block hidden pointer-events-none z-40"></div>
+        <div
+            class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-700/60 rounded-full md:block hidden pointer-events-none z-40">
+        </div>
     </div>
 
     <!-- YouTube Video Custom Overlay Modal (Dynamic inside App view container) -->
-    <div id="youtubeModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md hidden transition-all duration-300 opacity-0 scale-95">
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-[380px] overflow-hidden shadow-2xl relative mx-4">
-            
+    <div id="youtubeModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md hidden transition-all duration-300 opacity-0 scale-95">
+        <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-[380px] overflow-hidden shadow-2xl relative mx-4">
+
             <!-- Modal Header Title and Close button -->
             <div class="px-5 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/40">
-                <h4 id="youtubeModalTitle" class="text-xs font-bold text-slate-200 line-clamp-1">Reproduciendo Lección</h4>
-                <button id="closeYoutubeModal" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center active:scale-90 transition-all">
+                <h4 id="youtubeModalTitle" class="text-xs font-bold text-slate-200 line-clamp-1">Reproduciendo Lección
+                </h4>
+                <button id="closeYoutubeModal"
+                    class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center active:scale-90 transition-all">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
 
             <!-- YouTube Video Responsive Embed -->
             <div class="aspect-video w-full bg-black relative">
-                <iframe id="youtubeIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe id="youtubeIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
             </div>
 
             <!-- Modal Footer options -->
             <div class="p-4 bg-slate-950/30 flex flex-wrap items-center justify-between gap-2 text-xs">
                 <div id="youtubeShareActions" class="flex flex-wrap items-center gap-2"></div>
-                <a id="youtubeOpenAppBtn" href="#" target="_blank" class="px-4 py-2.5 rounded-xl bg-red-600/10 border border-red-500/20 text-red-500 hover:bg-red-600 hover:text-white transition-all font-bold flex items-center space-x-1">
+                <a id="youtubeOpenAppBtn" href="#" target="_blank"
+                    class="px-4 py-2.5 rounded-xl bg-red-600/10 border border-red-500/20 text-red-500 hover:bg-red-600 hover:text-white transition-all font-bold flex items-center space-x-1">
                     <i data-lucide="youtube" class="w-4.5 h-4.5 fill-current"></i>
                     <span>Abrir en YouTube</span>
                 </a>
@@ -776,4 +983,5 @@
     </script>
     <script src="./js/app.js"></script>
 </body>
+
 </html>
