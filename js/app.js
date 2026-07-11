@@ -898,6 +898,8 @@ function renderVideos() {
     const card = document.createElement("div");
     card.className = "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-purple-500/40 transition-all flex flex-col group relative";
     const shareUrl = video.urlList || video.url || `https://youtu.be/${video.id}`;
+    const videoIndex = VIDEOS.findIndex(item => item.id === video.id);
+    const classLabel = videoIndex === 0 ? 'INTRODUCCIÓN' : `CLASE ${videoIndex}`;
     
     card.innerHTML = `
       <div class="relative aspect-video w-full overflow-hidden bg-slate-950">
@@ -909,11 +911,13 @@ function renderVideos() {
         <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 filter brightness-90">
         <span class="absolute bottom-2 right-2 bg-slate-950/80 px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 z-20">${video.duration}</span>
       </div>
-      <div class="p-4 flex-1 flex flex-col justify-between">
+      <div class="flex items-start gap-3 p-4">
         <div class="space-y-2">
+          <span class="text-[10px] font-bold leading-tight text-slate-100 border border-purple-800/30 px-2 py-0.5 rounded-full">${classLabel}</span>
           <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/50 border border-purple-800/30 px-2 py-0.5 rounded-full">${video.category === 'alfabeto' ? 'Alfabeto' : video.category === 'phrases' ? 'Vocabulario' : 'Gramática'}</span>
           <h4 class="text-sm font-bold text-slate-200 line-clamp-2 pt-1 leading-normal group-hover:text-purple-300 transition-colors">${video.title}</h4>
           <div class="video-share-actions"></div>
+          </div>
         </div>
       </div>
     `;

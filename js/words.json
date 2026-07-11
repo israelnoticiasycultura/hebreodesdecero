@@ -75,6 +75,41 @@
     "category": "Vocabulario",
     "videos": ["rTvBnREs-po"],
     "emoji": "👭"
+  },  
+  {
+    "hebrew": "שֶׁלִי",
+    "spanish": "Mío / Mía / Míos / Mías",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "🤗"
+  },
+  {
+    "hebrew": "שֶׁלְךָ",
+    "spanish": "Tuyo / Tuya / Tuyos / Tuyas",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "🫴"
+  },  
+  {
+    "hebrew": "שֶׁלָךְ",
+    "spanish": "Tuyo / Tuya / Tuyos / Tuyas",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "🫴"
+  },
+  {
+    "hebrew": "שֶׁלוֹ",
+    "spanish": "Suyo / Suya / Suyos / Suyas",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "👉"
+  },
+  {
+    "hebrew": "שֶׁלָה",
+    "spanish": "Suyo / Suya / Suyos / Suyas",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "👉"
   },
   {
     "hebrew": "יָפוֹת",
@@ -109,7 +144,14 @@
     "spanish": "Linda",
     "category": "Vocabulario",
     "videos": ["f3w56JfwzBs"],
-    "emoji": "✨"
+    "emoji": "😍"
+  },
+  {
+    "hebrew": "יָפֶה",
+    "spanish": "Lindo",
+    "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "😊"
   },
   {
     "hebrew": "אַתְּ",
@@ -231,6 +273,7 @@
     "hebrew": "בַּיִת",
     "spanish": "Casa",
     "category": "Vocabulario",
+    "videos": ["0G1lSIYM-j4"],
     "emoji": "🏠"
   },
   {
@@ -328,6 +371,13 @@
     "emoji": "👦"
   },
   {
+    "hebrew": "יְלָדִים",
+    "spanish": "Niños",
+    "category": "Familia",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "🧒👦👧"
+  },
+  {
     "hebrew": "יַלְדָּה",
     "spanish": "Niña",
     "category": "Familia",
@@ -384,12 +434,14 @@
     "hebrew": "בֵּן",
     "spanish": "Hijo",
     "category": "Familia",
+    "videos": ["0G1lSIYM-j4"],
     "emoji": "👶"
   },
   {
     "hebrew": "בַּת",
     "spanish": "Hija",
     "category": "Familia",
+    "videos": ["0G1lSIYM-j4"],
     "emoji": "👶"
   },
   {
@@ -823,7 +875,15 @@
     "hebrew": "סֵפֶר",
     "spanish": "Libro",
     "category": "Objetos",
+    "videos": ["0G1lSIYM-j4"],
     "emoji": "📚"
+  },  
+  {
+    "hebrew": "גָּדוֹל",
+    "spanish": "Grande",
+    "category": "Adjetivos",
+    "videos": ["0G1lSIYM-j4"],
+    "emoji": "😮"
   },
   {
     "hebrew": "מַחְבֶּרֶת",
