@@ -1,0 +1,261 @@
+/* =========================================
+   ESTILOS DEL MODAL DE AUTENTICACIÓN
+   ========================================= */
+.auth-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(3, 7, 18, 0.85); /* Slate 950 con opacidad alta */
+  backdrop-filter: blur(8px); /* Desenfoque del fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.auth-modal-overlay.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-modal-content {
+  background-color: #0f172a; /* Slate 900 */
+  color: #f1f5f9; /* Slate 100 */
+  border: 1px solid #334155; /* Slate 700 */
+  border-radius: 24px; /* Bordes redondeados más acentuados */
+  width: 95%;
+  max-width: 400px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25); /* Sombra de neón morada */
+  font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.auth-welcome-message {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  padding: 0 10px;
+}
+
+.auth-welcome-message h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #a78bfa 0%, #f59e0b 100%); /* Degradado de Morado a Dorado de la app */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+}
+
+.auth-welcome-message p {
+  font-size: 14px;
+  color: #94a3b8; /* Slate 400 */
+  line-height: 1.5;
+  font-family: 'Outfit', sans-serif;
+}
+
+.auth-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #94a3b8; /* Slate 400 */
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.auth-close-btn:hover { color: #f1f5f9; }
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #1e293b; /* Slate 800 */
+}
+
+.auth-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #94a3b8; /* Slate 400 */
+  font-weight: 600;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px; /* Superposición */
+  font-family: 'Outfit', sans-serif;
+}
+
+.auth-tab.active {
+  color: #8b5cf6; /* Brand Purple */
+  border-bottom-color: #8b5cf6;
+}
+
+.auth-form { display: flex; flex-direction: column; }
+.auth-form.hidden { display: none; }
+
+.auth-input-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #cbd5e1; /* Slate 300 */
+  font-weight: 500;
+}
+
+.auth-input-group input {
+  padding: 12px 16px;
+  background-color: #1e293b; /* Slate 800 */
+  border: 1px solid #334155; /* Slate 700 */
+  border-radius: 12px;
+  font-size: 15px;
+  color: #f1f5f9; /* Slate 100 */
+  transition: all 0.2s;
+}
+
+.auth-input-group input:focus {
+  outline: none;
+  border-color: #8b5cf6; /* Brand Purple */
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+.auth-input-group input::placeholder {
+  color: #64748b; /* Slate 500 */
+}
+
+.auth-submit-btn {
+  background-color: #8b5cf6; /* Brand Purple */
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.auth-submit-btn:hover {
+  background-color: #7c3aed; /* Violet 600 */
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+}
+
+.auth-message {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+}
+.auth-message.error { color: #f87171; } /* Red 400 */
+.auth-message.success { color: #34d399; } /* Emerald 400 */
+
+/* =========================================
+   ESTILOS GENERALES DE LA APLICACIÓN
+   ========================================= */
+
+/* Card Flip Styles */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+/* View Transitions */
+@keyframes slide-to-left {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-to-right {
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+::view-transition-group(root) {
+    animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+html:active-view-transition-type(forward)::view-transition-old(root) {
+    animation-name: slide-to-left;
+}
+
+html:active-view-transition-type(forward)::view-transition-new(root) {
+    animation-name: slide-from-right;
+}
+
+html:active-view-transition-type(backward)::view-transition-old(root) {
+    animation-name: slide-to-right;
+}
+
+html:active-view-transition-type(backward)::view-transition-new(root) {
+    animation-name: slide-from-left;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.2);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.4);
+}
+
+/* Prevent elastic scrolling in iOS */
+body {
+    overscroll-behavior-y: contain;
+}
+

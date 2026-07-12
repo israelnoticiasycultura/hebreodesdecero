@@ -1,3 +1,13 @@
+// ==========================================
+// INICIALIZACIÓN DE SUPABASE
+// ==========================================
+const supabaseUrl = 'https://gjyqwqaabzajoflqwped.supabase.co';
+const supabaseKey = 'sb_publishable_ZM3R9fFL9JY-OK_Lvi9lHw_E00H_Rlj';
+const supabaseClient = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+
+// Variable global para mantener el estado de la sesión
+let usuarioActual = null;
+
 let WORDS = [];
 
 async function loadWords() {
@@ -37,7 +47,7 @@ async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_INC, ele
   }
 }
 
-async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {  
+async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
   try {
     const currentCounter = await obtenerContador(counterApiUrl, elementId);
     const el = document.getElementById(elementId);
@@ -67,7 +77,7 @@ const state = {
   username: localStorage.getItem('hebrew_username') || "Estudiante",
   soundEnabled: localStorage.getItem('hebrew_sound_enabled') !== "false", // default true
   currentTab: "screen-home",
-  
+
   // Estado de Flashcards (Modo Aprender)
   flashcards: {
     currentIndex: 0,
@@ -110,7 +120,7 @@ let audioCtx = null;
 
 function playSound(type) {
   if (!state.soundEnabled) return;
-  
+
   try {
     if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -118,9 +128,9 @@ function playSound(type) {
     if (audioCtx.state === 'suspended') {
       audioCtx.resume();
     }
-    
+
     const now = audioCtx.currentTime;
-    
+
     if (type === 'correct') {
       // Tono Duolingo éxito
       const osc = audioCtx.createOscillator();
@@ -181,16 +191,16 @@ function playSound(type) {
 // --- MÓDULO TEXT TO SPEECH (Web Speech API) ---
 function speakHebrew(text) {
   if (typeof speechSynthesis === 'undefined') return;
-  
+
   speechSynthesis.cancel();
-  
+
   // Limpiar nikud (vocales hebreas) para mejorar la compatibilidad del TTS en algunos navegadores
   // Nota: Aunque la mayoría de motores modernos leen hebreo con nikud, quitarlo a veces estabiliza la síntesis.
   const cleanText = text.replace(/[\u0591-\u05C7]/g, "");
 
   const utterance = new SpeechSynthesisUtterance(cleanText);
   utterance.lang = 'he-IL';
-  
+
   // Buscar voz seleccionada
   const selectedVoiceName = document.getElementById("ttsVoiceSelect")?.value;
   if (selectedVoiceName && selectedVoiceName !== 'default') {
@@ -200,21 +210,21 @@ function speakHebrew(text) {
       utterance.voice = voice;
     }
   }
-  
+
   speechSynthesis.speak(utterance);
 }
 
 function loadVoices() {
   const select = document.getElementById("ttsVoiceSelect");
   if (!select) return;
-  
+
   select.innerHTML = '<option value="default">Voz por defecto del sistema (he-IL)</option>';
-  
+
   if (typeof speechSynthesis === 'undefined') return;
 
   const voices = speechSynthesis.getVoices();
   const hebrewVoices = voices.filter(v => v.lang.includes('he') || v.lang.includes('HE') || v.lang.includes('il') || v.lang.includes('IL'));
-  
+
   hebrewVoices.forEach(voice => {
     const opt = document.createElement("option");
     opt.value = voice.name;
@@ -234,7 +244,7 @@ function getWordOfTheDay() {
   const diff = today - start;
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
-  const index = (dayOfYear+1) % WORDS.length;
+  const index = (dayOfYear + 1) % WORDS.length;
 
   return WORDS[index];
 }
@@ -246,16 +256,16 @@ function updateHomeView() {
   if (hour >= 6 && hour < 12) greeting = "¡Buenos días - בוקר טוב!";
   else if (hour >= 12 && hour < 19) greeting = "¡Buenas tardes - אחר צהריים טובים!";
   else greeting = "¡Buenas noches - ערב טוב!";
-  
+
   document.getElementById("welcomeGreeting").textContent = greeting.replace("Estudiante", state.username);
-  
+
   // Palabra del día
   const pdd = getWordOfTheDay();
   document.getElementById("pddIcon").textContent = pdd.emoji;
   document.getElementById("pddHebrew").textContent = pdd.hebrew;
   document.getElementById("pddSpanish").textContent = pdd.spanish;
   document.getElementById("pddCategory").textContent = pdd.category;
-  
+
   // Vincular audio
   const audioBtn = document.getElementById("pddAudioBtn");
   audioBtn.onclick = (e) => {
@@ -263,7 +273,7 @@ function updateHomeView() {
     playSound('click');
     speakHebrew(pdd.hebrew);
   };
-  
+
   // Vincular thumbnails de YouTube para la palabra del día
   const thumbsContainer = document.getElementById("pddYoutubeThumbs");
   if (thumbsContainer) {
@@ -331,7 +341,7 @@ function saveUserData() {
 
 function addXP(amount) {
   state.xp += amount;
-  
+
   // Chequear racha diaria
   const todayStr = new Date().toDateString();
   if (state.lastQuizDate !== todayStr) {
@@ -346,7 +356,7 @@ function addXP(amount) {
     state.lastQuizDate = todayStr;
     state.completedToday = true;
   }
-  
+
   saveUserData();
 }
 
@@ -355,14 +365,14 @@ function initLearnMode() {
   state.flashcards.currentIndex = 0;
   state.flashcards.isFlipped = false;
   state.flashcards.list = [...WORDS].sort(() => Math.random() - 0.5); // barajar
-  
+
   renderFlashcard();
 }
 
 function renderFlashcard() {
   const card = state.flashcards.list[state.flashcards.currentIndex];
   if (!card) return;
-  
+
   // Restablecer flip visual
   const flipEl = document.getElementById("flipCard");
   flipEl.classList.remove("rotate-y-180");
@@ -389,7 +399,7 @@ function handleLearnNext() {
 function handleLearnEasy() {
   // Facil: Eliminamos de la lista actual de la sesión (se considera aprendida en esta ronda)
   state.flashcards.list.splice(state.flashcards.currentIndex, 1);
-  
+
   if (state.flashcards.list.length === 0) {
     // Sesión completada
     playSound('correct');
@@ -421,11 +431,11 @@ function initQuizMode() {
   state.quiz.selectedOption = null;
   state.quiz.isChecked = false;
   state.quiz.questions = generateQuizQuestions();
-  
+
   // Esconder overlays
   document.getElementById("quizGameOverOverlay").classList.add("hidden");
   document.getElementById("quizSuccessOverlay").classList.add("hidden");
-  
+
   renderQuizQuestion();
   updateQuizProgress();
 }
@@ -433,23 +443,23 @@ function initQuizMode() {
 function generateQuizQuestions() {
   const shuffledWords = [...WORDS].sort(() => Math.random() - 0.5);
   const selectedWords = shuffledWords.slice(0, 5); // 5 preguntas
-  
+
   return selectedWords.map(word => {
     const isHebToSpa = Math.random() > 0.5;
-    
+
     // Distractores
     const distractors = WORDS
       .filter(w => w.hebrew !== word.hebrew)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-      
+
     const choices = [word, ...distractors].sort(() => Math.random() - 0.5);
-    
+
     return {
       word,
       isHebToSpa,
-      questionText: isHebToSpa 
-        ? `¿Qué significa la palabra '${word.hebrew}'?` 
+      questionText: isHebToSpa
+        ? `¿Qué significa la palabra '${word.hebrew}'?`
         : `¿Cómo se dice '${word.spanish}' en hebreo?`,
       choices,
       correctIndex: choices.findIndex(c => c.hebrew === word.hebrew)
@@ -460,7 +470,7 @@ function generateQuizQuestions() {
 function updateQuizProgress() {
   const percent = (state.quiz.currentIndex / 5) * 100;
   document.getElementById("quizProgressBar").style.width = `${percent}%`;
-  
+
   // Renderizar corazones
   const heartsContainer = document.getElementById("quizHeartsContainer");
   heartsContainer.innerHTML = "";
@@ -525,10 +535,10 @@ function renderQuizQuestion() {
 
 function handleSelectOption(optionIndex) {
   if (state.quiz.isChecked) return;
-  
+
   playSound('click');
   state.quiz.selectedOption = optionIndex;
-  
+
   // Actualizar UI activa en opciones
   const btns = document.querySelectorAll(".quiz-option-btn");
   btns.forEach((btn, idx) => {
@@ -571,7 +581,7 @@ function handleCheckAnswer() {
   state.quiz.isChecked = true;
   const question = state.quiz.questions[state.quiz.currentIndex];
   const isCorrect = state.quiz.selectedOption === question.correctIndex;
-  
+
   const btns = document.querySelectorAll(".quiz-option-btn");
   const actionBtn = document.getElementById("quizActionBtn");
 
@@ -581,7 +591,7 @@ function handleCheckAnswer() {
     const btn = btns[question.correctIndex];
     const keyBadge = btn.querySelector("span:first-child");
     const statusIconEl = btn.querySelector(".option-status-icon");
-    
+
     btn.className = "quiz-option-btn w-full p-4 rounded-2xl bg-emerald-950/40 border-2 border-emerald-500 text-left text-sm font-bold text-emerald-200 transition-all flex items-center justify-between shadow-neon-green";
     keyBadge.className = "w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center text-xs font-black";
     statusIconEl.innerHTML = '<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>';
@@ -593,12 +603,12 @@ function handleCheckAnswer() {
     playSound('wrong');
     state.quiz.lives--;
     updateQuizProgress();
-    
+
     // Highlight incorrect selected option
     const wrongBtn = btns[state.quiz.selectedOption];
     const wrongKeyBadge = wrongBtn.querySelector("span:first-child");
     const wrongStatusIconEl = wrongBtn.querySelector(".option-status-icon");
-    
+
     wrongBtn.className = "quiz-option-btn w-full p-4 rounded-2xl bg-red-950/40 border-2 border-red-500 text-left text-sm font-bold text-red-200 transition-all flex items-center justify-between";
     wrongKeyBadge.className = "w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center text-xs font-black";
     wrongStatusIconEl.innerHTML = '<i data-lucide="alert-triangle" class="w-5 h-5 text-red-400"></i>';
@@ -607,7 +617,7 @@ function handleCheckAnswer() {
     // Highlight correct option
     const correctBtn = btns[question.correctIndex];
     const correctKeyBadge = correctBtn.querySelector("span:first-child");
-    
+
     correctBtn.className = "quiz-option-btn w-full p-4 rounded-2xl bg-emerald-950/20 border-2 border-emerald-500/50 text-left text-sm font-bold text-emerald-400 transition-all flex items-center justify-between";
     correctKeyBadge.className = "w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black";
 
@@ -636,7 +646,7 @@ function setFlashcardTab(tabName) {
     btnQuiz.className = "flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-slate-400";
     viewLearn.classList.remove("hidden");
     viewQuiz.classList.add("hidden");
-    
+
     state.quiz.active = false;
     initLearnMode();
   } else {
@@ -644,7 +654,7 @@ function setFlashcardTab(tabName) {
     btnLearn.className = "flex-1 py-2 text-center text-xs font-bold rounded-xl transition-all duration-300 z-10 text-slate-400";
     viewQuiz.classList.remove("hidden");
     viewLearn.classList.add("hidden");
-    
+
     initQuizMode();
   }
 }
@@ -886,9 +896,9 @@ function renderVideos() {
   if (!container) return;
 
   const filtered = VIDEOS.filter(video => state.videoFilter === 'all' || video.category === state.videoFilter);
-  
+
   container.innerHTML = "";
-  
+
   if (filtered.length === 0) {
     container.innerHTML = `<div class="text-center py-10 text-slate-500 text-sm">No se encontraron videos.</div>`;
     return;
@@ -900,7 +910,7 @@ function renderVideos() {
     const shareUrl = video.urlList || video.url || `https://youtu.be/${video.id}`;
     const videoIndex = VIDEOS.findIndex(item => item.id === video.id);
     const classLabel = videoIndex === 0 ? 'INTRODUCCIÓN' : `CLASE ${videoIndex}`;
-    
+
     card.innerHTML = `
       <div class="relative aspect-video w-full overflow-hidden bg-slate-950">
         <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all flex items-center justify-center z-10">
@@ -924,7 +934,7 @@ function renderVideos() {
 
     const shareContainer = card.querySelector('.video-share-actions');
     shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, { includeLabel: true }));
-    
+
     card.onclick = () => {
       openVideoModal(video.id, video.title, shareUrl);
     };
@@ -937,7 +947,7 @@ function renderVideos() {
 function handleVideoFilter(filterName, btn) {
   playSound('click');
   state.videoFilter = filterName;
-  
+
   // Actualizar botones
   document.querySelectorAll(".video-filter-btn").forEach(b => {
     b.className = "video-filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all";
@@ -950,7 +960,7 @@ function handleVideoFilter(filterName, btn) {
 // --- MODAL DE YOUTUBE ---
 function openVideoModal(videoId, title, shareUrl = `https://youtu.be/${videoId}`) {
   playSound('click');
-  
+
   const modal = document.getElementById("youtubeModal");
   const iframe = document.getElementById("youtubeIframe");
   const titleEl = document.getElementById("youtubeModalTitle");
@@ -976,7 +986,7 @@ function openVideoModal(videoId, title, shareUrl = `https://youtu.be/${videoId}`
 
 function closeVideoModal() {
   playSound('click');
-  
+
   const modal = document.getElementById("youtubeModal");
   const iframe = document.getElementById("youtubeIframe");
 
@@ -994,7 +1004,7 @@ function updateProfileView() {
   document.getElementById("profileStatQuizzes").textContent = state.quizzesCompleted;
   document.getElementById("usernameInput").value = state.username;
   document.getElementById("profileAvatarInitial").textContent = state.username.charAt(0).toUpperCase() || "A";
-  
+
   // Configs
   document.getElementById("soundToggle").checked = state.soundEnabled;
 }
@@ -1028,7 +1038,16 @@ const tabMappings = {
 function handleRoute() {
   const hash = window.location.hash || "#home";
   const targetTabId = tabMappings[hash] || "screen-home";
-  
+
+  // VALIDACIÓN DE USUARIO PARA PRÁCTICA
+  if (targetTabId === "screen-flashcards" && !usuarioActual && typeof abrirModal === "function") {
+    abrirModal();
+    // Restaurar el hash al tab anterior si es posible
+    const currentHash = Object.keys(tabMappings).find(key => tabMappings[key] === state.currentTab) || "#home";
+    history.replaceState(null, null, currentHash);
+    return;
+  }
+
   if (state.currentTab === targetTabId) return;
 
   const tabsOrder = ["screen-home", "screen-flashcards", "screen-videos", "screen-profile", "screen-more"];
@@ -1041,7 +1060,7 @@ function handleRoute() {
     document.querySelectorAll(".app-screen").forEach(el => el.classList.add("hidden"));
     // Mostrar pantalla destino
     document.getElementById(targetTabId).classList.remove("hidden");
-    
+
     // Actualizar nav bar inferior
     document.querySelectorAll(".nav-link").forEach(link => {
       const isTarget = link.getAttribute("data-tab") === targetTabId;
@@ -1057,7 +1076,7 @@ function handleRoute() {
     });
 
     state.currentTab = targetTabId;
-    
+
     // Inicialización al entrar a pantalla
     if (targetTabId === 'screen-videos') {
       renderVideos();
@@ -1089,7 +1108,7 @@ let deferredPrompt = null;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  
+
   // Mostrar banner de instalación
   const banner = document.getElementById("pwaInstallBanner");
   if (banner) {
@@ -1099,11 +1118,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 // --- INICIALIZACIÓN GLOBAL ---
 document.addEventListener("DOMContentLoaded", async () => {
-  await Promise.all([loadWords(), loadVideos(),loadVideosIsraelNoticias()]);
+  await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
 
   // Inicializar voces TTS
   loadVoices();
-  
+
   // Vincular eventos de pestañas Flashcards
   document.getElementById("tabBtnLearn").onclick = () => {
     playSound('click');
@@ -1144,16 +1163,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   let touchStartX = 0;
   let touchEndX = 0;
   const flipContainer = document.getElementById("flipCardContainer");
-  
+
   flipContainer.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
-  
+
   flipContainer.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     const diffX = touchEndX - touchStartX;
     const threshold = 70; // px
-    
+
     if (Math.abs(diffX) > threshold) {
       if (diffX > 0) {
         // Deslizar a la derecha -> Fácil
@@ -1238,7 +1257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Inicializar enrutamiento
   window.addEventListener("hashchange", handleRoute);
-  
+
   // Renderizar Inicio por defecto
   handleRoute();
   updateHomeView();
@@ -1246,3 +1265,134 @@ document.addEventListener("DOMContentLoaded", async () => {
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
   lucide.createIcons();
 });
+
+// ==========================================
+// LÓGICA DE INTERFAZ DEL MODAL Y SUPABASE
+// ==========================================
+const authModal = document.getElementById('auth-modal');
+const closeBtn = document.getElementById('auth-close-btn');
+
+window.abrirModal = function () {
+  if (authModal) authModal.classList.remove('hidden');
+  limpiarMensajes();
+}
+
+window.cerrarModal = function () {
+  if (authModal) authModal.classList.add('hidden');
+}
+
+if (closeBtn) closeBtn.addEventListener('click', cerrarModal);
+
+if (authModal) {
+  authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) cerrarModal();
+  });
+}
+
+window.switchAuthTab = function (tab) {
+  const loginForm = document.getElementById('login-form');
+  const registerForm = document.getElementById('register-form');
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+
+  limpiarMensajes();
+
+  if (tab === 'login') {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+    tabLogin.classList.add('active');
+    tabRegister.classList.remove('active');
+  } else {
+    loginForm.classList.add('hidden');
+    registerForm.classList.remove('hidden');
+    tabLogin.classList.remove('active');
+    tabRegister.classList.add('active');
+  }
+}
+
+function mostrarMensaje(formId, tipo, texto) {
+  const msgDiv = document.getElementById(`${formId}-message`);
+  if (msgDiv) {
+    msgDiv.className = `auth-message ${tipo}`;
+    msgDiv.textContent = texto;
+  }
+}
+
+function limpiarMensajes() {
+  const loginMsg = document.getElementById('login-message');
+  const regMsg = document.getElementById('register-message');
+  if (loginMsg) loginMsg.textContent = '';
+  if (regMsg) regMsg.textContent = '';
+}
+
+window.handleRegister = async function (event) {
+  event.preventDefault();
+  const name = document.getElementById('register-name').value;
+  const email = document.getElementById('register-email').value;
+  const password = document.getElementById('register-password').value;
+
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: { full_name: name }
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.user && data.user.identities && data.user.identities.length === 0) {
+      mostrarMensaje('register', 'error', 'Este correo ya está registrado.');
+    } else {
+      mostrarMensaje('register', 'success', '¡Registro exitoso! Por favor revisa tu bandeja de entrada para verificar tu correo antes de ingresar.');
+      document.getElementById('register-form').reset();
+    }
+  } catch (error) {
+    console.error('Error en el registro:', error);
+    mostrarMensaje('register', 'error', error.message || 'Error al crear la cuenta.');
+  }
+}
+
+window.handleLogin = async function (event) {
+  event.preventDefault();
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      if (error.message.includes('Email not confirmed')) {
+        throw new Error('Debes verificar tu correo antes de poder iniciar sesión. Revisa tu bandeja de entrada.');
+      }
+      throw error;
+    }
+
+    cerrarModal();
+    document.getElementById('login-form').reset();
+    console.log("Sesión iniciada exitosamente.");
+
+    // Al loguearse, redirigir a flashcards
+    window.location.hash = '#flashcards';
+
+  } catch (error) {
+    console.error('Error en login:', error);
+    mostrarMensaje('login', 'error', error.message || 'Correo o contraseña incorrectos.');
+  }
+}
+
+if (supabaseClient) {
+  supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (session) {
+      usuarioActual = session.user;
+      console.log('Usuario autenticado:', usuarioActual.email);
+    } else {
+      usuarioActual = null;
+      console.log('Usuario desconectado');
+    }
+  });
+}

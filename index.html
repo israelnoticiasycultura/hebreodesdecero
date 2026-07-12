@@ -40,6 +40,10 @@
         content="Aprende hebreo de forma interactiva y gratuita con quizzes, flashcards y lecciones dinámicas." />
     <meta name="twitter:image" content="https://github.iominiaturaWeb.png" />
 
+    <!-- Supabase SDK & Custom Styles -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,97 +90,7 @@
         }
     </script>
 
-    <!-- Custom CSS for Card Flip, View Transitions and Scrollbar -->
-    <style>
-        /* Card Flip Styles */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-
-        .transform-style-3d {
-            transform-style: preserve-3d;
-        }
-
-        .backface-hidden {
-            backface-visibility: hidden;
-        }
-
-        .rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-
-        /* View Transitions */
-        @keyframes slide-to-left {
-            to {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes slide-from-right {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes slide-to-right {
-            to {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        @keyframes slide-from-left {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-        }
-
-        ::view-transition-group(root) {
-            animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
-        }
-
-        html:active-view-transition-type(forward)::view-transition-old(root) {
-            animation-name: slide-to-left;
-        }
-
-        html:active-view-transition-type(forward)::view-transition-new(root) {
-            animation-name: slide-from-right;
-        }
-
-        html:active-view-transition-type(backward)::view-transition-old(root) {
-            animation-name: slide-to-right;
-        }
-
-        html:active-view-transition-type(backward)::view-transition-new(root) {
-            animation-name: slide-from-left;
-        }
-
-        /* Custom Scrollbar */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(139, 92, 246, 0.2);
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(139, 92, 246, 0.4);
-        }
-
-        /* Prevent elastic scrolling in iOS */
-        body {
-            overscroll-behavior-y: contain;
-        }
-    </style>
+    <!-- Estilos generales importados desde css/styles.css -->
 
     <!-- Icon libraries (Font Awesome + Iconify) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -284,25 +198,27 @@
                     </div>
                 </div>
 
-                <!-- Quick Action Buttons (Temporarily Hidden) -->
-                <!--
+                <!-- Quick Action Buttons -->
                 <div class="grid grid-cols-2 gap-3">
-                    <button onclick="window.location.hash = '#flashcards'; setFlashcardTab('learn');" class="bg-gradient-to-br from-indigo-950 to-slate-900 border border-slate-800 p-4 rounded-2xl text-left hover:border-purple-500/30 hover:shadow-neon-purple transition-all active:scale-98 flex flex-col justify-between h-28 group">
-                        <i data-lucide="layers" class="w-6 h-6 text-purple-400 group-hover:scale-110 transition-all"></i>
+                    <button onclick="window.location.hash = '#flashcards'; setFlashcardTab('learn');"
+                        class="bg-gradient-to-br from-indigo-950 to-slate-900 border border-slate-800 p-4 rounded-2xl text-left hover:border-purple-500/30 hover:shadow-neon-purple transition-all active:scale-98 flex flex-col justify-between h-28 group">
+                        <i data-lucide="layers"
+                            class="w-6 h-6 text-purple-400 group-hover:scale-110 transition-all"></i>
                         <div>
                             <p class="text-xs text-slate-400">Estudiar</p>
                             <h4 class="text-sm font-bold text-slate-200">Flashcards</h4>
                         </div>
                     </button>
-                    <button onclick="window.location.hash = '#flashcards'; setFlashcardTab('quiz');" class="bg-gradient-to-br from-purple-950 to-slate-900 border border-slate-800 p-4 rounded-2xl text-left hover:border-purple-500/30 hover:shadow-neon-purple transition-all active:scale-98 flex flex-col justify-between h-28 group">
-                        <i data-lucide="gamepad-2" class="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-all"></i>
+                    <button onclick="window.location.hash = '#flashcards'; setFlashcardTab('quiz');"
+                        class="bg-gradient-to-br from-purple-950 to-slate-900 border border-slate-800 p-4 rounded-2xl text-left hover:border-purple-500/30 hover:shadow-neon-purple transition-all active:scale-98 flex flex-col justify-between h-28 group">
+                        <i data-lucide="gamepad-2"
+                            class="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-all"></i>
                         <div>
                             <p class="text-xs text-slate-400">Ponte a prueba</p>
                             <h4 class="text-sm font-bold text-slate-200">Jugar Quiz</h4>
                         </div>
                     </button>
                 </div>
-                -->
             </section>
 
             <!-- SCREEN: FLASHCARDS (STUDY AND QUIZ) -->
@@ -907,13 +823,13 @@
                 <i data-lucide="video" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Clases</span>
             </a>
-            <!-- Nav: Practicar (Temporarily Hidden) -->
-            <!--
-            <a href="#flashcards" class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16" data-tab="screen-flashcards">
+            <!-- Nav: Practicar -->
+            <a href="#flashcards"
+                class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
+                data-tab="screen-flashcards">
                 <i data-lucide="layers" class="w-5 h-5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Practicar</span>
             </a>
-            -->
             <!-- Nav: Perfil -->
             <a href="#profile"
                 class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
@@ -981,6 +897,57 @@
             });
         }
     </script>
+    <!-- Modal de Autenticación -->
+    <div id="auth-modal" class="auth-modal-overlay hidden">
+        <div class="auth-modal-content">
+            <button id="auth-close-btn" class="auth-close-btn" aria-label="Cerrar">&times;</button>
+            
+            <!-- Mensaje explicativo -->
+            <div class="auth-welcome-message">
+                <h2>¡Guarda tu avance! 🚀</h2>
+                <p>Inicia sesión o regístrate gratis para desbloquear tarjetas de vocabulario y ver tu progreso.</p>
+            </div>
+            
+            <!-- Pestañas para alternar -->
+            <div class="auth-tabs">
+                <button id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')">Iniciar Sesión</button>
+                <button id="tab-register" class="auth-tab" onclick="switchAuthTab('register')">Crear Cuenta</button>
+            </div>
+
+            <!-- Formulario de Iniciar Sesión -->
+            <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="auth-input-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="tu@email.com" required>
+                </div>
+                <div class="auth-input-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Ingresar</button>
+                <div id="login-message" class="auth-message"></div>
+            </form>
+
+            <!-- Formulario de Crear Cuenta -->
+            <form id="register-form" class="auth-form hidden" onsubmit="handleRegister(event)">
+                <div class="auth-input-group">
+                    <label for="register-name">Nombre</label>
+                    <input type="text" id="register-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="auth-input-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="tu@email.com" required>
+                </div>
+                <div class="auth-input-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Registrarse</button>
+                <div id="register-message" class="auth-message"></div>
+            </form>
+        </div>
+    </div>
+
     <script src="./js/app.js"></script>
 </body>
 
