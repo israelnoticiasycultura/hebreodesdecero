@@ -383,10 +383,64 @@ function renderFlashcard() {
   document.getElementById("cardBackText").textContent = card.spanish;
   document.getElementById("cardCategory").textContent = card.category;
   document.getElementById("cardEmoji").textContent = card.emoji;
-  // Icono dinámico según Lucide
-  // const iconEl = document.getElementById("cardEmoji");
-  // iconEl.setAttribute("data-lucide", card.emoji || "book-open");
-  // lucide.createIcons();
+
+  // Manejar componente de video de Youtube en las tarjetas
+  const cardYoutubeCard = document.getElementById("cardYoutubeCard");
+  const cardYoutubeCardBack = document.getElementById("cardYoutubeCardBack");
+  
+  if (cardYoutubeCard && cardYoutubeCardBack) {
+    const hasVideo = Array.isArray(card.videos) && card.videos.length > 0 && card.videos[0];
+    if (hasVideo) {
+      const videoId = card.videos[0];
+      const videoMatch = VIDEOS.find(video => video.id === videoId);
+      const videoTitle = videoMatch?.title || "Video de Hebreo";
+
+      cardYoutubeCard.classList.remove("hidden");
+      cardYoutubeCardBack.classList.remove("hidden");
+
+      // Render thumbnail para el frente
+      const thumbsFront = document.getElementById("cardYoutubeThumbs");
+      thumbsFront.innerHTML = `
+        <div class="relative overflow-hidden rounded-xl cursor-pointer hover:border-purple-500/40 border border-slate-800 transition-all group" id="cardYoutubeThumbBtn">
+          <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all flex items-center justify-center z-10">
+            <div class="w-8 h-8 rounded-full bg-red-600/90 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all">
+              <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+            </div>
+          </div>
+          <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${videoTitle}" class="w-full h-16 object-cover filter brightness-75 group-hover:scale-105 transition-all duration-500">
+        </div>
+      `;
+
+      // Render thumbnail para el reverso
+      const thumbsBack = document.getElementById("cardYoutubeThumbsBack");
+      thumbsBack.innerHTML = `
+        <div class="relative overflow-hidden rounded-xl cursor-pointer hover:border-purple-500/40 border border-slate-800 transition-all group" id="cardYoutubeThumbBtnBack">
+          <div class="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all flex items-center justify-center z-10">
+            <div class="w-8 h-8 rounded-full bg-red-600/90 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all">
+              <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+            </div>
+          </div>
+          <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${videoTitle}" class="w-full h-16 object-cover filter brightness-75 group-hover:scale-105 transition-all duration-500">
+        </div>
+      `;
+
+      // Vincular clicks
+      document.getElementById("cardYoutubeThumbBtn").onclick = (e) => {
+        e.stopPropagation();
+        openVideoModal(videoId, videoTitle);
+      };
+      document.getElementById("cardYoutubeThumbBtnBack").onclick = (e) => {
+        e.stopPropagation();
+        openVideoModal(videoId, videoTitle);
+      };
+    } else {
+      cardYoutubeCard.classList.add("hidden");
+      cardYoutubeCardBack.classList.add("hidden");
+    }
+  }
+
+  // Recrear iconos de Lucide
+  lucide.createIcons();
 
   document.getElementById("learnProgressText").textContent = `Tarjeta ${state.flashcards.currentIndex + 1} de ${state.flashcards.list.length}`;
 }
@@ -1141,6 +1195,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     state.flashcards.isFlipped = !state.flashcards.isFlipped;
   };
   document.getElementById("cardAudioBtn").onclick = (e) => {
+    e.stopPropagation(); // evitar flip al clickear audio
+    playSound('click');
+    const card = state.flashcards.list[state.flashcards.currentIndex];
+    speakHebrew(card.hebrew);
+  };
+  document.getElementById("cardAudioBtnBack").onclick = (e) => {
     e.stopPropagation(); // evitar flip al clickear audio
     playSound('click');
     const card = state.flashcards.list[state.flashcards.currentIndex];

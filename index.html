@@ -245,14 +245,14 @@
                     </div>
 
                     <!-- Flip Card Outer Container (with 3D perspective) -->
-                    <div class="w-full h-80 perspective-1000 cursor-pointer" id="flipCardContainer">
+                    <div class="w-full h-[28rem] perspective-1000 cursor-pointer" id="flipCardContainer">
                         <!-- Card Inner Box -->
-                        <div class="w-full h-full transform-style-3d transition-transform duration-500 relative rounded-3xl shadow-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-sm"
+                        <div class="w-full h-full transform-style-3d transition-transform duration-500 relative rounded-3xl shadow-2xl border border-slate-800/80"
                             id="flipCard">
 
                             <!-- CARD FRONT FACE -->
                             <div
-                                class="absolute inset-0 backface-hidden w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-tr from-slate-900 to-slate-950">
+                                class="absolute inset-0 backface-hidden rotate-y-0 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-tr from-slate-900 to-slate-950">
                                 <div class="flex justify-between items-center">
                                     <span id="cardCategory"
                                         class="text-xs font-bold text-purple-400 bg-purple-950/50 border border-purple-800/30 px-3 py-1 rounded-full">Categoría</span>
@@ -263,16 +263,25 @@
                                 </div>
 
                                 <div class="flex-1 flex flex-col items-center justify-center space-y-2 mt-4">
-                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100">
-                                        Hola / Paz</h2>
+                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100 font-hebrew">
+                                        שָׁלוֹם</h2>
                                 </div>
 
-                                <div class="flex justify-center items-center">
+                                <div class="flex flex-col items-center space-y-3">
                                     <!-- TTS Audio Btn -->
                                     <button id="cardAudioBtn"
                                         class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-90 shadow-lg shadow-purple-900/20">
                                         <i data-lucide="volume-2" class="w-5 h-5"></i>
                                     </button>
+
+                                    <!-- Youtube Video Thumbnail Reference -->
+                                    <div id="cardYoutubeCard"
+                                        class="border border-slate-800/80 bg-slate-950/30 rounded-2xl overflow-hidden transition-all group w-full hidden">
+                                        <div id="cardYoutubeThumbs" class="grid gap-2 p-2"></div>
+                                        <div class="bg-slate-950/90 p-2 text-center">
+                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en video</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -281,10 +290,10 @@
                                 class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-bl from-purple-950/90 via-slate-900 to-indigo-950/90">
                                 <div class="flex justify-between items-center">
                                     <span
-                                        class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Hebreo</span>
+                                        class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Traducción</span>
                                     <span class="text-xs text-slate-500 flex items-center space-x-1">
                                         <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-                                        <span>¡Buen trabajo!</span>
+                                        <span>¡Practica esta palabra!</span>
                                     </span>
                                 </div>
 
@@ -292,17 +301,32 @@
                                     <!-- Visual placeholder icon -->
                                     <div
                                         class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-                                        <i id="cardEmoji" data-lucide="book-open" class="w-8 h-8"></i>
+                                        <span id="cardEmoji" class="text-3xl">👋 / 🕊️</span>
                                     </div>
                                     <div>
                                         <h3 id="cardBackText"
-                                            class="text-3xl font-extrabold text-slate-100 font-hebrew">שָׁלוֹם</h3>
+                                            class="text-3xl font-extrabold text-slate-100">Hola / Paz</h3>
                                         <p class="text-xs text-slate-400 mt-1">Escucha o repite esta frase en voz alta.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="h-12"></div> <!-- spacer to align with front -->
+                                <div class="flex flex-col items-center space-y-3">
+                                    <!-- TTS Audio Btn (Back) -->
+                                    <button id="cardAudioBtnBack"
+                                        class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-600 hover:text-white transition-all active:scale-90 shadow-lg shadow-purple-900/20">
+                                        <i data-lucide="volume-2" class="w-5 h-5"></i>
+                                    </button>
+
+                                    <!-- Youtube Video Thumbnail Reference (Back) -->
+                                    <div id="cardYoutubeCardBack"
+                                        class="border border-slate-800/80 bg-slate-950/30 rounded-2xl overflow-hidden transition-all group w-full hidden">
+                                        <div id="cardYoutubeThumbsBack" class="grid gap-2 p-2"></div>
+                                        <div class="bg-slate-950/90 p-2 text-center">
+                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en video</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
