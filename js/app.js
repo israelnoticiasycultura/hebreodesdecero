@@ -3,7 +3,7 @@
 // ==========================================
 const supabaseUrl = 'https://gjyqwqaabzajoflqwped.supabase.co';
 const supabaseKey = 'sb_publishable_ZM3R9fFL9JY-OK_Lvi9lHw_E00H_Rlj';
-const supabaseClient = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+const supabaseClient = (window.supabase && supabaseUrl && supabaseKey) ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
 
 // Variable global para mantener el estado de la sesión
 let usuarioActual = null;
@@ -20,7 +20,7 @@ async function loadWords() {
     WORDS = [];
   }
 
-  state.flashcards.list = [...WORDS];
+  // state.flashcards.list = [...WORDS];
 }
 
 const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
@@ -112,7 +112,7 @@ async function loadVideos() {
     VIDEOS = [];
   }
 
-  state.flashcards.list = [...VIDEOS];
+  // state.flashcards.list = [...VIDEOS];
 }
 
 // --- MÓDULO AUDIO SINTETIZADO (Web Audio API) ---
@@ -361,17 +361,122 @@ function addXP(amount) {
 }
 
 // --- SUB-VIEW: FLASHCARDS (APRENDER) ---
-function initLearnMode() {
-  state.flashcards.currentIndex = 0;
-  state.flashcards.isFlipped = false;
-  state.flashcards.list = [...WORDS].sort(() => Math.random() - 0.5); // barajar
+// --- SUB-VIEW: FLASHCARDS (APRENDER) ---
+async function initLearnMode() {
+  if (!usuarioActual) {
+    abrirModal();
+    // Mostrar estado pidiendo login
+    document.getElementById("cardFrontText").textContent = "Inicia sesión";
+    document.getElementById("cardBackText").textContent = "Debes iniciar sesión para guardar tu progreso.";
+    document.getElementById("cardCategory").textContent = "Autenticación";
+    document.getElementById("cardEmoji").textContent = "🔑";
+    const actionsPanel = document.getElementById("learnActionsPanel");
+    if (actionsPanel) actionsPanel.classList.add("hidden");
+    return;
+  }
 
-  renderFlashcard();
+  // Mostrar estado de carga
+  document.getElementById("cardFrontText").textContent = "Cargando...";
+  document.getElementById("cardBackText").textContent = "Buscando tus palabras pendientes...";
+  document.getElementById("cardCategory").textContent = "Cargando";
+  document.getElementById("cardEmoji").textContent = "⏳";
+  const actionsPanel = document.getElementById("learnActionsPanel");
+  if (actionsPanel) actionsPanel.classList.add("hidden");
+
+  try {
+    if (!supabaseClient) {
+      throw new Error("Cliente de Supabase no inicializado.");
+    }
+
+    // Obtener todo el progreso del usuario actual
+    const { data: allProgress, error } = await supabaseClient
+      .from('user_progress')
+      .select('*')
+      .eq('user_id', usuarioActual.id);
+
+    if (error) throw error;
+
+    const nowISO = new Date().toISOString();
+
+    // 1. Filtrar tarjetas pendientes (next_review <= ahora)
+    const dueProgress = allProgress ? allProgress.filter(p => p.next_review <= nowISO) : [];
+
+    // Mapear con la info lingüística local de WORDS
+    const dueCards = [];
+    dueProgress.forEach(prog => {
+      const word = WORDS.find(w => w.id === Number(prog.word_id));
+      if (word) {
+        dueCards.push({
+          ...word,
+          progress: prog
+        });
+      }
+    });
+
+    // Ordenar pendientes por fecha (next_review) de forma ascendente (más antiguos primero)
+    dueCards.sort((a, b) => new Date(a.progress.next_review) - new Date(b.progress.next_review));
+
+    const totalNeeded = 5;
+    let sessionCards = [...dueCards];
+
+    // 2. Si faltan tarjetas para la cuota de 5, rellenar con tarjetas nuevas
+    if (sessionCards.length < totalNeeded) {
+      const remainingCount = totalNeeded - sessionCards.length;
+
+      const allProgressWordIds = new Set(allProgress ? allProgress.map(p => Number(p.word_id)) : []);
+
+      // Filtrar palabras locales nuevas (no registradas en user_progress)
+      const newWords = WORDS.filter(w => !allProgressWordIds.has(w.id));
+
+      // Ordenar por id secuencial de words.json
+      newWords.sort((a, b) => a.id - b.id);
+
+      const addedNewWords = newWords.slice(0, remainingCount).map(w => {
+        return {
+          ...w,
+          progress: null // Aún sin progreso registrado
+        };
+      });
+
+      sessionCards = sessionCards.concat(addedNewWords);
+    }
+
+    state.flashcards.list = sessionCards;
+    state.flashcards.currentIndex = 0;
+    state.flashcards.isFlipped = false;
+
+    renderFlashcard();
+
+  } catch (err) {
+    console.error("Error al inicializar sesión de práctica:", err);
+    document.getElementById("cardFrontText").textContent = "Error";
+    document.getElementById("cardBackText").textContent = "No se pudieron cargar los datos de Supabase: " + err.message;
+    document.getElementById("cardCategory").textContent = "Error";
+    document.getElementById("cardEmoji").textContent = "⚠️";
+  }
 }
 
 function renderFlashcard() {
   const card = state.flashcards.list[state.flashcards.currentIndex];
-  if (!card) return;
+  const actionsPanel = document.getElementById("learnActionsPanel");
+
+  if (!card) {
+    document.getElementById("cardFrontText").textContent = "¡Todo al día!";
+    document.getElementById("cardBackText").textContent = "No hay más tarjetas por repasar hoy. ¡Vuelve mañana!";
+    document.getElementById("cardCategory").textContent = "Completado";
+    document.getElementById("cardEmoji").textContent = "🎉";
+    document.getElementById("learnProgressText").textContent = "Tarjeta 0 de 0";
+    if (actionsPanel) actionsPanel.classList.add("hidden");
+
+    // Ocultar thumbnails de videos si no hay tarjeta
+    const cardYoutubeCard = document.getElementById("cardYoutubeCard");
+    const cardYoutubeCardBack = document.getElementById("cardYoutubeCardBack");
+    if (cardYoutubeCard) cardYoutubeCard.classList.add("hidden");
+    if (cardYoutubeCardBack) cardYoutubeCardBack.classList.add("hidden");
+    return;
+  }
+
+  if (actionsPanel) actionsPanel.classList.remove("hidden");
 
   // Restablecer flip visual
   const flipEl = document.getElementById("flipCard");
@@ -387,7 +492,7 @@ function renderFlashcard() {
   // Manejar componente de video de Youtube en las tarjetas
   const cardYoutubeCard = document.getElementById("cardYoutubeCard");
   const cardYoutubeCardBack = document.getElementById("cardYoutubeCardBack");
-  
+
   if (cardYoutubeCard && cardYoutubeCardBack) {
     const hasVideo = Array.isArray(card.videos) && card.videos.length > 0 && card.videos[0];
     if (hasVideo) {
@@ -454,22 +559,88 @@ function handleLearnNext() {
   renderFlashcard();
 }
 
-function handleLearnEasy() {
+async function handleLearnResponse(rating) {
   if (!usuarioActual) {
     abrirModal();
     return;
   }
-  // Facil: Eliminamos de la lista actual de la sesión (se considera aprendida en esta ronda)
+
+  const card = state.flashcards.list[state.flashcards.currentIndex];
+  if (!card) return;
+
+  // Extraer valores actuales o usar por defecto
+  let repetitions = 0;
+  let interval = 0;
+  let ease_factor = 2.5;
+  let progressId = null;
+
+  if (card.progress) {
+    repetitions = Number(card.progress.repetitions) || 0;
+    interval = Number(card.progress.interval) || 0;
+    ease_factor = Number(card.progress.ease_factor) || 2.5;
+    progressId = card.progress.id;
+  }
+
+  // Aplicar algoritmo SM-2 simplificado según rating
+  if (rating === 1) { // Difícil
+    repetitions = 0;
+    interval = 1;
+    ease_factor = Math.max(1.3, ease_factor - 0.20);
+  } else if (rating === 2) { // Bien
+    interval = 2;
+    repetitions = repetitions + 1;
+  } else if (rating === 3) { // Fácil
+    interval = 3;
+    repetitions = repetitions + 1;
+    ease_factor = ease_factor + 0.15;
+  }
+
+  // Calcular nueva fecha: next_review = Fecha_Actual + interval (en días)
+  const nextDate = new Date();
+  nextDate.setDate(nextDate.getDate() + interval);
+  const nextReviewStr = nextDate.toISOString();
+
+  // Guardar en Supabase
+  const payload = {
+    user_id: usuarioActual.id,
+    word_id: card.id,
+    repetitions: repetitions,
+    interval: interval,
+    ease_factor: ease_factor,
+    next_review: nextReviewStr
+  };
+
+  if (progressId) {
+    payload.id = progressId;
+  }
+
+  try {
+    const { data, error } = await supabaseClient
+      .from('user_progress')
+      .upsert(payload)
+      .select();
+
+    if (error) throw error;
+
+    // Si la respuesta devuelve el registro guardado, actualizamos la referencia en memoria
+    if (data && data[0] && state.flashcards.list[state.flashcards.currentIndex]) {
+      state.flashcards.list[state.flashcards.currentIndex].progress = data[0];
+    }
+  } catch (err) {
+    console.error("Error al guardar progreso en Supabase:", err);
+    alert("Error al guardar tu progreso en Supabase. Se intentará continuar.");
+  }
+
+  // Avanzar inmediatamente: eliminamos de la sesión activa
   state.flashcards.list.splice(state.flashcards.currentIndex, 1);
 
   if (state.flashcards.list.length === 0) {
-    // Sesión completada
     playSound('correct');
     addXP(10);
-    alert("¡Felicidades! Has revisado todas las tarjetas de esta ronda. +10 XP");
-    initLearnMode();
+    alert("¡Felicidades! Has completado tu sesión de estudio de hoy. +10 XP");
+    window.location.hash = "#home";
   } else {
-    // Ajustar index si quedamos fuera de rango
+    // Si quitamos el elemento, el siguiente pasa al mismo currentIndex
     if (state.flashcards.currentIndex >= state.flashcards.list.length) {
       state.flashcards.currentIndex = 0;
     }
@@ -477,16 +648,16 @@ function handleLearnEasy() {
   }
 }
 
+function handleLearnEasy() {
+  handleLearnResponse(3);
+}
+
+function handleLearnGood() {
+  handleLearnResponse(2);
+}
+
 function handleLearnHard() {
-  if (!usuarioActual) {
-    abrirModal();
-    return;
-  }
-  // Difícil: Mantener en lista y pasar a la siguiente para repetirla luego
-  if (state.flashcards.list.length > 1) {
-    state.flashcards.currentIndex = (state.flashcards.currentIndex + 1) % state.flashcards.list.length;
-  }
-  renderFlashcard();
+  handleLearnResponse(1);
 }
 
 // --- SUB-VIEW: QUIZ GAME ---
@@ -1220,6 +1391,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("learnEasyBtn").onclick = () => {
     playSound('click');
     handleLearnEasy();
+  };
+  document.getElementById("learnGoodBtn").onclick = () => {
+    playSound('click');
+    handleLearnGood();
   };
   document.getElementById("learnHardBtn").onclick = () => {
     playSound('click');

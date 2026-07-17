@@ -1,1594 +1,1989 @@
 [
   {
+    "id": 1,
     "hebrew": "שָׁלוֹם",
     "spanish": "Hola / Paz",
     "category": "Saludos",
-    "videos": ["kSCVWv1i8Fo"],
+    "videos": [
+      "kSCVWv1i8Fo"
+    ],
     "emoji": "👋 / 🕊️"
   },
   {
+    "id": 2,
     "hebrew": "שַׂמֵחַ",
     "spanish": "Feliz",
     "category": "Vocabulario",
-    "videos": ["kSCVWv1i8Fo"],
+    "videos": [
+      "kSCVWv1i8Fo"
+    ],
     "emoji": "😊"
   },
   {
+    "id": 3,
     "hebrew": "אֲנִי",
     "spanish": "Yo",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "🙋‍♂️ / 🙋‍♀️"
   },
   {
+    "id": 4,
     "hebrew": "אַתָּה",
     "spanish": "Tú (M)",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "🫵"
   },
   {
+    "id": 5,
     "hebrew": "הוּא",
     "spanish": "Él",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "👨‍💼"
   },
   {
+    "id": 6,
     "hebrew": "הִיא",
     "spanish": "Ella",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "👩‍💼"
   },
   {
+    "id": 7,
     "hebrew": "אֲנַחְנוּ",
     "spanish": "Nosotros",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "👨‍👩‍👧‍👦"
   },
   {
+    "id": 8,
     "hebrew": "פֹּה",
     "spanish": "Aquí",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "📍"
   },
   {
+    "id": 9,
     "hebrew": "אַתֶם",
     "spanish": "Ustedes (M)",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "👥"
   },
   {
+    "id": 10,
     "hebrew": "הֵם",
     "spanish": "Ellos",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "🧑‍🤝‍🧑"
   },
   {
+    "id": 11,
     "hebrew": "הֵן",
     "spanish": "Ellas",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "👭"
-  },  
+  },
   {
+    "id": 12,
     "hebrew": "שֶׁלִי",
     "spanish": "Mío / Mía / Míos / Mías",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "🤗"
-  },  
+  },
   {
+    "id": 13,
     "hebrew": "שֶׁלָנוּ",
     "spanish": "Nuestro / Nuestra / Nuestros / Nuestras",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🤗"
-  }, 
+  },
   {
+    "id": 14,
     "hebrew": "שֶׁלָכֶם",
     "spanish": "Vuestro / Vuestra / Vuestros / Vuestras",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "👥"
-  }, 
+  },
   {
+    "id": 15,
     "hebrew": "שֶׁלָכֶן",
     "spanish": "Vuestro / Vuestra / Vuestros / Vuestras",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "👥"
-  }, 
+  },
   {
+    "id": 16,
     "hebrew": "שֶׁלָּהֶן",
     "spanish": "Suyo / Suya / Suyos / Suyas",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "👥"
   },
   {
+    "id": 17,
     "hebrew": "גִינָה",
     "spanish": "Jardín / Huerta",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🪴"
-  }, 
+  },
   {
+    "id": 18,
     "hebrew": "דִירָה",
     "spanish": "Apartamento / Departamento",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🏢"
   },
   {
+    "id": 19,
     "hebrew": "נֶחְמָדָה",
     "spanish": "Linda / Agradable / Simpática",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "✨"
   },
   {
+    "id": 20,
     "hebrew": "שֶׁלְךָ",
     "spanish": "Tuyo / Tuya / Tuyos / Tuyas",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "🫴"
-  },  
+  },
   {
+    "id": 21,
     "hebrew": "שֶׁלָךְ",
     "spanish": "Tuyo / Tuya / Tuyos / Tuyas",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "🫴"
   },
   {
+    "id": 22,
     "hebrew": "שֶׁלוֹ",
     "spanish": "Suyo / Suya / Suyos / Suyas",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "👉"
   },
   {
+    "id": 23,
     "hebrew": "שֶׁלָה",
     "spanish": "Suyo / Suya / Suyos / Suyas",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "👉"
   },
   {
+    "id": 24,
     "hebrew": "יָפוֹת",
     "spanish": "Bonitas",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "👭✨"
   },
   {
+    "id": 25,
     "hebrew": "מִשְׁפָּחָה",
     "spanish": "Familia",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "👨‍👩‍👧‍👦"
   },
   {
+    "id": 26,
     "hebrew": "שָׁם",
     "spanish": "Allí / Allá",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "↗️"
   },
   {
+    "id": 27,
     "hebrew": "חֲבֵרִים",
     "spanish": "Amigos",
     "category": "Vocabulario",
-    "videos": ["rTvBnREs-po"],
+    "videos": [
+      "rTvBnREs-po"
+    ],
     "emoji": "🤝"
   },
   {
+    "id": 28,
     "hebrew": "יָפָה",
     "spanish": "Linda",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "😍"
   },
   {
+    "id": 29,
     "hebrew": "יָפֶה",
     "spanish": "Lindo",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "😊"
   },
   {
+    "id": 30,
     "hebrew": "אַתְּ",
     "spanish": "Tú (Femenino)",
     "category": "Vocabulario",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "🫵"
   },
   {
+    "id": 31,
     "hebrew": "תּוֹדָה",
     "spanish": "Gracias",
     "category": "Saludos",
-    "videos": ["kSCVWv1i8Fo"],    
+    "videos": [
+      "kSCVWv1i8Fo"
+    ],
     "emoji": "🙏"
   },
   {
+    "id": 32,
     "hebrew": "בְּבַקָּשָׁה",
     "spanish": "Por favor / De nada",
     "category": "Saludos",
     "emoji": "🙏"
   },
   {
+    "id": 33,
     "hebrew": "בֹּקֶר טוֹב",
     "spanish": "Buenos días",
     "category": "Saludos",
     "emoji": "☀️"
   },
   {
+    "id": 34,
     "hebrew": "עֶרֶב טוֹב",
     "spanish": "Buenas noches",
     "category": "Saludos",
     "emoji": "🌙"
   },
   {
+    "id": 35,
     "hebrew": "מַה שְּׁלוֹמְךָ?",
     "spanish": "¿Cómo estás?",
     "category": "Frases útiles",
     "emoji": "👋"
   },
   {
+    "id": 36,
     "hebrew": "אֲנִי מִצְטַעֵר",
     "spanish": "Lo siento",
     "category": "Frases útiles",
     "emoji": " 😔"
   },
   {
+    "id": 37,
     "hebrew": "כֵּן",
     "spanish": "Sí",
     "category": "Frases útiles",
     "emoji": "👌"
   },
   {
+    "id": 38,
     "hebrew": "לֹא",
     "spanish": "No",
     "category": "Frases útiles",
     "emoji": "❌"
   },
   {
+    "id": 39,
     "hebrew": "לְהִתְרָאוֹת",
     "spanish": "Adiós",
     "category": "Saludos",
     "emoji": "👋"
   },
   {
+    "id": 40,
     "hebrew": "אֵיךְ קוֹרְאִים לְךָ?",
     "spanish": "¿Cómo te llamas?",
     "category": "Frases útiles",
     "emoji": "👤❓"
   },
   {
+    "id": 41,
     "hebrew": "אֲנִי אוֹהֵב אוֹתְךָ",
     "spanish": "Te amo",
     "category": "Frases útiles",
     "emoji": "❤️"
   },
   {
+    "id": 42,
     "hebrew": "כַּמָּה זֶה עוֹלֶה?",
     "spanish": "¿Cuánto cuesta?",
     "category": "Frases útiles",
     "emoji": "💵"
   },
   {
+    "id": 43,
     "hebrew": "אֵיפֹה הַשֵּׁרוּתִים?",
     "spanish": "¿Dónde están los baños?",
     "category": "Frases útiles",
     "emoji": "🚻"
   },
   {
+    "id": 44,
     "hebrew": "אֶחָד",
     "spanish": "Uno",
     "category": "Números",
     "emoji": "1️⃣"
   },
   {
+    "id": 45,
     "hebrew": "שְׁנַיִם",
     "spanish": "Dos",
     "category": "Números",
     "emoji": "2️⃣"
   },
   {
+    "id": 46,
     "hebrew": "שָׁלֹשׁ",
     "spanish": "Tres",
     "category": "Números",
     "emoji": "3️⃣"
   },
   {
+    "id": 47,
     "hebrew": "מַיִם",
     "spanish": "Agua",
     "category": "Vocabulario",
     "emoji": "💧"
   },
   {
+    "id": 48,
     "hebrew": "לֶחֶם",
     "spanish": "Pan",
     "category": "Vocabulario",
     "emoji": "🍞"
   },
   {
+    "id": 49,
     "hebrew": "בַּיִת",
     "spanish": "Casa",
     "category": "Vocabulario",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "🏠"
   },
   {
+    "id": 50,
     "hebrew": "אִמָּא",
     "spanish": "Mamá",
     "category": "Familia",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "👩"
   },
   {
+    "id": 51,
     "hebrew": "אָב",
     "spanish": "Padre",
     "category": "Familia",
-    "videos": ["RZTbY61eqUc"],
+    "videos": [
+      "RZTbY61eqUc"
+    ],
     "emoji": "👨"
   },
   {
+    "id": 52,
     "hebrew": "בָּא",
     "spanish": "Venir (M.S.): vengo, viene, va",
     "category": "Verbos",
-    "videos": ["RZTbY61eqUc"],
+    "videos": [
+      "RZTbY61eqUc"
+    ],
     "emoji": "🚶"
   },
   {
+    "id": 53,
     "hebrew": "אַבָּא",
     "spanish": "Papá",
     "category": "Familia",
-    "videos": ["RZTbY61eqUc"],
+    "videos": [
+      "RZTbY61eqUc"
+    ],
     "emoji": "👨"
   },
   {
+    "id": 54,
     "hebrew": "דוֹד",
     "spanish": "Tío",
     "category": "Familia",
-    "videos": ["O3322zCgqhQ"],
+    "videos": [
+      "O3322zCgqhQ"
+    ],
     "emoji": "👨"
   },
   {
+    "id": 55,
     "hebrew": "חַג",
     "spanish": "Fiesta / Día festivo",
     "category": "Vocabulario",
-    "videos": ["O3322zCgqhQ"],
+    "videos": [
+      "O3322zCgqhQ"
+    ],
     "emoji": "🥳"
   },
   {
+    "id": 56,
     "hebrew": "ַבַּטוּחַ",
     "spanish": "Seguro (certeza)",
     "category": "Vocabulario",
-    "videos": ["O3322zCgqhQ"],
+    "videos": [
+      "O3322zCgqhQ"
+    ],
     "emoji": "👍"
   },
   {
+    "id": 57,
     "hebrew": "כַּד",
     "spanish": "Jarra",
     "category": "Vocabulario",
-    "videos": ["LlEfUCWwvU4"],
+    "videos": [
+      "LlEfUCWwvU4"
+    ],
     "emoji": "🏺"
   },
   {
+    "id": 58,
     "hebrew": "קַל",
     "spanish": "Fácil / Ligero",
     "category": "Vocabulario",
-    "videos": ["kSCVWv1i8Fo"],
+    "videos": [
+      "kSCVWv1i8Fo"
+    ],
     "emoji": "👌"
   },
   {
+    "id": 59,
     "hebrew": "כָּכָה",
     "spanish": "Así / De esta manera",
     "category": "Vocabulario",
-    "videos": ["LlEfUCWwvU4"],
+    "videos": [
+      "LlEfUCWwvU4"
+    ],
     "emoji": "👌"
-  },  {
+  },
+  {
+    "id": 60,
     "hebrew": "בַּחוּץ",
     "spanish": "Afuera / Exterior",
     "category": "Vocabulario",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "⛰️"
   },
   {
+    "id": 61,
     "hebrew": "בּוּבָּה",
     "spanish": "Muñeca",
     "category": "Vocabulario",
-    "videos": ["RZTbY61eqUc"],
+    "videos": [
+      "RZTbY61eqUc"
+    ],
     "emoji": "🪆"
-  },  {
+  },
+  {
+    "id": 62,
     "hebrew": "דִּגְדּוּג",
     "spanish": "Cosquillas",
     "category": "Vocabulario",
-    "videos": ["RZTbY61eqUc", "I5QiGA9Smpg"],
+    "videos": [
+      "RZTbY61eqUc",
+      "I5QiGA9Smpg"
+    ],
     "emoji": "🤣"
   },
   {
+    "id": 63,
     "hebrew": "יֶלֶד",
     "spanish": "Niño",
     "category": "Familia",
     "emoji": "👦"
   },
   {
+    "id": 64,
     "hebrew": "יְלָדִים",
     "spanish": "Niños",
     "category": "Familia",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "🧒👦👧"
   },
   {
+    "id": 65,
     "hebrew": "יַלְדָּה",
     "spanish": "Niña",
     "category": "Familia",
     "emoji": "👧"
   },
   {
+    "id": 66,
     "hebrew": "אָח",
     "spanish": "Hermano",
     "category": "Familia",
-    "videos": ["O3322zCgqhQ"],
+    "videos": [
+      "O3322zCgqhQ"
+    ],
     "emoji": "👦"
   },
   {
+    "id": 67,
     "hebrew": "אָחוֹת",
     "spanish": "Hermana / Enfermera",
     "category": "Familia",
     "emoji": "👧"
   },
   {
+    "id": 68,
     "hebrew": "סַבָּא",
     "spanish": "Abuelo",
     "category": "Familia",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "👴"
   },
   {
+    "id": 69,
     "hebrew": "עוֹד",
     "spanish": "Aún / Más / Otro",
     "category": "Vocabulario",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "⏳"
   },
   {
+    "id": 70,
     "hebrew": "פָּנוּי",
     "spanish": "Libre / Desocupado",
     "category": "Vocabulario",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "🆓"
   },
   {
+    "id": 71,
     "hebrew": "פָלָאפֶל",
     "spanish": "Falafel (comida típica)",
     "category": "Vocabulario",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "🧆"
   },
   {
+    "id": 72,
     "hebrew": "סָבְתָא",
     "spanish": "Abuela",
     "category": "Familia",
     "emoji": "👵"
   },
   {
+    "id": 73,
     "hebrew": "בֵּן",
     "spanish": "Hijo",
     "category": "Familia",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "👶"
   },
   {
+    "id": 74,
     "hebrew": "בַּת",
     "spanish": "Hija",
     "category": "Familia",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "👶"
   },
   {
+    "id": 75,
     "hebrew": "חָבֵר",
     "spanish": "Amigo / Novio",
     "category": "Relaciones",
     "emoji": "🧑‍🤝‍🧑"
   },
   {
+    "id": 76,
     "hebrew": "חֲבֵרָה",
     "spanish": "Amiga / Novia",
     "category": "Relaciones",
     "emoji": "👭"
   },
   {
+    "id": 77,
     "hebrew": "אִישׁ",
     "spanish": "Hombre",
     "category": "Personas",
     "emoji": "👨"
   },
   {
+    "id": 78,
     "hebrew": "אִשָּׁה",
     "spanish": "Mujer / Esposa",
     "category": "Personas",
     "emoji": "👩"
   },
   {
+    "id": 79,
     "hebrew": "אַרְבַּע",
     "spanish": "Cuatro",
     "category": "Números",
     "emoji": "4️⃣"
   },
   {
+    "id": 80,
     "hebrew": "חָמֵשׁ",
     "spanish": "Cinco",
     "category": "Números",
     "emoji": "5️⃣"
   },
   {
+    "id": 81,
     "hebrew": "שֵׁשׁ",
     "spanish": "Seis",
     "category": "Números",
     "emoji": "6️⃣"
   },
   {
+    "id": 82,
     "hebrew": "שֶׁבַע",
     "spanish": "Siete",
     "category": "Números",
     "emoji": "7️⃣"
   },
   {
+    "id": 83,
     "hebrew": "שְׁמוֹנֶה",
     "spanish": "Ocho",
     "category": "Números",
     "emoji": "8️⃣"
   },
   {
+    "id": 84,
     "hebrew": "תֵּשַׁע",
     "spanish": "Nueve",
     "category": "Números",
     "emoji": "9️⃣"
   },
   {
+    "id": 85,
     "hebrew": "עֶשֶׂר",
     "spanish": "Diez",
     "category": "Números",
     "emoji": "🔟"
   },
   {
+    "id": 86,
     "hebrew": "חָלָב",
     "spanish": "Leche",
     "category": "Alimentos",
     "emoji": "🥛"
   },
   {
+    "id": 87,
     "hebrew": "קָפֶה",
     "spanish": "Café",
     "category": "Alimentos",
     "emoji": "☕"
   },
   {
+    "id": 88,
     "hebrew": "תֵּה",
     "spanish": "Té",
     "category": "Alimentos",
     "emoji": "🍵"
   },
   {
+    "id": 89,
     "hebrew": "תַּפּוּחַ",
     "spanish": "Manzana",
     "category": "Alimentos",
     "emoji": "🍎"
   },
   {
+    "id": 90,
     "hebrew": "בָּנָנָה",
     "spanish": "Plátano",
     "category": "Alimentos",
     "emoji": "🍌"
   },
   {
+    "id": 91,
     "hebrew": "גְּבִינָה",
     "spanish": "Queso",
     "category": "Alimentos",
     "emoji": "🧀"
   },
   {
+    "id": 92,
     "hebrew": "בָּשָׂר",
     "spanish": "Carne",
     "category": "Alimentos",
     "emoji": "🥩"
   },
   {
+    "id": 93,
     "hebrew": "דָּג",
     "spanish": "Pescado / Pez",
     "category": "Alimentos",
-    "videos": ["RZTbY61eqUc"],
+    "videos": [
+      "RZTbY61eqUc"
+    ],
     "emoji": "🐟"
   },
   {
+    "id": 94,
     "hebrew": "בֵּיצָה",
     "spanish": "Huevo",
     "category": "Alimentos",
     "emoji": "🥚"
   },
   {
+    "id": 95,
     "hebrew": "אֹרֶז",
     "spanish": "Arroz",
     "category": "Alimentos",
     "emoji": "🍚"
   },
   {
+    "id": 96,
     "hebrew": "עַגְבָנִיָּה",
     "spanish": "Tomate",
     "category": "Alimentos",
     "emoji": "🍅"
   },
   {
+    "id": 97,
     "hebrew": "מְלפְפוֹן",
     "spanish": "Pepino",
     "category": "Alimentos",
     "emoji": "🥒"
   },
   {
+    "id": 98,
     "hebrew": "מֶלַח",
     "spanish": "Sal",
     "category": "Alimentos",
     "emoji": "🧂"
   },
   {
+    "id": 99,
     "hebrew": "סוּכָּר",
     "spanish": "Azúcar",
     "category": "Alimentos",
     "emoji": "🍬"
   },
   {
+    "id": 100,
     "hebrew": "חֶמְאָה",
     "spanish": "Mantequilla",
     "category": "Alimentos",
     "emoji": "🧈"
   },
   {
+    "id": 101,
     "hebrew": "שֶׁמֶן",
     "spanish": "Aceite",
     "category": "Alimentos",
     "emoji": "🛢️"
   },
   {
+    "id": 102,
     "hebrew": "יַיִן",
     "spanish": "Vino",
     "category": "Alimentos",
     "emoji": "🍷"
   },
   {
+    "id": 103,
     "hebrew": "בִּירָה",
     "spanish": "Cerveza",
     "category": "Alimentos",
     "emoji": "🍺"
   },
   {
+    "id": 104,
     "hebrew": "אֲרוּחַת בֹּקֶר",
     "spanish": "Desayuno",
     "category": "Alimentos",
     "emoji": "🍳"
   },
   {
+    "id": 105,
     "hebrew": "אֲרוּחַת צָהֳרַיִם",
     "spanish": "Almuerzo",
     "category": "Alimentos",
     "emoji": "🍽️"
   },
   {
+    "id": 106,
     "hebrew": "אֲרוּחַת עֶרֶב",
     "spanish": "Cena",
     "category": "Alimentos",
     "emoji": "🍝"
   },
   {
+    "id": 107,
     "hebrew": "חֲנוּת",
     "spanish": "Tienda",
     "category": "Lugares",
     "emoji": "🏪"
   },
   {
+    "id": 108,
     "hebrew": "שׁוּק",
     "spanish": "Mercado",
     "category": "Lugares",
     "emoji": "🛒"
   },
   {
+    "id": 109,
     "hebrew": "מִסְעָדָה",
     "spanish": "Restaurante",
     "category": "Lugares",
     "emoji": "🍴"
   },
   {
+    "id": 110,
     "hebrew": "בֵּית סֵפֶר",
     "spanish": "Escuela",
     "category": "Lugares",
     "emoji": "🏫"
   },
   {
+    "id": 111,
     "hebrew": "אוּנִיבֶרְסִיטָה",
     "spanish": "Universidad",
     "category": "Lugares",
     "emoji": "🎓"
   },
   {
+    "id": 112,
     "hebrew": "בֵּית חוֹלִים",
     "spanish": "Hospital",
     "category": "Lugares",
     "emoji": "🏥"
   },
   {
+    "id": 113,
     "hebrew": "בֵּית מִרְקַחַת",
     "spanish": "Farmacia",
     "category": "Lugares",
     "emoji": "💊"
   },
   {
+    "id": 114,
     "hebrew": "בַּנְק",
     "spanish": "Banco",
     "category": "Lugares",
     "emoji": "🏦"
   },
   {
+    "id": 115,
     "hebrew": "רְחוֹב",
     "spanish": "Calle",
     "category": "Lugares",
     "emoji": "🛣️"
   },
   {
+    "id": 116,
     "hebrew": "עִיר",
     "spanish": "Ciudad",
     "category": "Lugares",
     "emoji": "🏙️"
   },
   {
+    "id": 117,
     "hebrew": "מְדִינָה",
     "spanish": "País / Estado",
     "category": "Lugares",
     "emoji": "🗺️"
   },
   {
+    "id": 118,
     "hebrew": "יָם",
     "spanish": "Mar",
     "category": "Naturaleza",
     "emoji": "🌊"
   },
   {
+    "id": 119,
     "hebrew": "נָהָר",
     "spanish": "Río",
     "category": "Naturaleza",
     "emoji": "🏞️"
   },
   {
+    "id": 120,
     "hebrew": "הַר",
     "spanish": "Montaña",
     "category": "Naturaleza",
     "emoji": "⛰️"
   },
   {
+    "id": 121,
     "hebrew": "עֵץ",
     "spanish": "Árbol",
     "category": "Naturaleza",
     "emoji": "🌳"
   },
   {
+    "id": 122,
     "hebrew": "פֶּרַח",
     "spanish": "Flor",
     "category": "Naturaleza",
     "emoji": "🌹"
   },
   {
+    "id": 123,
     "hebrew": "שֶׁמֶשׁ",
     "spanish": "Sol",
     "category": "Naturaleza",
     "emoji": "☀️"
   },
   {
+    "id": 124,
     "hebrew": "יָרֵחַ",
     "spanish": "Luna",
     "category": "Naturaleza",
     "emoji": "🌙"
   },
   {
+    "id": 125,
     "hebrew": "כּוֹכָב",
     "spanish": "Estrella",
     "category": "Naturaleza",
     "emoji": "⭐"
   },
   {
+    "id": 126,
     "hebrew": "שָׁמַיִם",
     "spanish": "Cielo",
     "category": "Naturaleza",
     "emoji": "🌌"
   },
   {
+    "id": 127,
     "hebrew": "גֶּשֶׁם",
     "spanish": "Lluvia",
     "category": "Clima",
     "emoji": "🌧️"
   },
   {
+    "id": 128,
     "hebrew": "שֶׁלֶג",
     "spanish": "Nieve",
     "category": "Clima",
     "emoji": "❄️"
   },
   {
+    "id": 129,
     "hebrew": "רוּחַ",
     "spanish": "Viento / Espíritu",
     "category": "Clima",
     "emoji": "💨"
   },
   {
+    "id": 130,
     "hebrew": "חַם",
     "spanish": "Caliente / Hace calor",
     "category": "Clima",
     "emoji": "🔥"
   },
   {
+    "id": 131,
     "hebrew": "קַר",
     "spanish": "Frío / Hace frío",
     "category": "Clima",
     "emoji": "❄️"
   },
   {
+    "id": 132,
     "hebrew": "כֶּלֶב",
     "spanish": "Perro",
     "category": "Animales",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🐶"
   },
   {
+    "id": 133,
     "hebrew": "שֶׁל מִי ...?",
     "spanish": "¿De quién ....?",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🐶"
   },
   {
+    "id": 134,
     "hebrew": "חָתוּל",
     "spanish": "Gato",
     "category": "Animales",
     "emoji": "🐱"
   },
   {
+    "id": 135,
     "hebrew": "סוּס",
     "spanish": "Caballo",
     "category": "Animales",
     "emoji": "🐴"
   },
   {
+    "id": 136,
     "hebrew": "ציפּוֹר",
     "spanish": "Pájaro",
     "category": "Animales",
     "emoji": "🐦"
   },
   {
+    "id": 137,
     "hebrew": "אֲרִי",
     "spanish": "León",
     "category": "Animales",
     "emoji": "🦁"
   },
   {
+    "id": 138,
     "hebrew": "עַכְבָּר",
     "spanish": "Ratón",
     "category": "Animales",
     "emoji": "🐭"
   },
   {
+    "id": 139,
     "hebrew": "פִּיל",
     "spanish": "Elefante",
     "category": "Animales",
     "emoji": "🐘"
   },
   {
+    "id": 140,
     "hebrew": "קוֹף",
     "spanish": "Mono",
     "category": "Animales",
     "emoji": "🐵"
   },
   {
+    "id": 141,
     "hebrew": "מְכוֹנִית",
     "spanish": "Automóvil / Carro",
     "category": "Transporte",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🚗"
   },
   {
+    "id": 142,
     "hebrew": "קְטַנָּה",
     "spanish": "Pequeña",
     "category": "Vocabulario",
-    "videos": ["z-z4yG-fFBc"],
+    "videos": [
+      "z-z4yG-fFBc"
+    ],
     "emoji": "🤏"
   },
   {
+    "id": 143,
     "hebrew": "אוֹטוֹבּוּס",
     "spanish": "Autobús",
     "category": "Transporte",
     "emoji": "🚌"
   },
   {
+    "id": 144,
     "hebrew": "רַכֶּבֶת",
     "spanish": "Tren",
     "category": "Transporte",
     "emoji": "train"
   },
   {
+    "id": 145,
     "hebrew": "מָטוֹס",
     "spanish": "Avión",
     "category": "Transporte",
     "emoji": "✈️"
   },
   {
+    "id": 146,
     "hebrew": "אוֹפַנַּיִם",
     "spanish": "Bicicleta",
     "category": "Transporte",
     "emoji": "🚲"
   },
   {
+    "id": 147,
     "hebrew": "אֳנִיָּה",
     "spanish": "Barco / Buque",
     "category": "Transporte",
     "emoji": "🚢"
   },
   {
+    "id": 148,
     "hebrew": "סֵפֶר",
     "spanish": "Libro",
     "category": "Objetos",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "📚"
-  },  
+  },
   {
+    "id": 149,
     "hebrew": "גָּדוֹל",
     "spanish": "Grande",
     "category": "Adjetivos",
-    "videos": ["0G1lSIYM-j4"],
+    "videos": [
+      "0G1lSIYM-j4"
+    ],
     "emoji": "😮"
   },
   {
+    "id": 150,
     "hebrew": "מַחְבֶּרֶת",
     "spanish": "Cuaderno",
     "category": "Objetos",
     "emoji": "📒"
   },
   {
+    "id": 151,
     "hebrew": "עֵט",
     "spanish": "Bolígrafo / Pluma",
     "category": "Objetos",
     "emoji": "🖊️"
   },
   {
+    "id": 152,
     "hebrew": "עִפָּרוֹן",
     "spanish": "Lápiz",
     "category": "Objetos",
     "emoji": "✏️"
   },
   {
+    "id": 153,
     "hebrew": "שֻׁלְחָן",
     "spanish": "Mesa",
     "category": "Objetos",
     "emoji": "table"
   },
   {
+    "id": 154,
     "hebrew": "כִּסֵּא",
     "spanish": "Silla",
     "category": "Objetos",
     "emoji": "🪑"
   },
   {
+    "id": 155,
     "hebrew": "מִטָּה",
     "spanish": "Cama",
     "category": "Objetos",
     "emoji": "🛏️"
   },
   {
+    "id": 156,
     "hebrew": "דֶּלֶת",
     "spanish": "Puerta",
     "category": "Objetos",
     "emoji": "🚪"
   },
   {
+    "id": 157,
     "hebrew": "חַלּוֹן",
     "spanish": "Ventana",
     "category": "Objetos",
     "emoji": "🪟"
   },
   {
+    "id": 158,
     "hebrew": "מַפְתֵּחַ",
     "spanish": "Llave",
     "category": "Objetos",
     "emoji": "🔑"
   },
   {
+    "id": 159,
     "hebrew": "טֵלֵפוֹן",
     "spanish": "Teléfono",
     "category": "Objetos",
     "emoji": "📱"
   },
   {
+    "id": 160,
     "hebrew": "מַחְשֵׁב",
     "spanish": "Computadora",
     "category": "Objetos",
     "emoji": "💻"
   },
   {
+    "id": 161,
     "hebrew": "שָׁעוֹן",
     "spanish": "Reloj",
     "category": "Objetos",
     "emoji": "⌚"
   },
   {
+    "id": 162,
     "hebrew": "מַעִיל",
     "spanish": "Abrigo",
     "category": "Ropa",
     "emoji": "🧥"
   },
   {
+    "id": 163,
     "hebrew": "גַּרְבַּיִם",
     "spanish": "Calcetines",
     "category": "Ropa",
     "emoji": "🧦"
   },
   {
+    "id": 164,
     "hebrew": "חֲגוֹרָה",
     "spanish": "Cinturón",
     "category": "Ropa",
     "emoji": " belt"
   },
   {
+    "id": 165,
     "hebrew": "מִשְׁקָפַיִם",
     "spanish": "Gafas / Lentes",
     "category": "Ropa",
     "emoji": "👓"
   },
   {
+    "id": 166,
     "hebrew": "תִּיק",
     "spanish": "Bolso / Mochila",
     "category": "Ropa",
     "emoji": "🎒"
   },
   {
+    "id": 167,
     "hebrew": "רֹאשׁ",
     "spanish": "Cabeza",
     "category": "Cuerpo",
     "emoji": "👤"
   },
   {
+    "id": 168,
     "hebrew": "פָּנִים",
     "spanish": "Cara / Rostro",
     "category": "Cuerpo",
     "emoji": "😀"
   },
   {
+    "id": 169,
     "hebrew": "עַיִן",
     "spanish": "Ojo",
     "category": "Cuerpo",
     "emoji": "👁️"
   },
   {
+    "id": 170,
     "hebrew": "אֹזֶן",
     "spanish": "Oreja",
     "category": "Cuerpo",
     "emoji": "👂"
   },
   {
+    "id": 171,
     "hebrew": "אַף",
     "spanish": "Nariz / También",
     "category": "Cuerpo",
     "emoji": "👃"
   },
   {
+    "id": 172,
     "hebrew": "פֶּה",
     "spanish": "Boca",
     "category": "Cuerpo",
     "emoji": "👄"
   },
   {
+    "id": 173,
     "hebrew": "שֵׁן",
     "spanish": "Diente",
     "category": "Cuerpo",
     "emoji": "🦷"
   },
   {
+    "id": 174,
     "hebrew": "לָשׁוֹן",
     "spanish": "Lengua / Idioma",
     "category": "Cuerpo",
     "emoji": "👅"
   },
   {
+    "id": 175,
     "hebrew": "יָד",
     "spanish": "Mano / Brazo",
     "category": "Cuerpo",
     "emoji": "✋"
   },
   {
+    "id": 176,
     "hebrew": "רֶגֶל",
     "spanish": "Pierna",
     "category": "Cuerpo",
-    "videos": ["kSCVWv1i8Fo"],
+    "videos": [
+      "kSCVWv1i8Fo"
+    ],
     "emoji": "🦵"
   },
   {
+    "id": 177,
     "hebrew": "לֵב",
     "spanish": "Corazón",
     "category": "Cuerpo",
-    "videos": ["LlEfUCWwvU4"],
+    "videos": [
+      "LlEfUCWwvU4"
+    ],
     "emoji": "❤️"
   },
   {
+    "id": 178,
     "hebrew": "מוּל",
     "spanish": "Enfrente / Opuesto",
     "category": "Vocabulario",
-    "videos": ["LlEfUCWwvU4"],
+    "videos": [
+      "LlEfUCWwvU4"
+    ],
     "emoji": "↔️"
-  },{
+  },
+  {
+    "id": 179,
     "hebrew": "נָכוֹן",
     "spanish": "Correcto",
     "category": "Vocabulario",
-    "videos": ["LlEfUCWwvU4"],
+    "videos": [
+      "LlEfUCWwvU4"
+    ],
     "emoji": "✅"
   },
   {
+    "id": 180,
     "hebrew": "דָּם",
     "spanish": "Sangre",
     "category": "Cuerpo",
     "emoji": "🩸"
   },
   {
+    "id": 181,
     "hebrew": "גַּב",
     "spanish": "Espalda",
     "category": "Cuerpo",
     "emoji": "🧍"
   },
   {
+    "id": 182,
     "hebrew": "בֶּטֶן",
     "spanish": "Abdomen / Panza",
     "category": "Cuerpo",
     "emoji": "🤰"
   },
   {
+    "id": 183,
     "hebrew": "שֵׂעָר",
     "spanish": "Cabello / Pelo",
     "category": "Cuerpo",
     "emoji": "💇"
   },
   {
+    "id": 184,
     "hebrew": "יוֹם",
     "spanish": "Día",
     "category": "Tiempo",
     "emoji": "📅"
   },
   {
+    "id": 185,
     "hebrew": "לַיְלָה",
     "spanish": "Noche",
     "category": "Tiempo",
     "emoji": "🌃"
   },
   {
+    "id": 186,
     "hebrew": "שָׁבוּע",
     "spanish": "Semana",
     "category": "Tiempo",
     "emoji": "🗓️"
   },
   {
+    "id": 187,
     "hebrew": "חֹדֶשׁ",
     "spanish": "Mes",
     "category": "Tiempo",
     "emoji": "📆"
   },
   {
+    "id": 188,
     "hebrew": "שָׁנָה",
     "spanish": "Año",
     "category": "Tiempo",
     "emoji": "🎉"
   },
   {
+    "id": 189,
     "hebrew": "שָׁעָה",
     "spanish": "Hora",
     "category": "Tiempo",
     "emoji": "⏰"
   },
   {
+    "id": 190,
     "hebrew": "דַּקָּה",
     "spanish": "Minuto",
     "category": "Tiempo",
     "emoji": "⏱️"
   },
   {
+    "id": 191,
     "hebrew": "שְׁנִיָּה",
     "spanish": "Segundo",
     "category": "Tiempo",
     "emoji": "⏳"
   },
   {
+    "id": 192,
     "hebrew": "עָבָר",
     "spanish": "Pasado",
     "category": "Tiempo",
     "emoji": "⏳"
   },
   {
+    "id": 193,
     "hebrew": "הוֹוֶה",
     "spanish": "Presente",
     "category": "Tiempo",
     "emoji": "🎁"
   },
   {
+    "id": 194,
     "hebrew": "עָתִיד",
     "spanish": "Futuro",
     "category": "Tiempo",
     "emoji": "🚀"
   },
   {
+    "id": 195,
     "hebrew": "אֶתְמוֹל",
     "spanish": "Ayer",
     "category": "Tiempo",
     "emoji": "👈"
   },
   {
+    "id": 196,
     "hebrew": "הַיּוֹם",
     "spanish": "Hoy",
     "category": "Tiempo",
     "emoji": "👇"
   },
   {
+    "id": 197,
     "hebrew": "מָחָר",
     "spanish": "Mañana (día siguiente)",
     "category": "Tiempo",
     "emoji": "👉"
   },
   {
+    "id": 198,
     "hebrew": "יוֹם רִאשׁוֹן",
     "spanish": "Domingo",
     "category": "Días de la semana",
     "emoji": "1️⃣"
   },
   {
+    "id": 199,
     "hebrew": "יוֹם שֵׁנִי",
     "spanish": "Lunes",
     "category": "Días de la semana",
     "emoji": "2️⃣"
   },
   {
+    "id": 200,
     "hebrew": "יוֹם שְׁלִישִׁי",
     "spanish": "Martes",
     "category": "Días de la semana",
     "emoji": "3️⃣"
   },
   {
+    "id": 201,
     "hebrew": "יוֹם רְבִיעִי",
     "spanish": "Miércoles",
     "category": "Días de la semana",
     "emoji": "4️⃣"
   },
   {
+    "id": 202,
     "hebrew": "יוֹם חֲמִישִׁי",
     "spanish": "Jueves",
     "category": "Días de la semana",
     "emoji": "5️⃣"
   },
   {
+    "id": 203,
     "hebrew": "יוֹם שִׁשִּׁי",
     "spanish": "Viernes",
     "category": "Días de la semana",
     "emoji": "6️⃣"
   },
   {
+    "id": 204,
     "hebrew": "שַׁבָּת",
     "spanish": "Sábado / Shabat",
     "category": "Días de la semana",
     "emoji": "🕯️"
   },
   {
+    "id": 205,
     "hebrew": "יָרָק",
     "spanish": "Verdura",
     "category": "Alimentos",
     "emoji": "🥦"
   },
   {
+    "id": 206,
     "hebrew": "פְּרִי",
     "spanish": "Fruta",
     "category": "Alimentos",
     "emoji": "🍓"
   },
   {
+    "id": 207,
     "hebrew": "תַּפּוּחַ אֲדָמָה",
     "spanish": "Patata / Papa",
     "category": "Alimentos",
     "emoji": "🥔"
   },
   {
+    "id": 208,
     "hebrew": "בָּצָל",
     "spanish": "Cebolla",
     "category": "Alimentos",
     "emoji": "🧅"
   },
   {
+    "id": 209,
     "hebrew": "שׁוּם",
     "spanish": "Ajo / Nada",
     "category": "Alimentos",
     "emoji": "🧄"
   },
   {
+    "id": 210,
     "hebrew": "גֶּזֶר",
     "spanish": "Zanahoria",
     "category": "Alimentos",
     "emoji": "🥕"
   },
   {
+    "id": 211,
     "hebrew": "לִימוֹן",
     "spanish": "Limón",
     "category": "Alimentos",
     "emoji": "🍋"
   },
   {
+    "id": 212,
     "hebrew": "תָּפוּז",
     "spanish": "Naranja",
     "category": "Alimentos",
     "emoji": "🍊"
   },
   {
+    "id": 213,
     "hebrew": "עֲנָבִים",
     "spanish": "Uvas",
     "category": "Alimentos",
     "emoji": "🍇"
   },
   {
+    "id": 214,
     "hebrew": "אֲבַטִּיחַ",
     "spanish": "Sandía",
     "category": "Alimentos",
     "emoji": "🍉"
   },
   {
+    "id": 215,
     "hebrew": "מֶלְצַר",
     "spanish": "Camarero / Mesero",
     "category": "Profesiones",
     "emoji": "🤵"
   },
   {
+    "id": 216,
     "hebrew": "רוֹפֵא",
     "spanish": "Médico / Doctor",
     "category": "Profesiones",
     "emoji": "👨‍⚕️"
   },
   {
+    "id": 217,
     "hebrew": "מוֹרֶה",
     "spanish": "Maestro",
     "category": "Profesiones",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "👨‍🏫"
   },
   {
+    "id": 218,
     "hebrew": "סְטוּדֶנְטית",
     "spanish": "Estudiante (F)",
     "category": "Profesiones",
-    "videos": ["f3w56JfwzBs"],
+    "videos": [
+      "f3w56JfwzBs"
+    ],
     "emoji": "👩‍🎓"
   },
   {
+    "id": 219,
     "hebrew": "תַּלְמִיד",
     "spanish": "Estudiante / Alumno",
     "category": "Profesiones",
     "emoji": "👨‍🎓"
   },
   {
+    "id": 220,
     "hebrew": "שׁוֹטֵר",
     "spanish": "Policía",
     "category": "Profesiones",
     "emoji": "👮"
   },
   {
+    "id": 221,
     "hebrew": "מְהַנְדֵּס",
     "spanish": "Ingeniero",
     "category": "Profesiones",
     "emoji": "👷"
   },
   {
+    "id": 222,
     "hebrew": "נַהָג",
     "spanish": "Conductor / Chofer",
     "category": "Profesiones",
     "emoji": "👨‍✈️"
   },
   {
+    "id": 223,
     "hebrew": "טַיָּס",
     "spanish": "Piloto",
     "category": "Profesiones",
     "emoji": "👨‍✈️"
   },
   {
+    "id": 224,
     "hebrew": "מַזְכִּיר",
     "spanish": "Secretario",
     "category": "Profesiones",
     "emoji": "💼"
   },
   {
+    "id": 225,
     "hebrew": "עוֹרֵךְ דִּין",
     "spanish": "Abogado",
     "category": "Profesiones",
     "emoji": "⚖️"
   },
   {
+    "id": 226,
     "hebrew": "חַיָּל",
     "spanish": "Soldado",
     "category": "Profesiones",
     "emoji": "🪖"
   },
   {
+    "id": 227,
     "hebrew": "מִשְׂרָד",
     "spanish": "Oficina",
     "category": "Lugares",
     "emoji": "🏢"
   },
   {
+    "id": 228,
     "hebrew": "עֲבוֹדָה",
     "spanish": "Trabajo",
     "category": "Sociedad",
     "emoji": "🛠️"
   },
   {
+    "id": 229,
     "hebrew": "כֶּסֶף",
     "spanish": "Dinero",
     "category": "Finanzas",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "💵"
   },
   {
+    "id": 230,
     "hebrew": "צד",
     "spanish": "Lado",
     "category": "Vocabulario",
-    "videos": ["cbiMZFt_ACQ"],
+    "videos": [
+      "cbiMZFt_ACQ"
+    ],
     "emoji": "💵"
   },
   {
+    "id": 231,
     "hebrew": "מְחִיר",
     "spanish": "Precio",
     "category": "Finanzas",
     "emoji": "🏷️"
   },
   {
+    "id": 232,
     "hebrew": "כַּרְטִיס",
     "spanish": "Boleto / Tarjeta",
     "category": "Objetos",
     "emoji": "🎟️"
   },
   {
+    "id": 233,
     "hebrew": "כַּרְטִיס אַשְׁרַאי",
     "spanish": "Tarjeta de crédito",
     "category": "Finanzas",
     "emoji": "💳"
   },
   {
+    "id": 234,
     "hebrew": "חֶשְׁבּוֹן",
     "spanish": "Cuenta / Factura",
     "category": "Finanzas",
     "emoji": "🧾"
   },
   {
+    "id": 235,
     "hebrew": "צֶבַע",
     "spanish": "Color",
     "category": "Colores",
     "emoji": "🎨"
   },
   {
+    "id": 236,
     "hebrew": "לָבָן",
     "spanish": "Blanco",
     "category": "Colores",
     "emoji": "⚪"
   },
   {
+    "id": 237,
     "hebrew": "שָׁחֹור",
     "spanish": "Negro",
     "category": "Colores",
     "emoji": "⚫"
   },
   {
+    "id": 238,
     "hebrew": "אדֹום",
     "spanish": "Rojo",
     "category": "Colores",
     "emoji": "🔴"
   },
   {
+    "id": 239,
     "hebrew": "כָּחֹול",
     "spanish": "Azul",
     "category": "Colores",
     "emoji": "🔵"
   },
   {
+    "id": 240,
     "hebrew": "יָרֹוק",
     "spanish": "Verde",
     "category": "Colores",
     "emoji": "🟢"
   },
   {
+    "id": 241,
     "hebrew": "צָהֹוב",
     "spanish": "Amarillo",
     "category": "Colores",
     "emoji": "🟡"
   },
   {
+    "id": 242,
     "hebrew": "כתֹום",
     "spanish": "Naranja (Color)",
     "category": "Colores",
     "emoji": "🟠"
   },
   {
+    "id": 243,
     "hebrew": "וָרֹוד",
     "spanish": "Rosa / Rosado",
     "category": "Colores",
     "emoji": "🌸"
   },
   {
+    "id": 244,
     "hebrew": "סָגֹול",
     "spanish": "Morado / Violeta",
     "category": "Colores",
     "emoji": "💜"
   },
   {
+    "id": 245,
     "hebrew": "חוּם",
     "spanish": "Marrón / Café",
     "category": "Colores",
     "emoji": "🟤"
   },
   {
+    "id": 246,
     "hebrew": "אֲפֹור",
     "spanish": "Gris",
     "category": "Colores",
     "emoji": "🪙"
   },
   {
+    "id": 247,
     "hebrew": "מָקוֹם",
     "spanish": "Lugar",
     "category": "Lugares",
     "emoji": "📍"
   },
   {
+    "id": 248,
     "hebrew": "מֶרְכָּז",
     "spanish": "Centro",
     "category": "Lugares",
     "emoji": "🎯"
   },
   {
+    "id": 249,
     "hebrew": "צָפוֹן",
     "spanish": "Norte",
     "category": "Direcciones",
     "emoji": "🧭"
   },
   {
+    "id": 250,
     "hebrew": "דָּרוֹם",
     "spanish": "Sur",
     "category": "Direcciones",
     "emoji": "🧭"
   },
   {
+    "id": 251,
     "hebrew": "מִזְרָח",
     "spanish": "Este / Oriente",
     "category": "Direcciones",
     "emoji": "🧭"
   },
   {
+    "id": 252,
     "hebrew": "מַעֲרָב",
     "spanish": "Oeste / Occidente",
     "category": "Direcciones",
     "emoji": "🧭"
   },
   {
+    "id": 253,
     "hebrew": "יָמִין",
     "spanish": "Derecha",
     "category": "Direcciones",
     "emoji": "➡️"
   },
   {
+    "id": 254,
     "hebrew": "שְׂמֹאל",
     "spanish": "Izquierda",
     "category": "Direcciones",
     "emoji": "⬅️"
   },
   {
+    "id": 255,
     "hebrew": "יָשָׁר",
     "spanish": "Recto / Derecho",
     "category": "Direcciones",
