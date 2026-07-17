@@ -446,11 +446,19 @@ function renderFlashcard() {
 }
 
 function handleLearnNext() {
+  if (!usuarioActual) {
+    abrirModal();
+    return;
+  }
   state.flashcards.currentIndex = (state.flashcards.currentIndex + 1) % state.flashcards.list.length;
   renderFlashcard();
 }
 
 function handleLearnEasy() {
+  if (!usuarioActual) {
+    abrirModal();
+    return;
+  }
   // Facil: Eliminamos de la lista actual de la sesión (se considera aprendida en esta ronda)
   state.flashcards.list.splice(state.flashcards.currentIndex, 1);
 
@@ -470,6 +478,10 @@ function handleLearnEasy() {
 }
 
 function handleLearnHard() {
+  if (!usuarioActual) {
+    abrirModal();
+    return;
+  }
   // Difícil: Mantener en lista y pasar a la siguiente para repetirla luego
   if (state.flashcards.list.length > 1) {
     state.flashcards.currentIndex = (state.flashcards.currentIndex + 1) % state.flashcards.list.length;
@@ -613,6 +625,10 @@ function handleSelectOption(optionIndex) {
 }
 
 function handleCheckAnswer() {
+  if (!usuarioActual) {
+    abrirModal();
+    return;
+  }
   if (state.quiz.isChecked) {
     // Si ya fue chequeado, sirve como botón de "Continuar"
     playSound('click');
@@ -1092,15 +1108,6 @@ const tabMappings = {
 function handleRoute() {
   const hash = window.location.hash || "#home";
   const targetTabId = tabMappings[hash] || "screen-home";
-
-  // VALIDACIÓN DE USUARIO PARA PRÁCTICA
-  if (targetTabId === "screen-flashcards" && !usuarioActual && typeof abrirModal === "function") {
-    abrirModal();
-    // Restaurar el hash al tab anterior si es posible
-    const currentHash = Object.keys(tabMappings).find(key => tabMappings[key] === state.currentTab) || "#home";
-    history.replaceState(null, null, currentHash);
-    return;
-  }
 
   if (state.currentTab === targetTabId) return;
 

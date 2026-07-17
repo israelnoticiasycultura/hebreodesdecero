@@ -7,8 +7,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(3, 7, 18, 0.85); /* Slate 950 con opacidad alta */
-  backdrop-filter: blur(8px); /* Desenfoque del fondo */
+  background-color: rgba(3, 7, 18, 0.55); /* Slate 950 con opacidad reducida */
+  backdrop-filter: blur(3px); /* Desenfoque más suave del fondo */
   display: flex;
   align-items: center;
   justify-content: center;
