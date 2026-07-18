@@ -263,7 +263,8 @@
                                 </div>
 
                                 <div class="flex-1 flex flex-col items-center justify-center space-y-2 mt-4">
-                                    <h2 id="cardFrontText" class="text-3xl font-extrabold tracking-wide text-slate-100 font-hebrew">
+                                    <h2 id="cardFrontText"
+                                        class="text-3xl font-extrabold tracking-wide text-slate-100 font-hebrew">
                                         שָׁלוֹם</h2>
                                 </div>
 
@@ -279,7 +280,8 @@
                                         class="border border-slate-800/80 bg-slate-950/30 rounded-2xl overflow-hidden transition-all group w-full hidden">
                                         <div id="cardYoutubeThumbs" class="grid gap-2 p-2"></div>
                                         <div class="bg-slate-950/90 p-2 text-center">
-                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en video</p>
+                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta
+                                                palabra en video</p>
                                         </div>
                                     </div>
                                 </div>
@@ -289,11 +291,11 @@
                             <div
                                 class="absolute inset-0 backface-hidden rotate-y-180 w-full h-full flex flex-col justify-between p-6 rounded-3xl bg-gradient-to-bl from-purple-950/90 via-slate-900 to-indigo-950/90">
                                 <div class="flex justify-between items-center">
-                                    <span
+                                    <span id="cardCategoryBack"
                                         class="text-xs font-bold text-indigo-400 bg-indigo-950/50 border border-indigo-800/30 px-3 py-1 rounded-full">Traducción</span>
                                     <span class="text-xs text-slate-500 flex items-center space-x-1">
                                         <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-                                        <span>¡Practica esta palabra!</span>
+                                        <span id="cardBackInstructionPractice">¡Practica esta palabra!</span>
                                     </span>
                                 </div>
 
@@ -304,9 +306,10 @@
                                         <span id="cardEmoji" class="text-3xl">👋 / 🕊️</span>
                                     </div>
                                     <div>
-                                        <h3 id="cardBackText"
-                                            class="text-3xl font-extrabold text-slate-100">Hola / Paz</h3>
-                                        <p class="text-xs text-slate-400 mt-1">Escucha o repite esta frase en voz alta.
+                                        <h3 id="cardBackText" class="text-3xl font-extrabold text-slate-100">Hola / Paz
+                                        </h3>
+                                        <p id="cardBackInstructionText" class="text-xs text-slate-400 mt-1">Escucha o
+                                            repite esta frase en voz alta.
                                         </p>
                                     </div>
                                 </div>
@@ -323,7 +326,8 @@
                                         class="border border-slate-800/80 bg-slate-950/30 rounded-2xl overflow-hidden transition-all group w-full hidden">
                                         <div id="cardYoutubeThumbsBack" class="grid gap-2 p-2"></div>
                                         <div class="bg-slate-950/90 p-2 text-center">
-                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta palabra en video</p>
+                                            <p class="text-[10px] font-bold text-slate-200 line-clamp-1">Aprende esta
+                                                palabra en video</p>
                                         </div>
                                     </div>
                                 </div>
@@ -930,13 +934,13 @@
     <div id="auth-modal" class="auth-modal-overlay hidden">
         <div class="auth-modal-content">
             <button id="auth-close-btn" class="auth-close-btn" aria-label="Cerrar">&times;</button>
-            
+
             <!-- Mensaje explicativo -->
             <div class="auth-welcome-message">
                 <h2>¡Guarda tu avance! 🚀</h2>
                 <p>Inicia sesión o regístrate gratis para desbloquear tarjetas de vocabulario y ver tu progreso.</p>
             </div>
-            
+
             <!-- Pestañas para alternar -->
             <div class="auth-tabs">
                 <button id="tab-login" class="auth-tab active" onclick="switchAuthTab('login')">Iniciar Sesión</button>
@@ -969,7 +973,8 @@
                 </div>
                 <div class="auth-input-group">
                     <label for="register-password">Contraseña</label>
-                    <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                    <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" minlength="6"
+                        required>
                 </div>
                 <button type="submit" class="auth-submit-btn">Registrarse</button>
                 <div id="register-message" class="auth-message"></div>

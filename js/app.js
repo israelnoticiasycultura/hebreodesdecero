@@ -363,18 +363,6 @@ function addXP(amount) {
 // --- SUB-VIEW: FLASHCARDS (APRENDER) ---
 // --- SUB-VIEW: FLASHCARDS (APRENDER) ---
 async function initLearnMode() {
-  if (!usuarioActual) {
-    abrirModal();
-    // Mostrar estado pidiendo login
-    document.getElementById("cardFrontText").textContent = "Inicia sesión";
-    document.getElementById("cardBackText").textContent = "Debes iniciar sesión para guardar tu progreso.";
-    document.getElementById("cardCategory").textContent = "Autenticación";
-    document.getElementById("cardEmoji").textContent = "🔑";
-    const actionsPanel = document.getElementById("learnActionsPanel");
-    if (actionsPanel) actionsPanel.classList.add("hidden");
-    return;
-  }
-
   // Mostrar estado de carga
   document.getElementById("cardFrontText").textContent = "Cargando...";
   document.getElementById("cardBackText").textContent = "Buscando tus palabras pendientes...";
@@ -384,61 +372,89 @@ async function initLearnMode() {
   if (actionsPanel) actionsPanel.classList.add("hidden");
 
   try {
-    if (!supabaseClient) {
-      throw new Error("Cliente de Supabase no inicializado.");
-    }
-
-    // Obtener todo el progreso del usuario actual
-    const { data: allProgress, error } = await supabaseClient
-      .from('user_progress')
-      .select('*')
-      .eq('user_id', usuarioActual.id);
-
-    if (error) throw error;
-
-    const nowISO = new Date().toISOString();
-
-    // 1. Filtrar tarjetas pendientes (next_review <= ahora)
-    const dueProgress = allProgress ? allProgress.filter(p => p.next_review <= nowISO) : [];
-
-    // Mapear con la info lingüística local de WORDS
-    const dueCards = [];
-    dueProgress.forEach(prog => {
-      const word = WORDS.find(w => w.id === Number(prog.word_id));
-      if (word) {
-        dueCards.push({
-          ...word,
-          progress: prog
-        });
-      }
-    });
-
-    // Ordenar pendientes por fecha (next_review) de forma ascendente (más antiguos primero)
-    dueCards.sort((a, b) => new Date(a.progress.next_review) - new Date(b.progress.next_review));
-
+    let sessionCards = [];
     const totalNeeded = 5;
-    let sessionCards = [...dueCards];
 
-    // 2. Si faltan tarjetas para la cuota de 5, rellenar con tarjetas nuevas
-    if (sessionCards.length < totalNeeded) {
-      const remainingCount = totalNeeded - sessionCards.length;
-
-      const allProgressWordIds = new Set(allProgress ? allProgress.map(p => Number(p.word_id)) : []);
-
-      // Filtrar palabras locales nuevas (no registradas en user_progress)
-      const newWords = WORDS.filter(w => !allProgressWordIds.has(w.id));
-
-      // Ordenar por id secuencial de words.json
-      newWords.sort((a, b) => a.id - b.id);
-
-      const addedNewWords = newWords.slice(0, remainingCount).map(w => {
+    if (!usuarioActual) {
+      // Usuario no logueado: mostrar las primeras tarjetas por defecto
+      sessionCards = WORDS.slice(0, totalNeeded).map(w => {
         return {
           ...w,
-          progress: null // Aún sin progreso registrado
+          progress: null
         };
       });
+    } else {
+      if (!supabaseClient) {
+        throw new Error("Cliente de Supabase no inicializado.");
+      }
 
-      sessionCards = sessionCards.concat(addedNewWords);
+      // Obtener todo el progreso del usuario actual
+      const { data: allProgress, error } = await supabaseClient
+        .from('user_progress')
+        .select('*')
+        .eq('user_id', usuarioActual.id);
+
+      if (error) throw error;
+
+      const nowISO = new Date().toISOString();
+
+      // 1. Filtrar tarjetas pendientes (next_review <= ahora)
+      const dueProgress = allProgress ? allProgress.filter(p => p.next_review <= nowISO) : [];
+
+      // Mapear con la info lingüística local de WORDS
+      const dueCards = [];
+      dueProgress.forEach(prog => {
+        const word = WORDS.find(w => w.id === Number(prog.word_id));
+        if (word) {
+          dueCards.push({
+            ...word,
+            progress: prog
+          });
+        }
+      });
+
+      // Ordenar pendientes por fecha (next_review) de forma ascendente (más antiguos primero)
+      dueCards.sort((a, b) => new Date(a.progress.next_review) - new Date(b.progress.next_review));
+
+      sessionCards = [...dueCards];
+
+      // 2. Si faltan tarjetas para la cuota de 5, rellenar con tarjetas nuevas
+      if (sessionCards.length < totalNeeded) {
+        const todayStr = nowISO.split('T')[0];
+        let newCardsToday = 0;
+
+        // Verificar cuántas tarjetas nuevas se introdujeron hoy
+        if (allProgress && allProgress.length > 0 && allProgress[0].created_at !== undefined) {
+          newCardsToday = allProgress.filter(p => p.created_at && p.created_at.startsWith(todayStr)).length;
+        } else {
+          // Si Supabase no retorna created_at, usamos localStorage como fallback
+          newCardsToday = parseInt(localStorage.getItem('hebrew_new_cards_count_' + todayStr)) || 0;
+        }
+
+        const maxNewCardsPerDay = 5;
+        const allowedNewCards = Math.max(0, maxNewCardsPerDay - newCardsToday);
+
+        const remainingCount = Math.min(totalNeeded - sessionCards.length, allowedNewCards);
+
+        if (remainingCount > 0) {
+          const allProgressWordIds = new Set(allProgress ? allProgress.map(p => Number(p.word_id)) : []);
+
+          // Filtrar palabras locales nuevas (no registradas en user_progress)
+          const newWords = WORDS.filter(w => !allProgressWordIds.has(w.id));
+
+          // Ordenar por id secuencial de words.json
+          newWords.sort((a, b) => a.id - b.id);
+
+          const addedNewWords = newWords.slice(0, remainingCount).map(w => {
+            return {
+              ...w,
+              progress: null // Aún sin progreso registrado
+            };
+          });
+
+          sessionCards = sessionCards.concat(addedNewWords);
+        }
+      }
     }
 
     state.flashcards.list = sessionCards;
@@ -468,15 +484,31 @@ function renderFlashcard() {
     document.getElementById("learnProgressText").textContent = "Tarjeta 0 de 0";
     if (actionsPanel) actionsPanel.classList.add("hidden");
 
-    // Ocultar thumbnails de videos si no hay tarjeta
+    // Ocultar thumbnails de videos y audios si no hay tarjeta
     const cardYoutubeCard = document.getElementById("cardYoutubeCard");
     const cardYoutubeCardBack = document.getElementById("cardYoutubeCardBack");
     if (cardYoutubeCard) cardYoutubeCard.classList.add("hidden");
     if (cardYoutubeCardBack) cardYoutubeCardBack.classList.add("hidden");
+
+    const cardCategoryBack = document.getElementById("cardCategoryBack");
+    const cardBackInstructionPractice = document.getElementById("cardBackInstructionPractice");
+    const cardAudioBtn = document.getElementById("cardAudioBtn");
+    const cardAudioBtnBack = document.getElementById("cardAudioBtnBack");
+    const cardBackInstructionText = document.getElementById("cardBackInstructionText");
+    if (cardCategoryBack) cardCategoryBack.classList.add("hidden");
+    if (cardBackInstructionPractice) cardBackInstructionPractice.classList.add("hidden");
+    if (cardAudioBtn) cardAudioBtn.classList.add("hidden");
+    if (cardAudioBtnBack) cardAudioBtnBack.classList.add("hidden");
+    if (cardBackInstructionText) cardBackInstructionText.classList.add("hidden");
+
     return;
   }
 
   if (actionsPanel) actionsPanel.classList.remove("hidden");
+  const cardAudioBtn = document.getElementById("cardAudioBtn");
+  const cardAudioBtnBack = document.getElementById("cardAudioBtnBack");
+  if (cardAudioBtn) cardAudioBtn.classList.remove("hidden");
+  if (cardAudioBtnBack) cardAudioBtnBack.classList.remove("hidden");
 
   // Restablecer flip visual
   const flipEl = document.getElementById("flipCard");
@@ -612,6 +644,11 @@ async function handleLearnResponse(rating) {
 
   if (progressId) {
     payload.id = progressId;
+  } else {
+    // Si no tiene progressId, es una tarjeta nueva. Actualizamos contador local
+    const todayStr = new Date().toISOString().split('T')[0];
+    let newCardsCount = parseInt(localStorage.getItem('hebrew_new_cards_count_' + todayStr)) || 0;
+    localStorage.setItem('hebrew_new_cards_count_' + todayStr, newCardsCount + 1);
   }
 
   try {
@@ -1623,7 +1660,12 @@ window.handleLogin = async function (event) {
 
   } catch (error) {
     console.error('Error en login:', error);
-    mostrarMensaje('login', 'error', error.message || 'Correo o contraseña incorrectos.');
+    let mensaje = error.message;
+    if (mensaje === 'Invalid login credentials') {
+      mensaje = 'Correo o contraseña incorrectos.';
+    }
+
+    mostrarMensaje('login', 'error', mensaje || 'Correo o contraseña incorrectos.');
   }
 }
 
