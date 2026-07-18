@@ -1505,10 +1505,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     state.soundEnabled = e.target.checked;
     saveUserData();
   };
-  document.getElementById("usernameInput").onblur = (e) => {
-    state.username = e.target.value.trim() || "Aprendiz";
+  document.getElementById("usernameInput").onblur = async (e) => {
+    const newName = e.target.value.trim() || "Aprendiz";
+    state.username = newName;
     saveUserData();
     updateProfileView();
+
+    if (typeof supabaseClient !== 'undefined') {
+      try {
+        const { error } = await supabaseClient.auth.updateUser({
+          data: { full_name: newName }
+        });
+        if (error) {
+          console.error("Error al actualizar nombre en Supabase:", error);
+        } else {
+          console.log("Nombre actualizado en Supabase:", newName);
+        }
+      } catch (err) {
+        console.error("Excepción al actualizar nombre en Supabase:", err);
+      }
+    }
   };
   document.getElementById("usernameInput").onkeydown = (e) => {
     if (e.key === 'Enter') {
@@ -1654,6 +1670,18 @@ window.handleLogin = async function (event) {
     cerrarModal();
     document.getElementById('login-form').reset();
     console.log("Sesión iniciada exitosamente.");
+
+    if (data && data.user && data.user.user_metadata && data.user.user_metadata.full_name) {
+      const fullName = data.user.user_metadata.full_name;
+      const usernameInput = document.getElementById('usernameInput');
+      if (usernameInput) {
+        usernameInput.value = fullName;
+      }
+      state.username = fullName;
+      saveUserData();
+      updateProfileView();
+      updateHomeView();
+    }
 
     // Al loguearse, redirigir a flashcards
     window.location.hash = '#flashcards';
