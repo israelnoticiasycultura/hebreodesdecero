@@ -5,7 +5,7 @@
     "spanish": "Hola / Paz",
     "category": "Saludos",
     "videos": [
-      "kSCVWv1i8Fo"
+      "kSCVWv1i8Fo", "888CuARajHs"
     ],
     "emoji": "👋 / 🕊️"
   },
@@ -334,8 +334,9 @@
     "id": 35,
     "hebrew": "מַה שְּׁלוֹמְךָ?",
     "spanish": "¿Cómo estás?",
-    "category": "Frases útiles",
-    "emoji": "👋"
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": ["888CuARajHs"]
   },
   {
     "id": 36,
@@ -1988,5 +1989,37 @@
     "spanish": "Recto / Derecho",
     "category": "Direcciones",
     "emoji": "⬆️"
+  },
+  {
+    "id": 256,
+    "hebrew": "בְּרָכָה",
+    "spanish": "Bendición",
+    "category": "Religión",
+    "emoji": "🙏", 
+    "videos": ["888CuARajHs"]
+  },
+  {
+    "id": 257,
+    "hebrew": "מָה שְׁלוֹמֵךְ?",
+    "spanish": "¿Cómo estás?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": ["888CuARajHs"]
+  },
+  {
+    "id": 258,
+    "hebrew": "מָה שְׁלוֹמְְכֶם?",
+    "spanish": "¿Cómo estáis?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": ["888CuARajHs"]
+  },
+  {
+    "id": 259,
+    "hebrew": "מָה שְׁלוֹמְְכֶן?",
+    "spanish": "¿Cómo estáis?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": ["888CuARajHs"]
   }
 ]
