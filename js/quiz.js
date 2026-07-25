@@ -1,6 +1,7 @@
 // js/quiz.js
 import { state, WORDS, addXP, saveUserData } from './state.js';
 import { playSound } from './audio.js';
+import { registrarActividadCompletada } from './api.js';
 import { usuarioActual } from './state.js'; // We might need a getter if it's let in state.js
 
 export function initQuizMode() {
@@ -155,7 +156,7 @@ export function handleSelectOption(optionIndex) {
   }
 }
 
-export function handleCheckAnswer() {
+export async function handleCheckAnswer() {
   if (!usuarioActual) {
     if (window.abrirModal) window.abrirModal();
     return;
@@ -167,7 +168,7 @@ export function handleCheckAnswer() {
     if (state.quiz.currentIndex >= 5) {
       // Victoria
       playSound('correct');
-      addXP(15);
+      await registrarActividadCompletada(15);
       state.quizzesCompleted++;
       saveUserData();
       // Renderizar overlay victoria

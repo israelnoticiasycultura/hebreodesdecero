@@ -1,5 +1,6 @@
 // js/flashcards.js
 import { state, WORDS, VIDEOS, usuarioActual, addXP } from './state.js';
+import { registrarActividadCompletada } from './api.js';
 import { supabaseClient, abrirModal } from './auth.js';
 import { playSound } from './audio.js';
 import { openVideoModal } from './videos.js';
@@ -339,7 +340,7 @@ export async function handleLearnResponse(rating) {
 
   if (state.flashcards.list.length === 0) {
     playSound('correct');
-    addXP(10);
+    await registrarActividadCompletada(10);
     alert("¡Felicidades! Has completado tu sesión de estudio de hoy. +10 XP");
     window.location.hash = "#home";
   } else {

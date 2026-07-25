@@ -1,8 +1,6 @@
 // js/api.js
 
-export const supabaseUrl = 'https://gjyqwqaabzajoflqwped.supabase.co';
-export const supabaseKey = 'sb_publishable_ZM3R9fFL9JY-OK_Lvi9lHw_E00H_Rlj';
-export const supabaseClient = (window.supabase && supabaseUrl && supabaseKey) ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+import { supabaseClient } from './auth.js';
 
 export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
 export const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
@@ -44,5 +42,26 @@ export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_U
     if (el) {
       el.textContent = 'No se pudo cargar el contador.';
     }
+  }
+}
+
+export async function registrarActividadCompletada(expGanada) {
+  if (!supabaseClient) return false;
+
+  try {
+    const { error } = await supabaseClient.rpc('completar_actividad_diaria', {
+      exp_ganada: expGanada
+    });
+
+    if (error) {
+      console.error('Error de Supabase al actualizar racha/xp:', error);
+      return false;
+    }
+
+    console.log(`Actividad completada. +${expGanada} XP enviados a Supabase.`);
+    return true;
+  } catch (err) {
+    console.error('Excepción al registrar actividad:', err);
+    return false;
   }
 }
