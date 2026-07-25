@@ -5,7 +5,8 @@
     "spanish": "Hola / Paz",
     "category": "Saludos",
     "videos": [
-      "kSCVWv1i8Fo", "888CuARajHs"
+      "kSCVWv1i8Fo",
+      "888CuARajHs"
     ],
     "emoji": "👋 / 🕊️"
   },
@@ -318,9 +319,12 @@
   },
   {
     "id": 33,
-    "hebrew": "בֹּקֶר טוֹב",
+    "hebrew": "בּוֹקֶר טוֹב",
     "spanish": "Buenos días",
     "category": "Saludos",
+    "videos": [
+      "qJk-cWi3dAA"
+    ],
     "emoji": "☀️"
   },
   {
@@ -328,7 +332,10 @@
     "hebrew": "עֶרֶב טוֹב",
     "spanish": "Buenas noches",
     "category": "Saludos",
-    "emoji": "🌙"
+    "emoji": "🌙",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
   },
   {
     "id": 35,
@@ -336,7 +343,9 @@
     "spanish": "¿Cómo estás?",
     "category": "Saludos",
     "emoji": "👋",
-    "videos": ["888CuARajHs"]
+    "videos": [
+      "888CuARajHs"
+    ]
   },
   {
     "id": 36,
@@ -1995,8 +2004,10 @@
     "hebrew": "בְּרָכָה",
     "spanish": "Bendición",
     "category": "Religión",
-    "emoji": "🙏", 
-    "videos": ["888CuARajHs"]
+    "emoji": "🙏",
+    "videos": [
+      "888CuARajHs"
+    ]
   },
   {
     "id": 257,
@@ -2004,7 +2015,9 @@
     "spanish": "¿Cómo estás?",
     "category": "Saludos",
     "emoji": "👋",
-    "videos": ["888CuARajHs"]
+    "videos": [
+      "888CuARajHs"
+    ]
   },
   {
     "id": 258,
@@ -2012,7 +2025,9 @@
     "spanish": "¿Cómo estáis?",
     "category": "Saludos",
     "emoji": "👋",
-    "videos": ["888CuARajHs"]
+    "videos": [
+      "888CuARajHs"
+    ]
   },
   {
     "id": 259,
@@ -2020,6 +2035,68 @@
     "spanish": "¿Cómo estáis?",
     "category": "Saludos",
     "emoji": "👋",
-    "videos": ["888CuARajHs"]
+    "videos": [
+      "888CuARajHs"
+    ]
+  },
+  {
+    "id": 260,
+    "hebrew": "אוֹר",
+    "spanish": "Luz",
+    "category": "Vocabulario",
+    "emoji": "☀️",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 261,
+    "hebrew": "בּוֹקֶר אוֹר",
+    "spanish": "Buenos días (respuesta al saludo)",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 262,
+    "hebrew": "צָּהֳרַיִם",
+    "spanish": "Mediodía",
+    "category": "Vocabulario",
+    "emoji": "☀️",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 263,
+    "hebrew": "צָהֳרַיִם טוֹבִים",
+    "spanish": "Buenas tardes",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 264,
+    "hebrew": "אַחַר הַצָּהֳרַיִם טוֹבִים",
+    "spanish": "Buenas tardes",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 265,
+    "hebrew": "לַיְלָה טוֹב",
+    "spanish": "Buenas noches",
+    "category": "Saludos",
+    "emoji": "🌙",
+    "videos": [
+      "qJk-cWi3dAA"
+    ]
   }
 ]

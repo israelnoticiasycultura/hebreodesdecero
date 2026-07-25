@@ -11,7 +11,7 @@ export let WORDS = [];
 
 export async function loadWords() {
   try {
-    const response = await fetch('./js/words.json');
+    const response = await fetch('./data/words.json');
     if (!response.ok) throw new Error('No se pudo cargar words.json');
     WORDS = await response.json();
   } catch (error) {
@@ -57,7 +57,7 @@ export let VIDEOS = [];
 
 export async function loadVideos() {
   try {
-    const response = await fetch('./js/videos.json');
+    const response = await fetch('./data/videos.json');
     if (!response.ok) throw new Error('No se pudo cargar videos.json');
     VIDEOS = await response.json();
   } catch (error) {
