@@ -5,7 +5,7 @@ import { loadVoices, playSound, speakHebrew } from './audio.js';
 import { handleRoute } from './router.js';
 import { updateHomeView, updateProfileView, handleResetData } from './home.js';
 import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, handleLearnHard } from './flashcards.js';
-import { initQuizMode, handleSelectOption, handleCheckAnswer } from './quiz.js';
+import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
 import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
 
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (quizRetryBtn) {
     quizRetryBtn.onclick = () => {
       playSound('click');
-      initQuizMode();
+      retryQuizMode();
     };
   }
 

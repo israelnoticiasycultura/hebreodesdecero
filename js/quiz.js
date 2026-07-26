@@ -3,18 +3,55 @@ import { state, WORDS, addXP, saveUserData } from './state.js';
 import { playSound } from './audio.js';
 import { registrarActividadCompletada } from './api.js';
 import { usuarioActual } from './state.js'; // We might need a getter if it's let in state.js
+import { supabaseClient } from './auth.js';
 
-export function initQuizMode() {
+export async function initQuizMode() {
+  const todayStr = new Date().toDateString();
+  const quizCompletedDate = localStorage.getItem('hebrew_quiz_completed_date');
+  
+  const quizGameOverOverlay = document.getElementById("quizGameOverOverlay");
+  const quizSuccessOverlay = document.getElementById("quizSuccessOverlay");
+  
+  if (quizCompletedDate === todayStr) {
+    // Ya lo terminó con éxito hoy. Mostramos success overlay directamente sin dejar jugar.
+    if (quizGameOverOverlay) quizGameOverOverlay.classList.add("hidden");
+    if (quizSuccessOverlay) {
+      const xpTextEl = document.getElementById("quizSuccessXp");
+      const streakTextEl = document.getElementById("quizSuccessStreak");
+      if (xpTextEl) xpTextEl.textContent = `¡Vuelve Mañana!`;
+      if (streakTextEl) streakTextEl.textContent = `Completado`;
+      
+      const quizCompleteBtn = document.getElementById("quizCompleteBtn");
+      if (quizCompleteBtn) quizCompleteBtn.textContent = "Volver al Inicio";
+      
+      quizSuccessOverlay.classList.remove("hidden");
+    }
+    return;
+  }
+
   state.quiz.active = true;
   state.quiz.currentIndex = 0;
   state.quiz.lives = 3;
   state.quiz.selectedOption = null;
   state.quiz.isChecked = false;
-  state.quiz.questions = generateQuizQuestions();
+  
+  const savedQuizDate = localStorage.getItem('hebrew_quiz_daily_date');
+  if (savedQuizDate === todayStr) {
+    const savedQuestions = localStorage.getItem('hebrew_quiz_daily_questions');
+    if (savedQuestions) {
+      state.quiz.questions = JSON.parse(savedQuestions);
+    } else {
+      const excludedIds = await obtenerPalabrasExcluidasQuiz();
+      state.quiz.questions = generateQuizQuestions(excludedIds);
+      localStorage.setItem('hebrew_quiz_daily_questions', JSON.stringify(state.quiz.questions));
+    }
+  } else {
+    const excludedIds = await obtenerPalabrasExcluidasQuiz();
+    state.quiz.questions = generateQuizQuestions(excludedIds);
+    localStorage.setItem('hebrew_quiz_daily_date', todayStr);
+    localStorage.setItem('hebrew_quiz_daily_questions', JSON.stringify(state.quiz.questions));
+  }
 
-  // Esconder overlays
-  const quizGameOverOverlay = document.getElementById("quizGameOverOverlay");
-  const quizSuccessOverlay = document.getElementById("quizSuccessOverlay");
   if (quizGameOverOverlay) quizGameOverOverlay.classList.add("hidden");
   if (quizSuccessOverlay) quizSuccessOverlay.classList.add("hidden");
 
@@ -22,8 +59,12 @@ export function initQuizMode() {
   updateQuizProgress();
 }
 
-export function generateQuizQuestions() {
-  const shuffledWords = [...WORDS].sort(() => Math.random() - 0.5);
+export function generateQuizQuestions(excludedIds = []) {
+  let availableWords = WORDS.filter(w => !excludedIds.includes(w.id));
+  if (availableWords.length < 5) {
+    availableWords = [...WORDS]; // Fallback if not enough words
+  }
+  const shuffledWords = availableWords.sort(() => Math.random() - 0.5);
   const selectedWords = shuffledWords.slice(0, 5); // 5 preguntas
 
   return selectedWords.map(word => {
@@ -166,14 +207,36 @@ export async function handleCheckAnswer() {
     playSound('click');
     state.quiz.currentIndex++;
     if (state.quiz.currentIndex >= 5) {
-      // Victoria
-      playSound('correct');
-      await registrarActividadCompletada(15);
+      const todayStr = new Date().toDateString();
+      const yaTeniasRachaHoy = state.lastQuizDate === todayStr;
+
+      const fallos = 3 - state.quiz.lives;
+      let xpGanada = 5;
+      if (fallos === 0) xpGanada = 15;
+      else if (fallos === 1) xpGanada = 13;
+      else if (fallos === 2) xpGanada = 10;
+      else if (fallos === 3) xpGanada = 8;
+      else if (fallos >= 4) xpGanada = 5;
+
+      addXP(xpGanada);
+      await registrarActividadCompletada(xpGanada);
       state.quizzesCompleted++;
       saveUserData();
+
+      // Bloquear el quiz por el resto del día
+      localStorage.setItem('hebrew_quiz_completed_date', todayStr);
+
       // Renderizar overlay victoria
       const successOverlay = document.getElementById("quizSuccessOverlay");
-      if (successOverlay) successOverlay.classList.remove("hidden");
+      if (successOverlay) {
+        const xpTextEl = document.getElementById("quizSuccessXp");
+        const streakTextEl = document.getElementById("quizSuccessStreak");
+        if (xpTextEl) xpTextEl.textContent = `+${xpGanada} XP`;
+        if (streakTextEl) {
+          streakTextEl.textContent = yaTeniasRachaHoy ? "+0 Días" : "+1 Día";
+        }
+        successOverlay.classList.remove("hidden");
+      }
     } else {
       renderQuizQuestion();
       updateQuizProgress();
@@ -184,6 +247,8 @@ export async function handleCheckAnswer() {
   state.quiz.isChecked = true;
   const question = state.quiz.questions[state.quiz.currentIndex];
   const isCorrect = state.quiz.selectedOption === question.correctIndex;
+
+  registrarRespuestaEnQuiz(question.word.id, isCorrect);
 
   const btns = document.querySelectorAll(".quiz-option-btn");
   const actionBtn = document.getElementById("quizActionBtn");
@@ -252,4 +317,81 @@ export async function handleCheckAnswer() {
   if (window.lucide) {
     lucide.createIcons();
   }
+}
+
+export async function obtenerPalabrasExcluidasQuiz() {
+  if (!supabaseClient || !usuarioActual) return [];
+  try {
+    const { data, error } = await supabaseClient
+      .from('quiz_progress')
+      .select('word_id')
+      .eq('user_id', usuarioActual.id)
+      .gt('proximo_quiz_permitido', new Date().toISOString());
+
+    if (error) throw error;
+    return data ? data.map(row => Number(row.word_id)) : [];
+  } catch (err) {
+    console.error("Error obteniendo palabras excluidas del quiz:", err);
+    return [];
+  }
+}
+
+export async function registrarRespuestaEnQuiz(wordId, esCorrecta) {
+  if (!supabaseClient || !usuarioActual) return;
+  try {
+    const { data: existingData, error: selectError } = await supabaseClient
+      .from('quiz_progress')
+      .select('aciertos_consecutivos, ultima_vez_correcto')
+      .eq('user_id', usuarioActual.id)
+      .eq('word_id', wordId)
+      .maybeSingle();
+
+    if (selectError) {
+      throw selectError;
+    }
+
+    let aciertos = existingData ? existingData.aciertos_consecutivos || 0 : 0;
+    let proximoQuiz = new Date();
+
+    if (esCorrecta) {
+      aciertos += 1;
+      const diasDeBloqueo = Math.pow(2, aciertos);
+      proximoQuiz.setDate(proximoQuiz.getDate() + diasDeBloqueo);
+    } else {
+      aciertos = 0;
+    }
+
+    const payload = {
+      user_id: usuarioActual.id,
+      word_id: wordId,
+      aciertos_consecutivos: aciertos,
+      ultima_vez_correcto: esCorrecta ? new Date().toISOString() : (existingData ? existingData.ultima_vez_correcto : null),
+      proximo_quiz_permitido: proximoQuiz.toISOString()
+    };
+
+    const { error: upsertError } = await supabaseClient
+      .from('quiz_progress')
+      .upsert(payload, { onConflict: 'user_id, word_id' });
+
+    if (upsertError) throw upsertError;
+
+  } catch (err) {
+    console.error("Error registrando respuesta en quiz:", err);
+  }
+}
+
+export function retryQuizMode() {
+  state.quiz.currentIndex = 0;
+  state.quiz.lives = 3;
+  state.quiz.selectedOption = null;
+  state.quiz.isChecked = false;
+
+  // Esconder overlays
+  const quizGameOverOverlay = document.getElementById("quizGameOverOverlay");
+  const quizSuccessOverlay = document.getElementById("quizSuccessOverlay");
+  if (quizGameOverOverlay) quizGameOverOverlay.classList.add("hidden");
+  if (quizSuccessOverlay) quizSuccessOverlay.classList.add("hidden");
+
+  renderQuizQuestion();
+  updateQuizProgress();
 }

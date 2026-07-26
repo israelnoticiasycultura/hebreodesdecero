@@ -39,7 +39,7 @@ export async function initLearnMode() {
 
       // Obtener todo el progreso del usuario actual
       const { data: allProgress, error } = await supabaseClient
-        .from('user_progress')
+        .from('anki_progress')
         .select('*')
         .eq('user_id', usuarioActual.id);
 
@@ -88,7 +88,7 @@ export async function initLearnMode() {
         if (remainingCount > 0) {
           const allProgressWordIds = new Set(allProgress ? allProgress.map(p => Number(p.word_id)) : []);
 
-          // Filtrar palabras locales nuevas (no registradas en user_progress)
+          // Filtrar palabras locales nuevas (no registradas en anki_progress)
           const newWords = WORDS.filter(w => !allProgressWordIds.has(w.id));
 
           // Ordenar por id secuencial de words.json
@@ -320,7 +320,7 @@ export async function handleLearnResponse(rating) {
 
   try {
     const { data, error } = await supabaseClient
-      .from('user_progress')
+      .from('anki_progress')
       .upsert(payload)
       .select();
 
@@ -340,6 +340,7 @@ export async function handleLearnResponse(rating) {
 
   if (state.flashcards.list.length === 0) {
     playSound('correct');
+    addXP(10);
     await registrarActividadCompletada(10);
     alert("¡Felicidades! Has completado tu sesión de estudio de hoy. +10 XP");
     window.location.hash = "#home";
