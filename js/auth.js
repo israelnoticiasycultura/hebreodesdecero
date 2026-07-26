@@ -1,5 +1,5 @@
 // js/auth.js
-import { state, setUsuarioActual, saveUserData } from './state.js';
+import { state, setUsuarioActual, saveUserData, updateStatsHeader } from './state.js';
 import { updateProfileView, updateHomeView } from './home.js';
 
 // ==========================================
@@ -10,15 +10,41 @@ const supabaseKey = 'sb_publishable_ZM3R9fFL9JY-OK_Lvi9lHw_E00H_Rlj';
 export const supabaseClient = (window.supabase && supabaseUrl && supabaseKey) ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
 
 if (supabaseClient) {
-  supabaseClient.auth.onAuthStateChange((event, session) => {
+  supabaseClient.auth.onAuthStateChange(async (event, session) => {
     if (session) {
       setUsuarioActual(session.user);
       console.log('Usuario autenticado:', session.user.email);
+      await fetchUserStats(session.user.id);
     } else {
       setUsuarioActual(null);
       console.log('Usuario desconectado');
     }
   });
+}
+
+async function fetchUserStats(userId) {
+  try {
+    const { data, error } = await supabaseClient
+      .from('user_stats')
+      .select('experiencia, racha')
+      .eq('user_id', userId)
+      .single();
+
+    if (error && error.code !== 'PGRST116') {
+      console.error('Error obteniendo user_stats:', error);
+      return;
+    }
+
+    if (data) {
+      state.xp = data.experiencia || 0;
+      state.streak = data.racha || 0;
+      updateStatsHeader();
+      // Opcional: sincronizar localStorage con los datos traídos
+      saveUserData();
+    }
+  } catch (err) {
+    console.error('Excepción al obtener user_stats:', err);
+  }
 }
 
 // ==========================================
