@@ -17,7 +17,17 @@ if (supabaseClient) {
       await fetchUserStats(session.user.id);
     } else {
       setUsuarioActual(null);
+      state.clasesCompartidas = 0;
+      state.incCompartidos = 0;
       console.log('Usuario desconectado');
+    }
+
+    try {
+      const { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } = await import('./api.js');
+      await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
+      await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
+    } catch (err) {
+      console.error('Error al actualizar contadores en onAuthStateChange:', err);
     }
   });
 }
@@ -26,7 +36,7 @@ async function fetchUserStats(userId) {
   try {
     const { data, error } = await supabaseClient
       .from('user_stats')
-      .select('experiencia, racha')
+      .select('experiencia, racha, clases_compartidas, inc_compartidos')
       .eq('user_id', userId)
       .single();
 
@@ -38,6 +48,8 @@ async function fetchUserStats(userId) {
     if (data) {
       state.xp = data.experiencia || 0;
       state.streak = data.racha || 0;
+      state.clasesCompartidas = data.clases_compartidas || 0;
+      state.incCompartidos = data.inc_compartidos || 0;
       updateStatsHeader();
       // Opcional: sincronizar localStorage con los datos traídos
       saveUserData();

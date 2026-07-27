@@ -1,6 +1,7 @@
 // js/api.js
 
 import { supabaseClient } from './auth.js';
+import { state, usuarioActual } from './state.js';
 
 export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
 export const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
@@ -31,10 +32,20 @@ export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_U
     const currentCounter = await obtenerContador(counterApiUrl, elementId);
     const el = document.getElementById(elementId);
     if (el && elementId === 'contador-global') {
-      el.textContent = `${currentCounter} verdades difundidas. ¡Ayuda a compartir!`;
+      const userIncShares = state.incCompartidos || 0;
+      if (usuarioActual && userIncShares > 0) {
+        el.innerHTML = `<span class="inline-block">${currentCounter} verdades difundidas</span> <span class="inline-block whitespace-nowrap">• <span class="text-emerald-400 font-bold">¡Tú has aportado ${userIncShares}! 🌟</span></span>`;
+      } else {
+        el.textContent = `${currentCounter} verdades difundidas. ¡Ayuda a compartir!`;
+      }
     }
     if (el && elementId === 'contador-hdc') {
-      el.textContent = `${currentCounter} veces compartidas por amigos del canal!`;
+      const userShares = state.clasesCompartidas || 0;
+      if (usuarioActual && userShares > 0) {
+        el.innerHTML = `<span class="inline-block">${currentCounter} clases compartidas</span> <span class="inline-block whitespace-nowrap">• <span class="text-amber-400 font-bold">¡Tú has aportado ${userShares}! 💫</span></span>`;
+      } else {
+        el.textContent = `${currentCounter} clases compartidas por amigos del canal!`;
+      }
     }
   } catch (error) {
     console.error('Error al obtener contador:', error);

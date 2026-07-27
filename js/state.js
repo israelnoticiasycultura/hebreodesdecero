@@ -50,7 +50,9 @@ export const state = {
 
   // Filtros de videos
   videoFilter: "all",
-  moreVideos: []
+  moreVideos: [],
+  clasesCompartidas: 0,
+  incCompartidos: 0
 };
 
 export let VIDEOS = [];
