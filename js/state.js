@@ -51,8 +51,8 @@ export const state = {
   // Filtros de videos
   videoFilter: "all",
   moreVideos: [],
-  clasesCompartidas: 0,
-  incCompartidos: 0
+  clasesCompartidas: parseInt(localStorage.getItem('hebrew_clases_compartidas')) || 0,
+  incCompartidos: parseInt(localStorage.getItem('hebrew_inc_compartidos')) || 0
 };
 
 export let VIDEOS = [];
@@ -84,6 +84,8 @@ export function saveUserData() {
   localStorage.setItem('hebrew_completed_today', state.completedToday);
   localStorage.setItem('hebrew_username', state.username);
   localStorage.setItem('hebrew_sound_enabled', state.soundEnabled);
+  localStorage.setItem('hebrew_clases_compartidas', state.clasesCompartidas);
+  localStorage.setItem('hebrew_inc_compartidos', state.incCompartidos);
   updateStatsHeader();
 }
 

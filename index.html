@@ -789,6 +789,69 @@
                     </div>
                 </div>
 
+                <!-- Section: Share Stats / Contributions -->
+                <div class="space-y-3">
+                    <h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase font-bold">Tu Aporte y
+                        Difusión</h3>
+                    <div class="bg-slate-900/30 border border-slate-800 p-4 rounded-3xl shadow-md space-y-4">
+                        <div class="flex items-center justify-around">
+                            <!--  (Alef) -->
+                            <div class="flex flex-col items-center text-center space-y-2 w-1/2">
+                                <div class="flex items-center space-x-2">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-purple-900/30 shrink-0 select-none">
+                                        <span class="text-white font-extrabold text-sm font-hebrew">א</span>
+                                    </div>
+                                    <div class="text-left">
+                                        <span
+                                            class="text-[11px] text-slate-400 block font-medium leading-none mb-0.5">Clases
+                                            Compartidas</span>
+                                        <span id="profileStatClasesCompartidas"
+                                            class="text-base font-extrabold text-purple-400">0</span>
+                                    </div>
+                                </div>
+                                <button id="btnShareRandomClass"
+                                    class="text-[10px] text-purple-400 hover:text-purple-300 underline font-medium transition-all text-center max-w-[130px] leading-tight">
+                                    Clic aquí para compartir una clase
+                                </button>
+                            </div>
+
+                            <!-- Vertical Divider -->
+                            <div class="h-16 w-px bg-slate-800/80"></div>
+
+                            <!-- Videos Compartidos (Bandera Israel) -->
+                            <div class="flex flex-col items-center text-center space-y-2 w-1/2">
+                                <div class="flex items-center space-x-2">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-lg select-none shrink-0">
+                                        🇮🇱
+                                    </div>
+                                    <div class="text-left">
+                                        <span
+                                            class="text-[11px] text-slate-400 block font-medium leading-none mb-0.5">Verdades
+                                            difundidas</span>
+                                        <span id="profileStatIncCompartidos"
+                                            class="text-base font-extrabold text-blue-400">0</span>
+                                    </div>
+                                </div>
+                                <button id="btnShareRandomIsrael"
+                                    class="text-[10px] text-blue-400 hover:text-blue-300 underline font-medium transition-all text-center max-w-[130px] leading-tight">
+                                    Clic aquí para compartir una verdad
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Share actions container -->
+                        <div id="profileShareActionsContainer"
+                            class="hidden border-t border-slate-800/60 pt-3 flex flex-col items-center space-y-2">
+                            <span id="profileShareTitle"
+                                class="text-xs font-bold text-slate-300 text-center px-2"></span>
+                            <div id="profileShareButtons" class="flex flex-wrap items-center justify-center gap-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section: Settings -->
                 <div class="space-y-3">
                     <h3 class="text-xs font-extrabold tracking-wider text-slate-500 uppercase">Configuración</h3>

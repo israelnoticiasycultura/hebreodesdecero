@@ -984,7 +984,7 @@ async function loadVideosIsraelNoticias() {
 }
 
 function shareVideo(url, platform) {
-  const shareText = 'Mirá este video que vale la pena compartir:';
+  const shareText = 'Mira este video que vale la pena compartir:';
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(`${shareText} ${url}`);
 

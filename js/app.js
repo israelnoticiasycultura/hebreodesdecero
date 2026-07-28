@@ -1,13 +1,13 @@
 // js/app.js
-import { loadWords, loadVideos, state, saveUserData } from './state.js';
-import { loadVideosIsraelNoticias, handleVideoFilter, closeVideoModal, renderVideos, renderMoreVideos } from './videos.js';
+import { loadWords, loadVideos, state, saveUserData, VIDEOS } from './state.js';
+import { loadVideosIsraelNoticias, handleVideoFilter, closeVideoModal, renderVideos, renderMoreVideos, createShareButtonGroup } from './videos.js';
 import { loadVoices, playSound, speakHebrew } from './audio.js';
 import { handleRoute } from './router.js';
 import { updateHomeView, updateProfileView, handleResetData } from './home.js';
 import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, handleLearnHard } from './flashcards.js';
 import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
-import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
+import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC, incrementarCompartidoUsuario } from './api.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
@@ -241,6 +241,77 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
+  // Vincular eventos del componente Tu Aporte y Difusión
+  const btnShareRandomClass = document.getElementById("btnShareRandomClass");
+  if (btnShareRandomClass) {
+    btnShareRandomClass.onclick = () => {
+      playSound('click');
+      if (!VIDEOS || VIDEOS.length === 0) return;
+      const randomVideo = VIDEOS[Math.floor(Math.random() * VIDEOS.length)];
+      const shareUrl = randomVideo.urlList || randomVideo.url || `https://youtu.be/${randomVideo.id}`;
+
+      const container = document.getElementById("profileShareActionsContainer");
+      const titleEl = document.getElementById("profileShareTitle");
+      const buttonsEl = document.getElementById("profileShareButtons");
+
+      titleEl.textContent = `Compartir Clase: "${randomVideo.title}"`;
+      buttonsEl.innerHTML = "";
+
+      const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, {
+        customText: 'Mira esta clase que vale la pena:'
+      });
+      group.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.clasesCompartidas = (state.clasesCompartidas || 0) + 1;
+          saveUserData();
+          updateProfileView();
+          incrementarCompartidoUsuario('clase');
+        });
+      });
+
+      buttonsEl.appendChild(group);
+      container.classList.remove("hidden");
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    };
+  }
+
+  const btnShareRandomIsrael = document.getElementById("btnShareRandomIsrael");
+  if (btnShareRandomIsrael) {
+    btnShareRandomIsrael.onclick = () => {
+      playSound('click');
+      if (!state.moreVideos || state.moreVideos.length === 0) return;
+      const randomVideo = state.moreVideos[Math.floor(Math.random() * state.moreVideos.length)];
+      const shareUrl = randomVideo.url;
+
+      const container = document.getElementById("profileShareActionsContainer");
+      const titleEl = document.getElementById("profileShareTitle");
+      const buttonsEl = document.getElementById("profileShareButtons");
+
+      titleEl.textContent = `Compartir Verdad sobre Israel: "${randomVideo.title}"`;
+      buttonsEl.innerHTML = "";
+
+      const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_INC);
+      group.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.incCompartidos = (state.incCompartidos || 0) + 1;
+          saveUserData();
+          updateProfileView();
+          incrementarCompartidoUsuario('israel');
+        });
+      });
+
+      buttonsEl.appendChild(group);
+      container.classList.remove("hidden");
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    };
+  }
+
   // Vincular PWA Install Button
   let deferredPrompt = null;
   window.addEventListener('beforeinstallprompt', (e) => {
@@ -279,7 +350,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateHomeView();
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
-  
+
   if (window.lucide) {
     lucide.createIcons();
   }

@@ -49,8 +49,8 @@ export async function loadVideosIsraelNoticias() {
   }
 }
 
-export function shareVideo(url, platform) {
-  const shareText = 'Mirá este video que vale la pena compartir:';
+export function shareVideo(url, platform, customText) {
+  const shareText = customText || 'Mira este video que vale la pena compartir:';
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(`${shareText} ${url}`);
 
@@ -99,7 +99,7 @@ export async function copyVideoUrl(url, button) {
   }
 }
 
-export function createShareButtonGroup(url, counterApiUrl, { includeLabel = false } = {}) {
+export function createShareButtonGroup(url, counterApiUrl, { includeLabel = false, customText = null } = {}) {
   const wrapper = document.createElement('div');
   wrapper.className = 'flex flex-wrap items-center gap-2';
 
@@ -138,10 +138,11 @@ export function createShareButtonGroup(url, counterApiUrl, { includeLabel = fals
       if (shareAction === 'copy') {
         await copyVideoUrl(shareUrl, button);
       } else {
-        shareVideo(shareUrl, shareAction);
+        shareVideo(shareUrl, shareAction, customText);
       }
 
-      await incrementarContadorV1(counterApiUrl);
+      const elementId = (counterApiUrl === COUNTER_API_URL_V1_HDC) ? 'contador-hdc' : 'contador-global';
+      await incrementarContadorV1(counterApiUrl, elementId);
     };
 
     wrapper.appendChild(button);

@@ -6,7 +6,7 @@ import { state, usuarioActual } from './state.js';
 export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
 export const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
 
-export async function obtenerContador(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
+export async function obtenerContador(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = '') {
   try {
     const res = await fetch(counterApiUrl + "/");
     if (!res.ok) throw new Error('Error al cargar contador');
@@ -21,13 +21,21 @@ export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_I
   try {
     const res = await fetch(counterApiUrl + "/up");
     if (!res.ok) throw new Error('Error al incrementar contador');
-    await obtenerContador(counterApiUrl, elementId);
+    await actualizarContadorEnPantalla(counterApiUrl, elementId, true);
   } catch (error) {
     console.error('Error al incrementar contador:', error);
   }
 }
 
-export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
+const lastFetchTimes = {};
+
+export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global', force = false) {
+  const now = Date.now();
+  if (!force && lastFetchTimes[elementId] && (now - lastFetchTimes[elementId] < 3000)) {
+    return;
+  }
+  lastFetchTimes[elementId] = now;
+
   try {
     const currentCounter = await obtenerContador(counterApiUrl, elementId);
     const el = document.getElementById(elementId);
@@ -74,5 +82,28 @@ export async function registrarActividadCompletada(expGanada) {
   } catch (err) {
     console.error('Excepción al registrar actividad:', err);
     return false;
+  }
+}
+
+export async function incrementarCompartidoUsuario(tipo) {
+  if (!supabaseClient || !usuarioActual) return;
+
+  try {
+    const isClass = tipo === 'clase';
+    const column = isClass ? 'clases_compartidas' : 'inc_compartidos';
+    const newValue = isClass ? state.clasesCompartidas : state.incCompartidos;
+
+    const { error } = await supabaseClient
+      .from('user_stats')
+      .update({ [column]: newValue })
+      .eq('user_id', usuarioActual.id);
+
+    if (error) {
+      console.error(`Error de Supabase al actualizar ${column}:`, error);
+    } else {
+      console.log(`Supabase: ${column} actualizado a ${newValue}`);
+    }
+  } catch (err) {
+    console.error('Excepción al actualizar compartido en Supabase:', err);
   }
 }

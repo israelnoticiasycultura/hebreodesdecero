@@ -9,9 +9,9 @@ export function getWordOfTheDay() {
   const diff = today - start;
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
-  
+
   if (WORDS.length === 0) return null;
-  
+
   const index = (dayOfYear + 1) % WORDS.length;
   return WORDS[index];
 }
@@ -102,16 +102,22 @@ export function updateHomeView() {
 export function updateProfileView() {
   const profileStatStreak = document.getElementById("profileStatStreak");
   if (profileStatStreak) profileStatStreak.textContent = state.streak;
-  
+
   const profileStatXp = document.getElementById("profileStatXp");
   if (profileStatXp) profileStatXp.textContent = state.xp;
-  
+
   const profileStatQuizzes = document.getElementById("profileStatQuizzes");
   if (profileStatQuizzes) profileStatQuizzes.textContent = state.quizzesCompleted;
-  
+
+  const profileStatClasesCompartidas = document.getElementById("profileStatClasesCompartidas");
+  if (profileStatClasesCompartidas) profileStatClasesCompartidas.textContent = state.clasesCompartidas || 0;
+
+  const profileStatIncCompartidos = document.getElementById("profileStatIncCompartidos");
+  if (profileStatIncCompartidos) profileStatIncCompartidos.textContent = state.incCompartidos || 0;
+
   const usernameInput = document.getElementById("usernameInput");
   if (usernameInput) usernameInput.value = state.username;
-  
+
   const profileAvatarInitial = document.getElementById("profileAvatarInitial");
   if (profileAvatarInitial) profileAvatarInitial.textContent = state.username.charAt(0).toUpperCase() || "A";
 
