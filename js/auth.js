@@ -19,6 +19,15 @@ if (supabaseClient) {
       setUsuarioActual(null);
       state.clasesCompartidas = 0;
       state.incCompartidos = 0;
+      state.offlineClases = 0;
+      state.offlineInc = 0;
+      saveUserData();
+      try {
+        updateProfileView();
+        updateHomeView();
+      } catch (e) {
+        console.error('Error al actualizar vistas tras logout:', e);
+      }
       console.log('Usuario desconectado');
     }
 
@@ -34,6 +43,7 @@ if (supabaseClient) {
 
 async function fetchUserStats(userId) {
   try {
+    // 1. Obtener estadísticas actuales de Supabase
     const { data, error } = await supabaseClient
       .from('user_stats')
       .select('experiencia, racha, clases_compartidas, inc_compartidos')
@@ -45,17 +55,88 @@ async function fetchUserStats(userId) {
       return;
     }
 
+    let dbClases = 0;
+    let dbInc = 0;
+    let dbXp = 0;
+    let dbStreak = 0;
+
     if (data) {
-      state.xp = data.experiencia || 0;
-      state.streak = data.racha || 0;
-      state.clasesCompartidas = data.clases_compartidas || 0;
-      state.incCompartidos = data.inc_compartidos || 0;
-      updateStatsHeader();
-      // Opcional: sincronizar localStorage con los datos traídos
-      saveUserData();
+      dbXp = data.experiencia || 0;
+      dbStreak = data.racha || 0;
+      dbClases = data.clases_compartidas || 0;
+      dbInc = data.inc_compartidos || 0;
+    }
+
+    // 2. Guardar el progreso offline acumulado específico
+    const offlineClases = state.offlineClases || 0;
+    const offlineInc = state.offlineInc || 0;
+
+    // 3. Sincronizar con Supabase si hay progreso offline acumulado
+    if (offlineClases > 0 || offlineInc > 0) {
+      const nuevoClases = dbClases + offlineClases;
+      const nuevoInc = dbInc + offlineInc;
+
+      if (data) {
+        // Si ya existe la fila, la actualizamos
+        const { error: updateError } = await supabaseClient
+          .from('user_stats')
+          .update({
+            clases_compartidas: nuevoClases,
+            inc_compartidos: nuevoInc
+          })
+          .eq('user_id', userId);
+
+        if (updateError) {
+          console.error('Error al sincronizar estadísticas locales con Supabase:', updateError);
+        } else {
+          console.log(`Sincronización exitosa (UPDATE): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}`);
+          dbClases = nuevoClases;
+          dbInc = nuevoInc;
+          state.offlineClases = 0;
+          state.offlineInc = 0;
+        }
+      } else {
+        // Si no existe la fila, la insertamos
+        const { error: insertError } = await supabaseClient
+          .from('user_stats')
+          .insert({
+            user_id: userId,
+            experiencia: dbXp,
+            racha: dbStreak,
+            clases_compartidas: nuevoClases,
+            inc_compartidos: nuevoInc
+          });
+
+        if (insertError) {
+          console.error('Error al insertar estadísticas locales en Supabase:', insertError);
+        } else {
+          console.log(`Sincronización exitosa (INSERT): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}`);
+          dbClases = nuevoClases;
+          dbInc = nuevoInc;
+          state.offlineClases = 0;
+          state.offlineInc = 0;
+        }
+      }
+    }
+
+    // 4. Actualizar el estado global con los valores consolidados
+    state.xp = dbXp;
+    state.streak = dbStreak;
+    state.clasesCompartidas = dbClases;
+    state.incCompartidos = dbInc;
+
+    updateStatsHeader();
+    saveUserData();
+
+    // Actualizar la vista del perfil
+    try {
+      const { updateProfileView } = await import('./home.js');
+      updateProfileView();
+    } catch (e) {
+      console.error('Error al actualizar vista de perfil:', e);
     }
   } catch (err) {
-    console.error('Excepción al obtener user_stats:', err);
+    console.error('Excepción al obtener/sincronizar user_stats:', err);
   }
 }
 

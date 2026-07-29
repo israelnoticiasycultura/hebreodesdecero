@@ -7,7 +7,7 @@ import { updateHomeView, updateProfileView, handleResetData } from './home.js';
 import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, handleLearnHard } from './flashcards.js';
 import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
-import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC, incrementarCompartidoUsuario } from './api.js';
+import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
@@ -260,14 +260,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, {
         customText: 'Mira esta clase que vale la pena:'
       });
-      group.querySelectorAll('.share-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          state.clasesCompartidas = (state.clasesCompartidas || 0) + 1;
-          saveUserData();
-          updateProfileView();
-          incrementarCompartidoUsuario('clase');
-        });
-      });
 
       buttonsEl.appendChild(group);
       container.classList.remove("hidden");
@@ -294,14 +286,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       buttonsEl.innerHTML = "";
 
       const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_INC);
-      group.querySelectorAll('.share-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          state.incCompartidos = (state.incCompartidos || 0) + 1;
-          saveUserData();
-          updateProfileView();
-          incrementarCompartidoUsuario('israel');
-        });
-      });
 
       buttonsEl.appendChild(group);
       container.classList.remove("hidden");

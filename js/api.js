@@ -1,7 +1,7 @@
 // js/api.js
 
 import { supabaseClient } from './auth.js';
-import { state, usuarioActual } from './state.js';
+import { state, usuarioActual, saveUserData } from './state.js';
 
 export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
 export const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
@@ -21,6 +21,36 @@ export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_I
   try {
     const res = await fetch(counterApiUrl + "/up");
     if (!res.ok) throw new Error('Error al incrementar contador');
+
+    // Sincronizar el compartido del usuario local y en Supabase
+    if (counterApiUrl === COUNTER_API_URL_V1_HDC) {
+      state.clasesCompartidas = (state.clasesCompartidas || 0) + 1;
+      if (!usuarioActual) {
+        state.offlineClases = (state.offlineClases || 0) + 1;
+      }
+      saveUserData();
+      try {
+        const { updateProfileView } = await import('./home.js');
+        updateProfileView();
+      } catch (e) {
+        console.error('Error al actualizar vista de perfil:', e);
+      }
+      await incrementarCompartidoUsuario('clase');
+    } else if (counterApiUrl === COUNTER_API_URL_V1_INC) {
+      state.incCompartidos = (state.incCompartidos || 0) + 1;
+      if (!usuarioActual) {
+        state.offlineInc = (state.offlineInc || 0) + 1;
+      }
+      saveUserData();
+      try {
+        const { updateProfileView } = await import('./home.js');
+        updateProfileView();
+      } catch (e) {
+        console.error('Error al actualizar vista de perfil:', e);
+      }
+      await incrementarCompartidoUsuario('israel');
+    }
+
     await actualizarContadorEnPantalla(counterApiUrl, elementId, true);
   } catch (error) {
     console.error('Error al incrementar contador:', error);
