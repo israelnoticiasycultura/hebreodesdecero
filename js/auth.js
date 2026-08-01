@@ -159,6 +159,8 @@ export function switchAuthTab(tab) {
   const registerForm = document.getElementById('register-form');
   const tabLogin = document.getElementById('tab-login');
   const tabRegister = document.getElementById('tab-register');
+  const authWelcomeDesc = document.getElementById('auth-welcome-desc');
+  const authPromoConsent = document.getElementById('auth-promo-consent');
 
   limpiarMensajes();
 
@@ -167,11 +169,25 @@ export function switchAuthTab(tab) {
     registerForm.classList.add('hidden');
     tabLogin.classList.add('active');
     tabRegister.classList.remove('active');
+
+    if (authWelcomeDesc) {
+      authWelcomeDesc.textContent = "Inicia sesión para acceder a ejercicios y guardar tu progreso.";
+    }
+    if (authPromoConsent) {
+      authPromoConsent.classList.add('hidden');
+    }
   } else {
     loginForm.classList.add('hidden');
     registerForm.classList.remove('hidden');
     tabLogin.classList.remove('active');
     tabRegister.classList.add('active');
+
+    if (authWelcomeDesc) {
+      authWelcomeDesc.innerHTML = "<strong>Regístrate gratis*</strong> para acceder a ejercicios y guardar tu progreso.";
+    }
+    if (authPromoConsent) {
+      authPromoConsent.classList.remove('hidden');
+    }
   }
 }
 

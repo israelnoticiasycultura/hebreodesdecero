@@ -252,7 +252,7 @@ function getWordOfTheDay() {
 function updateHomeView() {
   // Configurar saludo
   const hour = new Date().getHours();
-  let greeting = "¡Shalom, Aprendiz!";
+  let greeting = "¡Shalom, Estudiante!";
   if (hour >= 6 && hour < 12) greeting = "¡Buenos días - בוקר טוב!";
   else if (hour >= 12 && hour < 19) greeting = "¡Buenas tardes - אחר צהריים טובים!";
   else greeting = "¡Buenas noches - ערב טוב!";
@@ -1281,7 +1281,7 @@ function updateProfileView() {
   document.getElementById("profileStatXp").textContent = state.xp;
   document.getElementById("profileStatQuizzes").textContent = state.quizzesCompleted;
   document.getElementById("usernameInput").value = state.username;
-  document.getElementById("profileAvatarInitial").textContent = state.username.charAt(0).toUpperCase() || "A";
+  document.getElementById("profileAvatarInitial").textContent = state.username.charAt(0).toUpperCase() || "E";
 
   // Configs
   document.getElementById("soundToggle").checked = state.soundEnabled;
@@ -1295,7 +1295,7 @@ function handleResetData() {
     state.quizzesCompleted = 0;
     state.lastQuizDate = "";
     state.completedToday = false;
-    state.username = "Aprendiz";
+    state.username = "Estudiante";
     saveUserData();
     updateProfileView();
     updateStatsHeader();
@@ -1506,7 +1506,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     saveUserData();
   };
   document.getElementById("usernameInput").onblur = async (e) => {
-    const newName = e.target.value.trim() || "Aprendiz";
+    const newName = e.target.value.trim() || "Estudiante";
     state.username = newName;
     saveUserData();
     updateProfileView();

@@ -134,6 +134,12 @@
                     <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-purple-400"></i>
                     <span id="headerXp">0</span>
                 </div>
+                <!-- Profile Avatar -->
+                <div id="headerAvatarBtn"
+                    class="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg border border-purple-400/20 cursor-pointer select-none transition-all duration-300 hover:scale-105 active:scale-95"
+                    title="Perfil / Iniciar Sesión">
+                    <span class="text-white font-extrabold text-xs" id="headerAvatarInitial">A</span>
+                </div>
             </div>
         </header>
 
@@ -147,7 +153,6 @@
                     class="relative overflow-hidden rounded-3xl bg-gradient-to-tr from-indigo-950 via-slate-950 to-purple-950 border border-slate-800 p-5 shadow-xl">
                     <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-purple-600/10 rounded-full blur-2xl"></div>
                     <h2 class="text-xl font-bold text-slate-100" id="welcomeGreeting">¡Hola, Estudiante!</h2>
-                    <!-- <p class="text-xs text-slate-400 mt-1">Tu viaje con el idioma hebreo continúa hoy. ¡Que tengas un gran aprendizaje!</p> -->
 
                     <!-- Progress bar -->
                     <div class="mt-4 space-y-1.5">
@@ -604,7 +609,7 @@
                     </div>
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center space-x-1.5">
-                            <input type="text" id="usernameInput" value="Aprendiz"
+                            <input type="text" id="usernameInput" value="Estudiante"
                                 class="bg-transparent border-b border-transparent hover:border-slate-700 focus:border-purple-500 focus:outline-none font-bold text-slate-200 text-base max-w-[140px] truncate transition-all py-0.5"
                                 title="Haga clic para editar su nombre">
                             <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-500 pointer-events-none"></i>
@@ -953,7 +958,18 @@
             <a href="#more"
                 class="nav-link flex flex-col items-center justify-center space-y-1 text-slate-500 hover:text-slate-300 transition-colors w-16"
                 data-tab="screen-more">
-                <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 transition-all">
+                    <polygon points="12,2 21,17 3,17" />
+                    <polygon points="12,22 21,7 3,7" />
+                </svg> -->
+                <svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 transition-all">
+                    <line x1="2" y1="4" x2="22" y2="4" />
+                    <polygon points="12,7.5 18,14.5 6,14.5" />
+                    <polygon points="12,16.5 18,9.5 6,9.5" />
+                    <line x1="2" y1="20" x2="22" y2="20" />
+                </svg>
                 <span class="text-[10px] font-bold tracking-tight">Más</span>
             </a>
         </nav>
@@ -1017,7 +1033,9 @@
             <!-- Mensaje explicativo -->
             <div class="auth-welcome-message">
                 <h2>¡Guarda tu avance! 🚀</h2>
-                <p>Inicia sesión o regístrate gratis para desbloquear tarjetas de vocabulario y ver tu progreso.</p>
+                <p id="auth-welcome-desc">Inicia sesión para acceder a ejercicios y guardar tu progreso.</p>
+                <div id="auth-promo-consent" class="text-[10px] text-slate-400 mt-3 leading-relaxed hidden">* Al
+                    registrarte, aceptas recibir ocasionalmente novedades de Israel Noticias y Cultura.</div>
             </div>
 
             <!-- Pestañas para alternar -->

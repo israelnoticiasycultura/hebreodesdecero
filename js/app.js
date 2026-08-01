@@ -1,5 +1,5 @@
 // js/app.js
-import { loadWords, loadVideos, state, saveUserData, VIDEOS } from './state.js';
+import { loadWords, loadVideos, state, saveUserData, VIDEOS, usuarioActual } from './state.js';
 import { loadVideosIsraelNoticias, handleVideoFilter, closeVideoModal, renderVideos, renderMoreVideos, createShareButtonGroup } from './videos.js';
 import { loadVoices, playSound, speakHebrew } from './audio.js';
 import { handleRoute } from './router.js';
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const usernameInput = document.getElementById("usernameInput");
   if (usernameInput) {
     usernameInput.onblur = async (e) => {
-      const newName = e.target.value.trim() || "Aprendiz";
+      const newName = e.target.value.trim() || "Estudiante";
       state.username = newName;
       saveUserData();
       updateProfileView();
@@ -238,6 +238,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (resetDataBtn) {
     resetDataBtn.onclick = () => {
       handleResetData();
+    };
+  }
+
+  // Vincular click del Avatar en Header
+  const headerAvatarBtn = document.getElementById("headerAvatarBtn");
+  if (headerAvatarBtn) {
+    headerAvatarBtn.onclick = () => {
+      playSound('click');
+      if (usuarioActual) {
+        window.location.hash = "#profile";
+      } else {
+        if (window.abrirModal) {
+          window.abrirModal();
+        }
+      }
     };
   }
 
@@ -332,6 +347,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Renderizar Inicio por defecto
   handleRoute();
   updateHomeView();
+  updateProfileView();
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
 

@@ -1702,10 +1702,13 @@
   },
   {
     "id": 215,
-    "hebrew": "מֶלְצַר",
-    "spanish": "Camarero / Mesero",
-    "category": "Profesiones",
-    "emoji": "🤵"
+    "hebrew": "מָה נִשְׁמָע?",
+    "spanish": "¿Qué tal? / ¿Qué se cuenta? / ¿Cómo estás?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
   },
   {
     "id": 216,
@@ -2097,6 +2100,96 @@
     "emoji": "🌙",
     "videos": [
       "qJk-cWi3dAA"
+    ]
+  },
+  {
+    "id": 266,
+    "hebrew": "מָה הָעִנְיָנִים?",
+    "spanish": "¿Cómo están los asuntos?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 267,
+    "hebrew": "מָה חָדָשׁ?",
+    "spanish": "¿Qué hay de nuevo?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 268,
+    "hebrew": "מה קורה",
+    "spanish": "¿Qué pasa?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 269,
+    "hebrew": "מָה הַמַצָב?",
+    "spanish": "¿Cómo está la situación?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 270,
+    "hebrew": "אֵיךְ הוֹלֵךְ?",
+    "spanish": "¿Cómo va?",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 271,
+    "hebrew": "אֵיךְ אַתָּה?",
+    "spanish": "¿Cómo estás tú? (M)",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 272,
+    "hebrew": "אֵיךְ אַתְּ?",
+    "spanish": "¿Cómo estás tú? (F)",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 273,
+    "hebrew": "אֵיךְ אַתֶּם?",
+    "spanish": "¿Cómo están ustedes? (M)",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
+    ]
+  },
+  {
+    "id": 274,
+    "hebrew": "אֵיךְ אַתֶּן?",
+    "spanish": "¿Cómo están ustedes? (F)",
+    "category": "Saludos",
+    "emoji": "👋",
+    "videos": [
+      "9EmxrJY9GWk"
     ]
   }
 ]

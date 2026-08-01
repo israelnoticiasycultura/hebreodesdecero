@@ -19,7 +19,7 @@ export function getWordOfTheDay() {
 export function updateHomeView() {
   // Configurar saludo
   const hour = new Date().getHours();
-  let greeting = "¡Shalom, Aprendiz!";
+  let greeting = "¡Shalom, Estudiante!";
   if (hour >= 6 && hour < 12) greeting = "¡Buenos días - בוקר טוב!";
   else if (hour >= 12 && hour < 19) greeting = "¡Buenas tardes - אחר צהריים טובים!";
   else greeting = "¡Buenas noches - ערב טוב!";
@@ -119,7 +119,10 @@ export function updateProfileView() {
   if (usernameInput) usernameInput.value = state.username;
 
   const profileAvatarInitial = document.getElementById("profileAvatarInitial");
-  if (profileAvatarInitial) profileAvatarInitial.textContent = state.username.charAt(0).toUpperCase() || "A";
+  if (profileAvatarInitial) profileAvatarInitial.textContent = state.username.charAt(0).toUpperCase() || "E";
+
+  const headerAvatarInitial = document.getElementById("headerAvatarInitial");
+  if (headerAvatarInitial) headerAvatarInitial.textContent = state.username.charAt(0).toUpperCase() || "E";
 
   // Configs
   const soundToggle = document.getElementById("soundToggle");
@@ -134,7 +137,7 @@ export function handleResetData() {
     state.quizzesCompleted = 0;
     state.lastQuizDate = "";
     state.completedToday = false;
-    state.username = "Aprendiz";
+    state.username = "Estudiante";
     saveUserData();
     updateProfileView();
     updateHomeView();
