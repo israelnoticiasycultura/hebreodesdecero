@@ -893,6 +893,37 @@
                             </label>
                         </div>
 
+                        <!-- Recordatorio Estudio switch -->
+                        <div class="flex items-center justify-between py-3 px-3">
+                            <div class="flex items-center space-x-2.5">
+                                <i data-lucide="bell" class="w-4.5 h-4.5 text-purple-400"></i>
+                                <span class="text-slate-300">Recordatorios de estudio</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer select-none">
+                                <input type="checkbox" id="notificationToggle" class="sr-only peer">
+                                <div
+                                    class="w-10 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600 peer-checked:after:bg-white">
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Hora diaria o Intervalo de recordatorio -->
+                        <div id="notificationSettingsGroup" class="flex flex-col py-3 px-3 space-y-3 hidden">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-medium">Hora diaria de aviso</span>
+                                <input type="time" id="notificationTimeInput" value="20:00" class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-medium">Recordar tras inactividad</span>
+                                <select id="notificationIntervalSelect" class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
+                                    <option value="12">12 horas</option>
+                                    <option value="24" selected>24 horas</option>
+                                    <option value="48">48 horas</option>
+                                    <option value="72">72 horas</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- Voices list setting (TTS voice option selector) 
                         <div class="flex flex-col py-3 px-3 space-y-2">
                             <div class="flex items-center space-x-2.5">

@@ -54,7 +54,11 @@ export const state = {
   clasesCompartidas: parseInt(localStorage.getItem('hebrew_clases_compartidas')) || 0,
   incCompartidos: parseInt(localStorage.getItem('hebrew_inc_compartidos')) || 0,
   offlineClases: parseInt(localStorage.getItem('hebrew_offline_clases_compartidas')) || 0,
-  offlineInc: parseInt(localStorage.getItem('hebrew_offline_inc_compartidos')) || 0
+  offlineInc: parseInt(localStorage.getItem('hebrew_offline_inc_compartidos')) || 0,
+  ultimaConexion: localStorage.getItem('hebrew_ultima_conexion') || new Date().toISOString(),
+  recordatorioActivo: localStorage.getItem('hebrew_recordatorio_activo') === "true",
+  recordatorioHora: localStorage.getItem('hebrew_recordatorio_hora') || "20:00",
+  recordatorioIntervalo: parseInt(localStorage.getItem('hebrew_recordatorio_intervalo')) || 24
 };
 
 export let VIDEOS = [];
@@ -90,6 +94,10 @@ export function saveUserData() {
   localStorage.setItem('hebrew_inc_compartidos', state.incCompartidos);
   localStorage.setItem('hebrew_offline_clases_compartidas', state.offlineClases);
   localStorage.setItem('hebrew_offline_inc_compartidos', state.offlineInc);
+  localStorage.setItem('hebrew_ultima_conexion', state.ultimaConexion);
+  localStorage.setItem('hebrew_recordatorio_activo', state.recordatorioActivo);
+  localStorage.setItem('hebrew_recordatorio_hora', state.recordatorioHora);
+  localStorage.setItem('hebrew_recordatorio_intervalo', state.recordatorioIntervalo);
   updateStatsHeader();
 }
 

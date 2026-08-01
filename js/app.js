@@ -8,6 +8,7 @@ import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, han
 import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
 import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
+import { initNotifications, solicitarPermisoNotificaciones, guardarConfiguracionLocal } from './notifications.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
@@ -197,10 +198,53 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Vincular eventos de configuración Perfil
   const soundToggle = document.getElementById("soundToggle");
   if (soundToggle) {
+    soundToggle.checked = state.soundEnabled;
     soundToggle.onchange = (e) => {
       state.soundEnabled = e.target.checked;
       saveUserData();
     };
+  }
+
+  // Vincular eventos de Notificaciones y Recordatorios de estudio
+  const notificationToggle = document.getElementById("notificationToggle");
+  const notificationSettingsGroup = document.getElementById("notificationSettingsGroup");
+  const notificationTimeInput = document.getElementById("notificationTimeInput");
+  const notificationIntervalSelect = document.getElementById("notificationIntervalSelect");
+
+  if (notificationToggle && notificationSettingsGroup && notificationTimeInput && notificationIntervalSelect) {
+    // Establecer valores iniciales basados en el estado
+    notificationToggle.checked = state.recordatorioActivo;
+    notificationTimeInput.value = state.recordatorioHora;
+    notificationIntervalSelect.value = state.recordatorioIntervalo;
+
+    if (state.recordatorioActivo) {
+      notificationSettingsGroup.classList.remove("hidden");
+    } else {
+      notificationSettingsGroup.classList.add("hidden");
+    }
+
+    const guardarCambiosRecordatorio = async () => {
+      const activo = notificationToggle.checked;
+      const hora = notificationTimeInput.value;
+      const intervalo = parseInt(notificationIntervalSelect.value);
+
+      if (activo) {
+        notificationSettingsGroup.classList.remove("hidden");
+        // Solicitar permiso nativo de notificaciones al navegador
+        const permiso = await solicitarPermisoNotificaciones();
+        if (!permiso) {
+          console.warn("Permiso de notificaciones de navegador no otorgado.");
+        }
+      } else {
+        notificationSettingsGroup.classList.add("hidden");
+      }
+
+      guardarConfiguracionLocal(activo, hora, intervalo);
+    };
+
+    notificationToggle.onchange = guardarCambiosRecordatorio;
+    notificationTimeInput.onchange = guardarCambiosRecordatorio;
+    notificationIntervalSelect.onchange = guardarCambiosRecordatorio;
   }
 
   const usernameInput = document.getElementById("usernameInput");
@@ -351,7 +395,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
   await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
 
+  // Inicializar motor de notificaciones
+  initNotifications();
+
   if (window.lucide) {
     lucide.createIcons();
   }
 });
+

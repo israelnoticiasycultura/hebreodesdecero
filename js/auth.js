@@ -1,5 +1,5 @@
 // js/auth.js
-import { state, setUsuarioActual, saveUserData, updateStatsHeader } from './state.js';
+import { state, usuarioActual, setUsuarioActual, saveUserData, updateStatsHeader } from './state.js';
 import { updateProfileView, updateHomeView } from './home.js';
 
 // ==========================================
@@ -43,10 +43,10 @@ if (supabaseClient) {
 
 async function fetchUserStats(userId) {
   try {
-    // 1. Obtener estadísticas actuales de Supabase
+    // 1. Obtener estadísticas actuales del usuario en Supabase
     const { data, error } = await supabaseClient
       .from('user_stats')
-      .select('experiencia, racha, clases_compartidas, inc_compartidos')
+      .select('experiencia, racha, clases_compartidas, inc_compartidos, ultima_conexion, recordatorio_activo, hora_recordatorio, intervalo_horas')
       .eq('user_id', userId)
       .single();
 
@@ -57,33 +57,63 @@ async function fetchUserStats(userId) {
 
     let dbClases = 0;
     let dbInc = 0;
-    let dbXp = 0;
-    let dbStreak = 0;
+    let dbXp = state.xp || 0;
+    let dbStreak = state.streak || 0;
+    let dbUltimaConexion = state.ultimaConexion;
+    let dbRecordatorioActivo = state.recordatorioActivo;
+    let dbRecordatorioHora = state.recordatorioHora;
+    let dbRecordatorioIntervalo = state.recordatorioIntervalo;
+
+    const recordatorioModificadoLocalmente = localStorage.getItem('hebrew_recordatorio_modificado_localmente') === 'true';
 
     if (data) {
       dbXp = data.experiencia || 0;
       dbStreak = data.racha || 0;
       dbClases = data.clases_compartidas || 0;
       dbInc = data.inc_compartidos || 0;
+      if (data.ultima_conexion) dbUltimaConexion = data.ultima_conexion;
+
+      if (recordatorioModificadoLocalmente) {
+        // Si fue modificado localmente, prevalecen los valores locales para subirlos
+        dbRecordatorioActivo = state.recordatorioActivo;
+        dbRecordatorioHora = state.recordatorioHora;
+        dbRecordatorioIntervalo = state.recordatorioIntervalo;
+      } else {
+        // Si no fue modificado localmente, nos traemos lo que haya en la base de datos
+        if (data.recordatorio_activo !== undefined && data.recordatorio_activo !== null) {
+          dbRecordatorioActivo = data.recordatorio_activo;
+        }
+        if (data.hora_recordatorio) dbRecordatorioHora = data.hora_recordatorio;
+        if (data.intervalo_horas !== undefined && data.intervalo_horas !== null) {
+          dbRecordatorioIntervalo = data.intervalo_horas;
+        }
+      }
     }
 
     // 2. Guardar el progreso offline acumulado específico
     const offlineClases = state.offlineClases || 0;
     const offlineInc = state.offlineInc || 0;
 
-    // 3. Sincronizar con Supabase si hay progreso offline acumulado
-    if (offlineClases > 0 || offlineInc > 0) {
+    // 3. Sincronizar con Supabase si hay progreso offline acumulado, si se modificaron recordatorios localmente o si no existe la fila
+    if (offlineClases > 0 || offlineInc > 0 || recordatorioModificadoLocalmente || !data) {
       const nuevoClases = dbClases + offlineClases;
       const nuevoInc = dbInc + offlineInc;
 
       if (data) {
         // Si ya existe la fila, la actualizamos
+        const updatePayload = {
+          clases_compartidas: nuevoClases,
+          inc_compartidos: nuevoInc
+        };
+        if (recordatorioModificadoLocalmente) {
+          updatePayload.recordatorio_activo = dbRecordatorioActivo;
+          updatePayload.hora_recordatorio = dbRecordatorioHora;
+          updatePayload.intervalo_horas = dbRecordatorioIntervalo;
+        }
+
         const { error: updateError } = await supabaseClient
           .from('user_stats')
-          .update({
-            clases_compartidas: nuevoClases,
-            inc_compartidos: nuevoInc
-          })
+          .update(updatePayload)
           .eq('user_id', userId);
 
         if (updateError) {
@@ -94,6 +124,9 @@ async function fetchUserStats(userId) {
           dbInc = nuevoInc;
           state.offlineClases = 0;
           state.offlineInc = 0;
+          if (recordatorioModificadoLocalmente) {
+            localStorage.removeItem('hebrew_recordatorio_modificado_localmente');
+          }
         }
       } else {
         // Si no existe la fila, la insertamos
@@ -104,7 +137,11 @@ async function fetchUserStats(userId) {
             experiencia: dbXp,
             racha: dbStreak,
             clases_compartidas: nuevoClases,
-            inc_compartidos: nuevoInc
+            inc_compartidos: nuevoInc,
+            recordatorio_activo: dbRecordatorioActivo,
+            hora_recordatorio: dbRecordatorioHora,
+            intervalo_horas: dbRecordatorioIntervalo,
+            ultima_conexion: new Date().toISOString()
           });
 
         if (insertError) {
@@ -115,6 +152,7 @@ async function fetchUserStats(userId) {
           dbInc = nuevoInc;
           state.offlineClases = 0;
           state.offlineInc = 0;
+          localStorage.removeItem('hebrew_recordatorio_modificado_localmente');
         }
       }
     }
@@ -124,9 +162,18 @@ async function fetchUserStats(userId) {
     state.streak = dbStreak;
     state.clasesCompartidas = dbClases;
     state.incCompartidos = dbInc;
+    state.ultimaConexion = dbUltimaConexion;
+    state.recordatorioActivo = dbRecordatorioActivo;
+    state.recordatorioHora = dbRecordatorioHora;
+    state.recordatorioIntervalo = dbRecordatorioIntervalo;
 
     updateStatsHeader();
     saveUserData();
+
+    // Actualizar última conexión ahora que se conectó exitosamente
+    setTimeout(() => {
+      actualizarUltimaConexion();
+    }, 1000);
 
     // Actualizar la vista del perfil
     try {
@@ -137,6 +184,52 @@ async function fetchUserStats(userId) {
     }
   } catch (err) {
     console.error('Excepción al obtener/sincronizar user_stats:', err);
+  }
+}
+
+export async function actualizarUltimaConexion() {
+  const ahora = new Date().toISOString();
+  state.ultimaConexion = ahora;
+  saveUserData();
+
+  if (supabaseClient && usuarioActual) {
+    try {
+      await supabaseClient
+        .from('user_stats')
+        .update({ ultima_conexion: ahora })
+        .eq('user_id', usuarioActual.id);
+    } catch (err) {
+      console.warn("No se pudo actualizar ultima_conexion en Supabase (puede faltar la columna):", err);
+    }
+  }
+}
+
+export async function guardarConfigRecordatorio(activo, hora, intervalo) {
+  state.recordatorioActivo = activo;
+  state.recordatorioHora = hora;
+  state.recordatorioIntervalo = intervalo;
+  saveUserData();
+
+  if (supabaseClient && usuarioActual) {
+    try {
+      const { error } = await supabaseClient
+        .from('user_stats')
+        .update({
+          recordatorio_activo: activo,
+          hora_recordatorio: hora,
+          intervalo_horas: intervalo
+        })
+        .eq('user_id', usuarioActual.id);
+
+      if (error) {
+        console.error("Error al actualizar la configuración de recordatorios en Supabase:", error);
+      }
+    } catch (err) {
+      console.warn("Excepción al guardar la configuración de recordatorios en Supabase:", err);
+    }
+  } else {
+    // Si no está logueado el usuario, guardar localmente indicando modificación local
+    localStorage.setItem('hebrew_recordatorio_modificado_localmente', 'true');
   }
 }
 

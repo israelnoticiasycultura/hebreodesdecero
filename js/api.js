@@ -1,6 +1,6 @@
 // js/api.js
 
-import { supabaseClient } from './auth.js';
+import { supabaseClient, actualizarUltimaConexion } from './auth.js';
 import { state, usuarioActual, saveUserData } from './state.js';
 
 export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
@@ -95,6 +95,10 @@ export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_U
 }
 
 export async function registrarActividadCompletada(expGanada) {
+  // Siempre actualizar la fecha localmente
+  state.ultimaConexion = new Date().toISOString();
+  saveUserData();
+
   if (!supabaseClient) return false;
 
   try {
@@ -108,6 +112,10 @@ export async function registrarActividadCompletada(expGanada) {
     }
 
     console.log(`Actividad completada. +${expGanada} XP enviados a Supabase.`);
+    
+    // Sincronizar última conexión en Supabase
+    await actualizarUltimaConexion();
+
     return true;
   } catch (err) {
     console.error('Excepción al registrar actividad:', err);
