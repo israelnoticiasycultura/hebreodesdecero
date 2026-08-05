@@ -1,3 +1,36 @@
+// Importar SDKs de Firebase compatibles con Service Worker
+importScripts('https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js');
+
+// Configuración de Firebase (Reemplazar con tus credenciales reales)
+const firebaseConfig = {
+  apiKey: "AIzaSyB-avxGifa96vRZTm5dLow2JqyWfKJ8ZkU",
+  authDomain: "hebreo-desde-cero.firebaseapp.com",
+  projectId: "hebreo-desde-cero",
+  storageBucket: "hebreo-desde-cero.firebasestorage.app",
+  messagingSenderId: "794941611934",
+  appId: "1:794941611934:web:376846397ecb24f987808f",
+  measurementId: "G-TTYPWY1561"
+};
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+// Configurar el recibo de notificaciones en segundo plano
+messaging.onBackgroundMessage((payload) => {
+  console.log('[firebase-messaging-sw.js] Notificación recibida en segundo plano:', payload);
+  const notificationTitle = payload.notification?.title || '¡Hora de estudiar Hebreo! 🌟';
+  const notificationOptions = {
+    body: payload.notification?.body || 'Es momento de repasar tus flashcards y completar tu práctica diaria.',
+    icon: payload.notification?.icon || 'assets/icon-192.png',
+    badge: payload.notification?.badge || 'assets/icon-192.png',
+    data: payload.data
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
 const CACHE_NAME = 'hebreo-desde-cero-cache-v5';
 const ASSETS_TO_CACHE = [
   './',
@@ -73,9 +106,9 @@ self.addEventListener('fetch', (event) => {
             }
 
             // Guardar dinámicamente en caché recursos cargados del mismo origen o fuentes de Google
-            const shouldCache = event.request.url.startsWith(self.location.origin) || 
-                                event.request.url.includes('fonts.googleapis.com') || 
-                                event.request.url.includes('fonts.gstatic.com');
+            const shouldCache = event.request.url.startsWith(self.location.origin) ||
+              event.request.url.includes('fonts.googleapis.com') ||
+              event.request.url.includes('fonts.gstatic.com');
 
             if (shouldCache) {
               const responseToCache = networkResponse.clone();

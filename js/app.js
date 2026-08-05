@@ -8,7 +8,7 @@ import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, han
 import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
 import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
-import { initNotifications, solicitarPermisoNotificaciones, guardarConfiguracionLocal } from './notifications.js';
+import { initNotifications, inicializarWebPush, desactivarWebPush, guardarConfiguracionLocal } from './notifications.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
@@ -223,28 +223,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       notificationSettingsGroup.classList.add("hidden");
     }
 
-    const guardarCambiosRecordatorio = async () => {
+    const guardarCambiosRecordatorio = async (e) => {
       const activo = notificationToggle.checked;
       const hora = notificationTimeInput.value;
       const intervalo = parseInt(notificationIntervalSelect.value);
 
-      if (activo) {
-        notificationSettingsGroup.classList.remove("hidden");
-        // Solicitar permiso nativo de notificaciones al navegador
-        const permiso = await solicitarPermisoNotificaciones();
-        if (!permiso) {
-          console.warn("Permiso de notificaciones de navegador no otorgado.");
+      if (e && e.target === notificationToggle) {
+        if (activo) {
+          notificationSettingsGroup.classList.remove("hidden");
+          const token = await inicializarWebPush();
+          if (!token) {
+            notificationToggle.checked = false;
+            notificationSettingsGroup.classList.add("hidden");
+            return;
+          }
+        } else {
+          notificationSettingsGroup.classList.add("hidden");
+          await desactivarWebPush();
+          return;
         }
-      } else {
-        notificationSettingsGroup.classList.add("hidden");
       }
 
       guardarConfiguracionLocal(activo, hora, intervalo);
     };
 
-    notificationToggle.onchange = guardarCambiosRecordatorio;
-    notificationTimeInput.onchange = guardarCambiosRecordatorio;
-    notificationIntervalSelect.onchange = guardarCambiosRecordatorio;
+    notificationToggle.onchange = (e) => guardarCambiosRecordatorio(e);
+    notificationTimeInput.onchange = (e) => guardarCambiosRecordatorio(e);
+    notificationIntervalSelect.onchange = (e) => guardarCambiosRecordatorio(e);
   }
 
   const usernameInput = document.getElementById("usernameInput");

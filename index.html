@@ -911,11 +911,13 @@
                         <div id="notificationSettingsGroup" class="flex flex-col py-3 px-3 space-y-3 hidden">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-slate-400 font-medium">Hora diaria de aviso</span>
-                                <input type="time" id="notificationTimeInput" value="20:00" class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
+                                <input type="time" id="notificationTimeInput" value="20:00"
+                                    class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-slate-400 font-medium">Recordar tras inactividad</span>
-                                <select id="notificationIntervalSelect" class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
+                                <select id="notificationIntervalSelect"
+                                    class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
                                     <option value="12">12 horas</option>
                                     <option value="24" selected>24 horas</option>
                                     <option value="48">48 horas</option>
@@ -1050,7 +1052,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+                navigator.serviceWorker.register('firebase-messaging-sw.js')
                     .then(reg => console.log('Service Worker registrado con éxito', reg))
                     .catch(err => console.error('Error al registrar Service Worker', err));
             });
