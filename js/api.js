@@ -3,27 +3,37 @@
 import { supabaseClient, actualizarUltimaConexion } from './auth.js';
 import { state, usuarioActual, saveUserData } from './state.js';
 
-export const COUNTER_API_URL_V1_INC = "https://api.counterapi.dev/v1/desmitifica/compartir";
-export const COUNTER_API_URL_V1_HDC = "https://api.counterapi.dev/v1/desmitifica/compartirhdc";
+export const WORKER_URL_HDC = "https://hdc.salva1uno1.workers.dev";
+export const WORKER_URL_INC = "https://inc.salva1uno1.workers.dev";
 
-export async function obtenerContador(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = '') {
+export async function obtenerContador(counterUrl = WORKER_URL_INC, elementId = '') {
   try {
-    const res = await fetch(counterApiUrl + "/");
-    if (!res.ok) throw new Error('Error al cargar contador');
+    const res = await fetch(counterUrl);
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`HTTP ${res.status} ${res.statusText}: ${body}`);
+    }
     const data = await res.json();
-    return data.count || 0;
+    if (counterUrl === WORKER_URL_INC) {
+      return data.clicks ?? 1000;
+    }
+    return data.clicks ?? 0;
   } catch (error) {
     console.error('Error al obtener contador:', error);
+    return counterUrl === WORKER_URL_INC ? 1000 : 0;
   }
 }
 
-export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global') {
+export async function incrementarContadorV1(counterUrl = WORKER_URL_INC, elementId = 'contador-global') {
   try {
-    const res = await fetch(counterApiUrl + "/up");
-    if (!res.ok) throw new Error('Error al incrementar contador');
+    const res = await fetch(counterUrl, { method: "POST" });
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`HTTP ${res.status} ${res.statusText}: ${body}`);
+    }
 
     // Sincronizar el compartido del usuario local y en Supabase
-    if (counterApiUrl === COUNTER_API_URL_V1_HDC) {
+    if (counterUrl === WORKER_URL_HDC) {
       state.clasesCompartidas = (state.clasesCompartidas || 0) + 1;
       if (!usuarioActual) {
         state.offlineClases = (state.offlineClases || 0) + 1;
@@ -36,7 +46,7 @@ export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_I
         console.error('Error al actualizar vista de perfil:', e);
       }
       await incrementarCompartidoUsuario('clase');
-    } else if (counterApiUrl === COUNTER_API_URL_V1_INC) {
+    } else if (counterUrl === WORKER_URL_INC) {
       state.incCompartidos = (state.incCompartidos || 0) + 1;
       if (!usuarioActual) {
         state.offlineInc = (state.offlineInc || 0) + 1;
@@ -51,7 +61,7 @@ export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_I
       await incrementarCompartidoUsuario('israel');
     }
 
-    await actualizarContadorEnPantalla(counterApiUrl, elementId, true);
+    await actualizarContadorEnPantalla(counterUrl, elementId, true);
   } catch (error) {
     console.error('Error al incrementar contador:', error);
   }
@@ -59,7 +69,7 @@ export async function incrementarContadorV1(counterApiUrl = COUNTER_API_URL_V1_I
 
 const lastFetchTimes = {};
 
-export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_URL_V1_INC, elementId = 'contador-global', force = false) {
+export async function actualizarContadorEnPantalla(counterUrl = WORKER_URL_INC, elementId = 'contador-global', force = false) {
   const now = Date.now();
   if (!force && lastFetchTimes[elementId] && (now - lastFetchTimes[elementId] < 3000)) {
     return;
@@ -67,7 +77,7 @@ export async function actualizarContadorEnPantalla(counterApiUrl = COUNTER_API_U
   lastFetchTimes[elementId] = now;
 
   try {
-    const currentCounter = await obtenerContador(counterApiUrl, elementId);
+    const currentCounter = await obtenerContador(counterUrl, elementId);
     const el = document.getElementById(elementId);
     if (el && elementId === 'contador-global') {
       const userIncShares = state.incCompartidos || 0;
@@ -112,7 +122,7 @@ export async function registrarActividadCompletada(expGanada) {
     }
 
     console.log(`Actividad completada. +${expGanada} XP enviados a Supabase.`);
-    
+
     // Sincronizar última conexión en Supabase
     await actualizarUltimaConexion();
 

@@ -7,7 +7,7 @@ import { updateHomeView, updateProfileView, handleResetData } from './home.js';
 import { setFlashcardTab, handleLearnNext, handleLearnEasy, handleLearnGood, handleLearnHard } from './flashcards.js';
 import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } from './quiz.js';
 import { supabaseClient, cerrarModal } from './auth.js';
-import { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } from './api.js';
+import { actualizarContadorEnPantalla, WORKER_URL_HDC, WORKER_URL_INC } from './api.js';
 import { initNotifications, inicializarWebPush, desactivarWebPush, guardarConfiguracionLocal } from './notifications.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       titleEl.textContent = `Compartir Clase: "${randomVideo.title}"`;
       buttonsEl.innerHTML = "";
 
-      const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, {
+      const group = createShareButtonGroup(shareUrl, WORKER_URL_HDC, {
         customText: 'Mira esta clase que vale la pena:'
       });
 
@@ -349,7 +349,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       titleEl.textContent = `Compartir Verdad sobre Israel: "${randomVideo.title}"`;
       buttonsEl.innerHTML = "";
 
-      const group = createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_INC);
+      const group = createShareButtonGroup(shareUrl, WORKER_URL_INC);
 
       buttonsEl.appendChild(group);
       container.classList.remove("hidden");
@@ -397,8 +397,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   handleRoute();
   updateHomeView();
   updateProfileView();
-  await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc');
-  await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global');
+  await actualizarContadorEnPantalla(WORKER_URL_HDC, 'contador-hdc');
+  await actualizarContadorEnPantalla(WORKER_URL_INC, 'contador-global');
 
   // Inicializar motor de notificaciones
   initNotifications();

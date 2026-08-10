@@ -1,7 +1,7 @@
 // js/videos.js
 import { state, VIDEOS } from './state.js';
 import { playSound } from './audio.js';
-import { incrementarContadorV1, COUNTER_API_URL_V1_INC, COUNTER_API_URL_V1_HDC } from './api.js';
+import { incrementarContadorV1, WORKER_URL_INC, WORKER_URL_HDC } from './api.js';
 
 export function extractYouTubeVideoId(url) {
   if (!url) return null;
@@ -99,7 +99,7 @@ export async function copyVideoUrl(url, button) {
   }
 }
 
-export function createShareButtonGroup(url, counterApiUrl, { includeLabel = false, customText = null } = {}) {
+export function createShareButtonGroup(url, counterUrl, { includeLabel = false, customText = null } = {}) {
   const wrapper = document.createElement('div');
   wrapper.className = 'flex flex-wrap items-center gap-2';
 
@@ -141,8 +141,8 @@ export function createShareButtonGroup(url, counterApiUrl, { includeLabel = fals
         shareVideo(shareUrl, shareAction, customText);
       }
 
-      const elementId = (counterApiUrl === COUNTER_API_URL_V1_HDC) ? 'contador-hdc' : 'contador-global';
-      await incrementarContadorV1(counterApiUrl, elementId);
+      const elementId = (counterUrl === WORKER_URL_HDC) ? 'contador-hdc' : 'contador-global';
+      await incrementarContadorV1(counterUrl, elementId);
     };
 
     wrapper.appendChild(button);
@@ -225,7 +225,7 @@ export function renderMoreVideos() {
           shareVideo(url, action);
         }
 
-        await incrementarContadorV1(COUNTER_API_URL_V1_INC);
+        await incrementarContadorV1(WORKER_URL_INC);
       };
     });
 
@@ -277,7 +277,7 @@ export function renderVideos() {
     `;
 
     const shareContainer = card.querySelector('.video-share-actions');
-    shareContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC, { includeLabel: true }));
+    shareContainer.appendChild(createShareButtonGroup(shareUrl, WORKER_URL_HDC, { includeLabel: true }));
 
     card.onclick = () => {
       openVideoModal(video.id, video.title, shareUrl);
@@ -316,7 +316,7 @@ export function openVideoModal(videoId, title, shareUrl = `https://youtu.be/${vi
 
   if (shareActionsContainer) {
     shareActionsContainer.innerHTML = '';
-    shareActionsContainer.appendChild(createShareButtonGroup(shareUrl, COUNTER_API_URL_V1_HDC));
+    shareActionsContainer.appendChild(createShareButtonGroup(shareUrl, WORKER_URL_HDC));
   }
 
   modal.classList.remove("hidden");

@@ -32,9 +32,9 @@ if (supabaseClient) {
     }
 
     try {
-      const { actualizarContadorEnPantalla, COUNTER_API_URL_V1_HDC, COUNTER_API_URL_V1_INC } = await import('./api.js');
-      await actualizarContadorEnPantalla(COUNTER_API_URL_V1_HDC, 'contador-hdc', true);
-      await actualizarContadorEnPantalla(COUNTER_API_URL_V1_INC, 'contador-global', true);
+      const { actualizarContadorEnPantalla, WORKER_URL_HDC, WORKER_URL_INC } = await import('./api.js');
+      await actualizarContadorEnPantalla(WORKER_URL_HDC, 'contador-hdc', true);
+      await actualizarContadorEnPantalla(WORKER_URL_INC, 'contador-global', true);
     } catch (err) {
       console.error('Error al actualizar contadores en onAuthStateChange:', err);
     }
