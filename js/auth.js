@@ -41,12 +41,16 @@ if (supabaseClient) {
   });
 }
 
+export function obtenerUtcOffset() {
+  return Math.round(-new Date().getTimezoneOffset() / 60);
+}
+
 async function fetchUserStats(userId) {
   try {
     // 1. Obtener estadísticas actuales del usuario en Supabase
     const { data, error } = await supabaseClient
       .from('user_stats')
-      .select('experiencia, racha, clases_compartidas, inc_compartidos, ultima_conexion, recordatorio_activo, hora_recordatorio, intervalo_horas')
+      .select('experiencia, racha, clases_compartidas, inc_compartidos, ultima_conexion, recordatorio_activo, hora_recordatorio, intervalo_horas, utc_offset')
       .eq('user_id', userId)
       .single();
 
@@ -55,6 +59,7 @@ async function fetchUserStats(userId) {
       return;
     }
 
+    const currentUtcOffset = obtenerUtcOffset();
     let dbClases = 0;
     let dbInc = 0;
     let dbXp = state.xp || 0;
@@ -94,8 +99,11 @@ async function fetchUserStats(userId) {
     const offlineClases = state.offlineClases || 0;
     const offlineInc = state.offlineInc || 0;
 
-    // 3. Sincronizar con Supabase si hay progreso offline acumulado, si se modificaron recordatorios localmente o si no existe la fila
-    if (offlineClases > 0 || offlineInc > 0 || recordatorioModificadoLocalmente || !data) {
+    // Detectar si el offset cambió con respecto a lo que había en la base de datos
+    const offsetCambio = data && data.utc_offset !== currentUtcOffset;
+
+    // 3. Sincronizar con Supabase si hay progreso offline acumulado, si se modificaron recordatorios localmente, si cambió el offset o si no existe la fila
+    if (offlineClases > 0 || offlineInc > 0 || recordatorioModificadoLocalmente || offsetCambio || !data) {
       const nuevoClases = dbClases + offlineClases;
       const nuevoInc = dbInc + offlineInc;
 
@@ -103,7 +111,8 @@ async function fetchUserStats(userId) {
         // Si ya existe la fila, la actualizamos
         const updatePayload = {
           clases_compartidas: nuevoClases,
-          inc_compartidos: nuevoInc
+          inc_compartidos: nuevoInc,
+          utc_offset: currentUtcOffset
         };
         if (recordatorioModificadoLocalmente) {
           updatePayload.recordatorio_activo = dbRecordatorioActivo;
@@ -119,7 +128,7 @@ async function fetchUserStats(userId) {
         if (updateError) {
           console.error('Error al sincronizar estadísticas locales con Supabase:', updateError);
         } else {
-          console.log(`Sincronización exitosa (UPDATE): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}`);
+          console.log(`Sincronización exitosa (UPDATE): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}, utc_offset=${currentUtcOffset}`);
           dbClases = nuevoClases;
           dbInc = nuevoInc;
           state.offlineClases = 0;
@@ -141,13 +150,14 @@ async function fetchUserStats(userId) {
             recordatorio_activo: dbRecordatorioActivo,
             hora_recordatorio: dbRecordatorioHora,
             intervalo_horas: dbRecordatorioIntervalo,
+            utc_offset: currentUtcOffset,
             ultima_conexion: new Date().toISOString()
           });
 
         if (insertError) {
           console.error('Error al insertar estadísticas locales en Supabase:', insertError);
         } else {
-          console.log(`Sincronización exitosa (INSERT): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}`);
+          console.log(`Sincronización exitosa (INSERT): clases_compartidas=${nuevoClases}, inc_compartidos=${nuevoInc}, utc_offset=${currentUtcOffset}`);
           dbClases = nuevoClases;
           dbInc = nuevoInc;
           state.offlineClases = 0;
@@ -212,17 +222,22 @@ export async function guardarConfigRecordatorio(activo, hora, intervalo) {
 
   if (supabaseClient && usuarioActual) {
     try {
+      const utcOffset = obtenerUtcOffset();
+
       const { error } = await supabaseClient
         .from('user_stats')
         .update({
           recordatorio_activo: activo,
           hora_recordatorio: hora,
-          intervalo_horas: intervalo
+          intervalo_horas: intervalo,
+          utc_offset: utcOffset
         })
         .eq('user_id', usuarioActual.id);
 
       if (error) {
         console.error("Error al actualizar la configuración de recordatorios en Supabase:", error);
+      } else {
+        console.log(`Configuración de recordatorios guardada en Supabase con utc_offset: ${utcOffset}`);
       }
     } catch (err) {
       console.warn("Excepción al guardar la configuración de recordatorios en Supabase:", err);

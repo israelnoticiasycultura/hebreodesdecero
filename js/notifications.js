@@ -3,7 +3,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
 import { getMessaging, getToken, deleteToken } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js';
 import { state, usuarioActual } from './state.js';
-import { guardarConfigRecordatorio, supabaseClient } from './auth.js';
+import { guardarConfigRecordatorio, supabaseClient, obtenerUtcOffset } from './auth.js';
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -82,17 +82,20 @@ export async function inicializarWebPush() {
     if (token) {
       console.log("Token FCM obtenido con éxito:", token);
 
-      // Guardar token en Supabase
+      // Guardar token en Supabase junto con el utc_offset
       if (supabaseClient && usuarioActual) {
         const { error } = await supabaseClient
           .from('user_stats')
-          .update({ fcm_token: token })
+          .update({
+            fcm_token: token,
+            utc_offset: obtenerUtcOffset()
+          })
           .eq('user_id', usuarioActual.id);
 
         if (error) {
           console.error("Error al guardar token de FCM en Supabase:", error);
         } else {
-          console.log("Token de FCM sincronizado con Supabase.");
+          console.log("Token de FCM y utc_offset sincronizados con Supabase.");
         }
       }
 
