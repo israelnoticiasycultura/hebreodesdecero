@@ -1,6 +1,6 @@
 // js/notifications.js
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+import { initializeApp, getApps, getApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
 import { getMessaging, getToken, deleteToken } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js';
 import { state, usuarioActual } from './state.js';
 import { guardarConfigRecordatorio, supabaseClient, obtenerUtcOffset } from './auth.js';
@@ -21,7 +21,8 @@ let messaging = null;
 
 function getFirebaseMessaging() {
   if (!messaging) {
-    app = initializeApp(firebaseConfig);
+    // Reutilizar la app existente si ya fue inicializada (evita el error 'duplicate-app')
+    app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
     messaging = getMessaging(app);
   }
   return messaging;

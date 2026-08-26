@@ -306,7 +306,8 @@
     "spanish": "Gracias",
     "category": "Saludos",
     "videos": [
-      "kSCVWv1i8Fo"
+      "kSCVWv1i8Fo",
+      "fDheOw582Zc"
     ],
     "emoji": "🙏"
   },
@@ -2191,5 +2192,125 @@
     "videos": [
       "9EmxrJY9GWk"
     ]
+  },
+  {
+    "id": 275,
+    "hebrew": "תּוֹדָה רַבָּה",
+    "spanish": "Muchas gracias",
+    "category": "Saludos",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🙏"
+  },
+  {
+    "id": 276,
+    "hebrew": "אֵין בְּעַד מָה",
+    "spanish": "De nada",
+    "category": "Saludos",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🙏"
+  },
+  {
+    "id": 277,
+    "hebrew": "אֵין עַל מָה",
+    "spanish": "De nada",
+    "category": "Saludos",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🙏"
+  },
+  {
+    "id": 278,
+    "hebrew": "סְלִיחָה",
+    "spanish": "Perdón / Disculpa",
+    "category": "Saludos",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🙏"
+  },
+  {
+    "id": 279,
+    "hebrew": "טוֹב",
+    "spanish": "Bien / Bueno",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "👍"
+  },
+  {
+    "id": 280,
+    "hebrew": "טוֹב מְאוֹד",
+    "spanish": "Muy bien / Muy bueno",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "👌"
+  },
+  {
+    "id": 281,
+    "hebrew": "בְּסֵדֶר",
+    "spanish": "Ok / En orden",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🤝"
+  },
+  {
+    "id": 282,
+    "hebrew": "מְעוּלֶה",
+    "spanish": "Estupendo / Excelente",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "💪"
+  },
+  {
+    "id": 283,
+    "hebrew": "מְצוּיָין",
+    "spanish": "Magnífico / Excelente",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "🥇"
+  },
+  {
+    "id": 284,
+    "hebrew": "נֶהֱדָר",
+    "spanish": "Maravilloso / Magnífico",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "💯"
+  },
+  {
+    "id": 285,
+    "hebrew": "מַסְפִּיק",
+    "spanish": "Suficiente / Bastante",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "✋"
+  },
+  {
+    "id": 286,
+    "hebrew": "דַּי",
+    "spanish": "Basta / Suficiente",
+    "category": "Vocabulario",
+    "videos": [
+      "fDheOw582Zc"
+    ],
+    "emoji": "✋"
   }
 ]
