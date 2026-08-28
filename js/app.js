@@ -214,7 +214,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (notificationToggle && notificationSettingsGroup && notificationTimeInput && notificationIntervalSelect) {
     // Establecer valores iniciales basados en el estado
     notificationToggle.checked = state.recordatorioActivo;
-    notificationTimeInput.value = state.recordatorioHora;
+    if (state.recordatorioHora) {
+      const horaPart = state.recordatorioHora.split(':')[0].padStart(2, '0');
+      notificationTimeInput.value = `${horaPart}:00`;
+    } else {
+      notificationTimeInput.value = "20:00";
+    }
     notificationIntervalSelect.value = state.recordatorioIntervalo;
 
     if (state.recordatorioActivo) {
