@@ -9,6 +9,7 @@ import { initQuizMode, handleSelectOption, handleCheckAnswer, retryQuizMode } fr
 import { supabaseClient, cerrarModal } from './auth.js';
 import { actualizarContadorEnPantalla, WORKER_URL_HDC, WORKER_URL_INC } from './api.js';
 import { initNotifications, inicializarWebPush, desactivarWebPush, guardarConfiguracionLocal } from './notifications.js';
+import { initClockPicker } from './timepicker.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all([loadWords(), loadVideos(), loadVideosIsraelNoticias()]);
@@ -206,19 +207,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Vincular eventos de Notificaciones y Recordatorios de estudio
+  initClockPicker();
   const notificationToggle = document.getElementById("notificationToggle");
   const notificationSettingsGroup = document.getElementById("notificationSettingsGroup");
   const notificationTimeInput = document.getElementById("notificationTimeInput");
+  const notificationTimeDisplay = document.getElementById("notificationTimeDisplay");
   const notificationIntervalSelect = document.getElementById("notificationIntervalSelect");
 
   if (notificationToggle && notificationSettingsGroup && notificationTimeInput && notificationIntervalSelect) {
     // Establecer valores iniciales basados en el estado
     notificationToggle.checked = state.recordatorioActivo;
-    if (state.recordatorioHora) {
-      const horaPart = state.recordatorioHora.split(':')[0].padStart(2, '0');
-      notificationTimeInput.value = `${horaPart}:00`;
-    } else {
-      notificationTimeInput.value = "20:00";
+    const initialHour = state.recordatorioHora ? state.recordatorioHora.split(':')[0].padStart(2, '0') : "20";
+    const formattedHour = `${initialHour}:00`;
+    notificationTimeInput.value = formattedHour;
+    if (notificationTimeDisplay) {
+      notificationTimeDisplay.textContent = formattedHour;
     }
     notificationIntervalSelect.value = state.recordatorioIntervalo;
 

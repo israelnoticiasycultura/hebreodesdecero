@@ -911,33 +911,12 @@
                         <div id="notificationSettingsGroup" class="flex flex-col py-3 px-3 space-y-3 hidden">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-slate-400 font-medium">Hora diaria de aviso</span>
-                                <select id="notificationTimeInput"
-                                    class="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1 focus:border-purple-500 focus:outline-none">
-                                    <option value="00:00">00:00</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="02:00">02:00</option>
-                                    <option value="03:00">03:00</option>
-                                    <option value="04:00">04:00</option>
-                                    <option value="05:00">05:00</option>
-                                    <option value="06:00">06:00</option>
-                                    <option value="07:00">07:00</option>
-                                    <option value="08:00">08:00</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="20:00" selected>20:00</option>
-                                    <option value="21:00">21:00</option>
-                                    <option value="22:00">22:00</option>
-                                    <option value="23:00">23:00</option>
-                                </select>
+                                <button type="button" id="notificationTimeBtn"
+                                    class="bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-purple-500/50 text-slate-200 text-xs font-semibold rounded-xl px-3 py-1.5 flex items-center space-x-2 transition-all active:scale-95 shadow-sm group">
+                                    <i data-lucide="clock" class="w-3.5 h-3.5 text-purple-400 group-hover:text-purple-300 transition-colors"></i>
+                                    <span id="notificationTimeDisplay" class="tracking-wide">20:00</span>
+                                </button>
+                                <input type="hidden" id="notificationTimeInput" value="20:00">
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-slate-400 font-medium">Recordar tras inactividad</span>
@@ -1069,6 +1048,60 @@
                     <i data-lucide="youtube" class="w-4.5 h-4.5 fill-current"></i>
                     <span>Abrir en YouTube</span>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Android-Style Clock Time Picker Modal (Hours Only) -->
+    <div id="clockPickerModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md hidden transition-all duration-300 opacity-0 scale-95 select-none">
+        <div
+            class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-[320px] p-5 shadow-2xl relative mx-4 flex flex-col items-center">
+            <!-- Header / Selected Time Display -->
+            <div class="w-full text-center mb-3">
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Hora de Notificación</span>
+                <div class="flex items-center justify-center space-x-1 py-1">
+                    <span id="clockPickerSelectedHour"
+                        class="text-4xl font-extrabold text-purple-400 bg-purple-950/50 border border-purple-500/30 px-3 py-1 rounded-2xl min-w-[68px] tracking-tight">20</span>
+                    <span class="text-3xl font-extrabold text-slate-500">:</span>
+                    <span class="text-3xl font-bold text-slate-500 px-2 py-1">00</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1">Toca o arrastra para elegir la hora</p>
+            </div>
+
+            <!-- Clock Face Dial Container -->
+            <div id="clockDial"
+                class="relative w-[240px] h-[240px] rounded-full bg-slate-950/70 border border-slate-800 flex items-center justify-center touch-none cursor-pointer my-2 shadow-inner">
+
+                <!-- Clock Center Pivot Dot -->
+                <div class="absolute w-2.5 h-2.5 rounded-full bg-purple-500 z-20 shadow-md"></div>
+
+                <!-- Clock Hand / Needle Pointer -->
+                <div id="clockHand"
+                    class="absolute bottom-1/2 left-1/2 -ml-[1px] w-[2px] bg-purple-500 origin-bottom pointer-events-none transition-transform duration-100 z-10"
+                    style="height: 54px; transform: rotate(240deg);">
+                    <!-- Hand Selector Tip Circle -->
+                    <div
+                        class="absolute -top-3.5 -left-3.5 w-8 h-8 rounded-full bg-purple-600/90 border border-purple-400 flex items-center justify-center shadow-lg shadow-purple-600/40">
+                        <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                    </div>
+                </div>
+
+                <!-- Dial Numbers Container -->
+                <div id="clockNumbers" class="absolute inset-0 pointer-events-none font-semibold text-xs text-slate-300">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="w-full flex items-center justify-end space-x-2.5 mt-3 pt-3 border-t border-slate-800/80">
+                <button type="button" id="clockPickerCancelBtn"
+                    class="px-4 py-2 rounded-xl text-slate-400 hover:text-slate-200 text-xs font-semibold hover:bg-slate-800/50 transition-colors">
+                    Cancelar
+                </button>
+                <button type="button" id="clockPickerConfirmBtn"
+                    class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 active:scale-95 text-white text-xs font-bold transition-all shadow-lg shadow-purple-600/25">
+                    Aceptar
+                </button>
             </div>
         </div>
     </div>

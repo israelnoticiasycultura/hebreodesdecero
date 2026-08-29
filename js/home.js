@@ -127,6 +127,27 @@ export function updateProfileView() {
   // Configs
   const soundToggle = document.getElementById("soundToggle");
   if (soundToggle) soundToggle.checked = state.soundEnabled;
+
+  const notificationToggle = document.getElementById("notificationToggle");
+  const notificationSettingsGroup = document.getElementById("notificationSettingsGroup");
+  const notificationTimeInput = document.getElementById("notificationTimeInput");
+  const notificationTimeDisplay = document.getElementById("notificationTimeDisplay");
+  const notificationIntervalSelect = document.getElementById("notificationIntervalSelect");
+
+  if (notificationToggle) notificationToggle.checked = state.recordatorioActivo;
+  if (notificationSettingsGroup) {
+    if (state.recordatorioActivo) notificationSettingsGroup.classList.remove("hidden");
+    else notificationSettingsGroup.classList.add("hidden");
+  }
+  if (state.recordatorioHora) {
+    const horaPart = state.recordatorioHora.split(':')[0].padStart(2, '0');
+    const formatted = `${horaPart}:00`;
+    if (notificationTimeInput) notificationTimeInput.value = formatted;
+    if (notificationTimeDisplay) notificationTimeDisplay.textContent = formatted;
+  }
+  if (notificationIntervalSelect && state.recordatorioIntervalo) {
+    notificationIntervalSelect.value = state.recordatorioIntervalo;
+  }
 }
 
 export function handleResetData() {
