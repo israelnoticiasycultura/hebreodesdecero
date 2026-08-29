@@ -6,7 +6,8 @@
     "category": "Saludos",
     "videos": [
       "kSCVWv1i8Fo",
-      "888CuARajHs"
+      "888CuARajHs",
+      "Pifdhez86P8"
     ],
     "emoji": "👋 / 🕊️"
   },
@@ -374,6 +375,9 @@
     "hebrew": "לְהִתְרָאוֹת",
     "spanish": "Adiós",
     "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
     "emoji": "👋"
   },
   {
@@ -2312,5 +2316,155 @@
       "fDheOw582Zc"
     ],
     "emoji": "✋"
+  },
+  {
+    "id": 287,
+    "hebrew": "נִתְרָאֵה",
+    "spanish": "Nos veremos",
+    "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
+    "emoji": "👀"
+  },
+  {
+    "id": 288,
+    "hebrew": "נדַבֵּר",
+    "spanish": "Hablaremos",
+    "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
+    "emoji": "👋"
+  },
+  {
+    "id": 289,
+    "hebrew": "נִיפָּגֵשׁ",
+    "spanish": "Nos encontraremos",
+    "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
+    "emoji": "📍"
+  },
+  {
+    "id": 290,
+    "hebrew": "נִהְיֶה בְּקֶשֶׁר",
+    "spanish": "Estaremos en contacto",
+    "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
+    "emoji": "📞"
+  },
+  {
+    "id": 291,
+    "hebrew": "יוֹם טוֹב",
+    "spanish": "Buen día",
+    "category": "Saludos",
+    "videos": [
+      "Pifdhez86P8"
+    ],
+    "emoji": "☀️"
+  },
+  {
+    "id": 292,
+    "hebrew": "אֶפֶס",
+    "spanish": "Cero",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "0️⃣"
+  },
+  {
+    "id": 293,
+    "hebrew": "שְׁנַיִם",
+    "spanish": "Dos (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "2️⃣"
+  },
+  {
+    "id": 294,
+    "hebrew": "שְׁלוֹשָׁה",
+    "spanish": "Tres (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "3️⃣"
+  },
+  {
+    "id": 295,
+    "hebrew": "אַרְבָּעָה",
+    "spanish": "Cuatro (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "4️⃣"
+  },
+  {
+    "id": 296,
+    "hebrew": "חֲמִישָׁה",
+    "spanish": "Cinco (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "5️⃣"
+  },
+  {
+    "id": 297,
+    "hebrew": "שִׁשָׁה",
+    "spanish": "Seis (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "6️⃣"
+  },
+  {
+    "id": 298,
+    "hebrew": "שִׁבְעָה",
+    "spanish": "Siete (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "7️⃣"
+  },
+  {
+    "id": 299,
+    "hebrew": "שְׁמוֹנֶה",
+    "spanish": "Ocho (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "8️⃣"
+  },
+  {
+    "id": 300,
+    "hebrew": "תִּשְׁעָה",
+    "spanish": "Nueve (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "9️⃣"
+  },
+  {
+    "id": 301,
+    "hebrew": "עֲשָׂרָה",
+    "spanish": "Diez (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "DZhonTFg3tE"
+    ],
+    "emoji": "🔟"
   }
 ]
