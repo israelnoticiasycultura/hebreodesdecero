@@ -417,17 +417,23 @@
   },
   {
     "id": 45,
-    "hebrew": "שְׁנַיִם",
-    "spanish": "Dos",
+    "hebrew": "שְׁתַיִם",
+    "spanish": "Dos (Femenino)",
     "category": "Números",
-    "emoji": "2️⃣"
+    "emoji": "2️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 46,
-    "hebrew": "שָׁלֹשׁ",
+    "hebrew": "שָׁלוֹשׁ",
     "spanish": "Tres",
     "category": "Números",
-    "emoji": "3️⃣"
+    "emoji": "3️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 47,
@@ -606,7 +612,10 @@
     "hebrew": "יַלְדָּה",
     "spanish": "Niña",
     "category": "Familia",
-    "emoji": "👧"
+    "emoji": "👧",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 66,
@@ -723,51 +732,72 @@
   {
     "id": 79,
     "hebrew": "אַרְבַּע",
-    "spanish": "Cuatro",
+    "spanish": "Cuatro (Femenino)",
     "category": "Números",
-    "emoji": "4️⃣"
+    "emoji": "4️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 80,
-    "hebrew": "חָמֵשׁ",
-    "spanish": "Cinco",
+    "hebrew": "חֲמֵשׁ",
+    "spanish": "Cinco (Femenino)",
     "category": "Números",
-    "emoji": "5️⃣"
+    "emoji": "5️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 81,
     "hebrew": "שֵׁשׁ",
-    "spanish": "Seis",
+    "spanish": "Seis (Femenino)",
     "category": "Números",
-    "emoji": "6️⃣"
+    "emoji": "6️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 82,
     "hebrew": "שֶׁבַע",
-    "spanish": "Siete",
+    "spanish": "Siete (Femenino)",
     "category": "Números",
-    "emoji": "7️⃣"
+    "emoji": "7️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 83,
     "hebrew": "שְׁמוֹנֶה",
-    "spanish": "Ocho",
+    "spanish": "Ocho (Femenino)",
     "category": "Números",
-    "emoji": "8️⃣"
+    "emoji": "8️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 84,
     "hebrew": "תֵּשַׁע",
-    "spanish": "Nueve",
+    "spanish": "Nueve (Femenino)",
     "category": "Números",
-    "emoji": "9️⃣"
+    "emoji": "9️⃣",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 85,
     "hebrew": "עֶשֶׂר",
-    "spanish": "Diez",
+    "spanish": "Diez (Femenino)",
     "category": "Números",
-    "emoji": "🔟"
+    "emoji": "🔟",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
   },
   {
     "id": 86,
@@ -2393,7 +2423,8 @@
     "spanish": "Tres (Masculino)",
     "category": "Vocabulario",
     "videos": [
-      "DZhonTFg3tE"
+      "DZhonTFg3tE",
+      "gJMqSsBdXyE"
     ],
     "emoji": "3️⃣"
   },
@@ -2413,7 +2444,8 @@
     "spanish": "Cinco (Masculino)",
     "category": "Vocabulario",
     "videos": [
-      "DZhonTFg3tE"
+      "DZhonTFg3tE",
+      "gJMqSsBdXyE"
     ],
     "emoji": "5️⃣"
   },
@@ -2423,7 +2455,8 @@
     "spanish": "Seis (Masculino)",
     "category": "Vocabulario",
     "videos": [
-      "DZhonTFg3tE"
+      "DZhonTFg3tE",
+      "gJMqSsBdXyE"
     ],
     "emoji": "6️⃣"
   },
@@ -2443,7 +2476,8 @@
     "spanish": "Ocho (Masculino)",
     "category": "Vocabulario",
     "videos": [
-      "DZhonTFg3tE"
+      "DZhonTFg3tE",
+      "gJMqSsBdXyE"
     ],
     "emoji": "8️⃣"
   },
@@ -2466,5 +2500,105 @@
       "DZhonTFg3tE"
     ],
     "emoji": "🔟"
+  },
+  {
+    "id": 302,
+    "hebrew": "סְפָרִים",
+    "spanish": "Libros",
+    "category": "Vocabulario",
+    "videos": [
+      "gJMqSsBdXyE"
+    ],
+    "emoji": "📖"
+  },
+  {
+    "id": 303,
+    "hebrew": "פִּלְפְּלִים",
+    "spanish": "Pimientos",
+    "category": "Vocabulario",
+    "videos": [
+      "gJMqSsBdXyE"
+    ],
+    "emoji": "🌶️"
+  },
+  {
+    "id": 304,
+    "hebrew": "אחת",
+    "spanish": "Una",
+    "category": "Vocabulario",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "1️⃣"
+  },
+  {
+    "id": 305,
+    "hebrew": "אֲחָיוֹת",
+    "spanish": "Hermanas / Enfermeras",
+    "category": "Familia",
+    "emoji": "👩‍⚕️",
+    "videos": [
+      "_DQE53Gqvgk"
+    ]
+  },
+  {
+    "id": 306,
+    "hebrew": "מְכוֹנִיּוֹת",
+    "spanish": "Automóviles / Carros",
+    "category": "Transporte",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "🚗"
+  },
+  {
+    "id": 307,
+    "hebrew": "פִּיצוֹת",
+    "spanish": "Pizzas",
+    "category": "Vocabulario",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "🍕"
+  },
+  {
+    "id": 308,
+    "hebrew": "עַגְבָנִיּוֹת",
+    "spanish": "Tomates",
+    "category": "Vocabulario",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "🍅"
+  },
+  {
+    "id": 309,
+    "hebrew": "מְנוֹרוֹת",
+    "spanish": "Lámparas",
+    "category": "Objetos",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "💡"
+  },
+  {
+    "id": 310,
+    "hebrew": "שַׂקִּיּוֹת",
+    "spanish": "Bolsas",
+    "category": "Objetos",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "🛍️"
+  },
+  {
+    "id": 311,
+    "hebrew": "נָשִׁים",
+    "spanish": "Mujeres",
+    "category": "Vocabulario",
+    "videos": [
+      "_DQE53Gqvgk"
+    ],
+    "emoji": "👭"
   }
 ]
