@@ -1130,7 +1130,8 @@
     "spanish": "Perro",
     "category": "Animales",
     "videos": [
-      "z-z4yG-fFBc"
+      "z-z4yG-fFBc",
+      "y0Jf_BPIpTs"
     ],
     "emoji": "🐶"
   },
@@ -1264,7 +1265,8 @@
     "spanish": "Grande",
     "category": "Adjetivos",
     "videos": [
-      "0G1lSIYM-j4"
+      "0G1lSIYM-j4",
+      "y0Jf_BPIpTs"
     ],
     "emoji": "😮"
   },
@@ -2600,5 +2602,15 @@
       "_DQE53Gqvgk"
     ],
     "emoji": "👭"
+  },
+  {
+    "id": 312,
+    "hebrew": "קָטָן",
+    "spanish": "Pequeño",
+    "category": "Vocabulario",
+    "videos": [
+      "y0Jf_BPIpTs"
+    ],
+    "emoji": "🤏"
   }
 ]
