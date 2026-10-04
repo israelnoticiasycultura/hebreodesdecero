@@ -227,7 +227,8 @@
     "spanish": "Suyo / Suya / Suyos / Suyas",
     "category": "Vocabulario",
     "videos": [
-      "0G1lSIYM-j4"
+      "0G1lSIYM-j4",
+      "VR33xQTbvmE"
     ],
     "emoji": "👉"
   },
@@ -456,7 +457,8 @@
     "category": "Vocabulario",
     "videos": [
       "0G1lSIYM-j4",
-      "Yf4YD6FxNyI"
+      "Yf4YD6FxNyI",
+      "VR33xQTbvmE"
     ],
     "emoji": "🏠"
   },
@@ -596,6 +598,9 @@
     "hebrew": "יֶלֶד",
     "spanish": "Niño",
     "category": "Familia",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
     "emoji": "👦"
   },
   {
@@ -1012,6 +1017,9 @@
     "hebrew": "רְחוֹב",
     "spanish": "Calle",
     "category": "Lugares",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
     "emoji": "🛣️"
   },
   {
@@ -1222,6 +1230,9 @@
     "hebrew": "אוֹטוֹבּוּס",
     "spanish": "Autobús",
     "category": "Transporte",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
     "emoji": "🚌"
   },
   {
@@ -1236,6 +1247,9 @@
     "hebrew": "מָטוֹס",
     "spanish": "Avión",
     "category": "Transporte",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
     "emoji": "✈️"
   },
   {
@@ -1258,7 +1272,8 @@
     "spanish": "Libro",
     "category": "Objetos",
     "videos": [
-      "0G1lSIYM-j4"
+      "0G1lSIYM-j4",
+      "VR33xQTbvmE"
     ],
     "emoji": "📚"
   },
@@ -1270,7 +1285,8 @@
     "videos": [
       "0G1lSIYM-j4",
       "y0Jf_BPIpTs",
-      "Yf4YD6FxNyI"
+      "Yf4YD6FxNyI",
+      "VR33xQTbvmE"
     ],
     "emoji": "😮"
   },
@@ -1547,10 +1563,13 @@
   },
   {
     "id": 187,
-    "hebrew": "חֹדֶשׁ",
+    "hebrew": "חוֹדֶשׁ",
     "spanish": "Mes",
     "category": "Tiempo",
-    "emoji": "📆"
+    "emoji": "📆",
+    "videos": [
+      "VR33xQTbvmE"
+    ]
   },
   {
     "id": 188,
@@ -2615,8 +2634,169 @@
     "spanish": "Pequeño",
     "category": "Vocabulario",
     "videos": [
-      "y0Jf_BPIpTs"
+      "y0Jf_BPIpTs",
+      "VR33xQTbvmE"
     ],
     "emoji": "🤏"
+  },
+  {
+    "id": 313,
+    "hebrew": "רִאשׁוֹן",
+    "spanish": "Primero",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🥇"
+  },
+  {
+    "id": 314,
+    "hebrew": "שֵׁנִי",
+    "spanish": "Segundo",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🥈"
+  },
+  {
+    "id": 315,
+    "hebrew": "שְׁלִישִׁי",
+    "spanish": "Tercero",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🥉"
+  },
+  {
+    "id": 316,
+    "hebrew": "רְבִיעִי",
+    "spanish": "Cuarto",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "4️⃣"
+  },
+  {
+    "id": 317,
+    "hebrew": "חֲמִישִׁי",
+    "spanish": "Quinto",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "5️⃣"
+  },
+  {
+    "id": 318,
+    "hebrew": "בִּנְיָן",
+    "spanish": "Edificio",
+    "category": "Objetos",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🏢"
+  },
+  {
+    "id": 319,
+    "hebrew": "שִׁשִּׁי",
+    "spanish": "Sexto",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "6️⃣"
+  },
+  {
+    "id": 320,
+    "hebrew": "כַּדּוּר",
+    "spanish": "Pelota / Balón / Bola / Bala / Píldora",
+    "category": "Objetos",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🤝"
+  },
+  {
+    "id": 321,
+    "hebrew": "שְׁבִיעִי",
+    "spanish": "Séptimo",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "7️⃣"
+  },
+  {
+    "id": 322,
+    "hebrew": "חֲלִיצָה",
+    "spanish": "Retirar / Sacar",
+    "category": "Verbos",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🥾"
+  },
+  {
+    "id": 323,
+    "hebrew": "בָּחוּר",
+    "spanish": "Joven (Masculino)",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "👨"
+  },
+  {
+    "id": 324,
+    "hebrew": "מַכְתָּבָה",
+    "spanish": "Maleta",
+    "category": "Objetos",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🧳"
+  },
+  {
+    "id": 325,
+    "hebrew": "שְׁמִינִי",
+    "spanish": "Octavo",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "8️⃣"
+  },
+  {
+    "id": 326,
+    "hebrew": "תְּשִׁיעִי",
+    "spanish": "Noveno",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "9️⃣"
+  },
+  {
+    "id": 327,
+    "hebrew": "שַׂחְקָן",
+    "spanish": "Jugador",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "⛹️‍♂️"
+  },
+  {
+    "id": 328,
+    "hebrew": "עֲשִׂירִי",
+    "spanish": "Décimo",
+    "category": "Vocabulario",
+    "videos": [
+      "VR33xQTbvmE"
+    ],
+    "emoji": "🔟"
   }
 ]
