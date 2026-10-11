@@ -57,7 +57,8 @@
     "spanish": "Ella",
     "category": "Vocabulario",
     "videos": [
-      "f3w56JfwzBs"
+      "f3w56JfwzBs",
+      "LtpoKSA-LU"
     ],
     "emoji": "👩‍💼"
   },
@@ -67,7 +68,8 @@
     "spanish": "Nosotros",
     "category": "Vocabulario",
     "videos": [
-      "rTvBnREs-po"
+      "rTvBnREs-po",
+      "LtpoKSA-LU"
     ],
     "emoji": "👨‍👩‍👧‍👦"
   },
@@ -77,7 +79,8 @@
     "spanish": "Aquí",
     "category": "Vocabulario",
     "videos": [
-      "rTvBnREs-po"
+      "rTvBnREs-po",
+      "OS5yEFivgxs"
     ],
     "emoji": "📍"
   },
@@ -288,7 +291,8 @@
     "spanish": "Lindo",
     "category": "Vocabulario",
     "videos": [
-      "0G1lSIYM-j4"
+      "0G1lSIYM-j4",
+      "LtpoKSA-LU"
     ],
     "emoji": "😊"
   },
@@ -458,7 +462,8 @@
     "videos": [
       "0G1lSIYM-j4",
       "Yf4YD6FxNyI",
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "LtpoKSA-LU"
     ],
     "emoji": "🏠"
   },
@@ -599,7 +604,8 @@
     "spanish": "Niño",
     "category": "Familia",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "👦"
   },
@@ -1286,7 +1292,8 @@
       "0G1lSIYM-j4",
       "y0Jf_BPIpTs",
       "Yf4YD6FxNyI",
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "😮"
   },
@@ -1545,7 +1552,10 @@
     "hebrew": "יוֹם",
     "spanish": "Día",
     "category": "Tiempo",
-    "emoji": "📅"
+    "emoji": "📅",
+    "videos": [
+      "9amm5a5itqM"
+    ]
   },
   {
     "id": 185,
@@ -1568,7 +1578,8 @@
     "category": "Tiempo",
     "emoji": "📆",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ]
   },
   {
@@ -1632,7 +1643,10 @@
     "hebrew": "הַיּוֹם",
     "spanish": "Hoy",
     "category": "Tiempo",
-    "emoji": "👇"
+    "emoji": "👇",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 197,
@@ -1646,49 +1660,72 @@
     "hebrew": "יוֹם רִאשׁוֹן",
     "spanish": "Domingo",
     "category": "Días de la semana",
-    "emoji": "1️⃣"
+    "emoji": "1️⃣",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 199,
     "hebrew": "יוֹם שֵׁנִי",
     "spanish": "Lunes",
     "category": "Días de la semana",
-    "emoji": "2️⃣"
+    "emoji": "2️⃣",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 200,
     "hebrew": "יוֹם שְׁלִישִׁי",
     "spanish": "Martes",
     "category": "Días de la semana",
-    "emoji": "3️⃣"
+    "emoji": "3️⃣",
+    "videos": [
+      "LtpoKSA-LU",
+      "OS5yEFivgxs"
+    ]
   },
   {
     "id": 201,
     "hebrew": "יוֹם רְבִיעִי",
     "spanish": "Miércoles",
     "category": "Días de la semana",
-    "emoji": "4️⃣"
+    "emoji": "4️⃣",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 202,
     "hebrew": "יוֹם חֲמִישִׁי",
     "spanish": "Jueves",
     "category": "Días de la semana",
-    "emoji": "5️⃣"
+    "emoji": "5️⃣",
+    "videos": [
+      "LtpoKSA-LU",
+      "OS5yEFivgxs"
+    ]
   },
   {
     "id": 203,
     "hebrew": "יוֹם שִׁשִּׁי",
     "spanish": "Viernes",
     "category": "Días de la semana",
-    "emoji": "6️⃣"
+    "emoji": "6️⃣",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 204,
     "hebrew": "שַׁבָּת",
     "spanish": "Sábado / Shabat",
     "category": "Días de la semana",
-    "emoji": "🕯️"
+    "emoji": "🕯️",
+    "videos": [
+      "LtpoKSA-LU"
+    ]
   },
   {
     "id": 205,
@@ -2665,7 +2702,8 @@
     "spanish": "Tercero",
     "category": "Vocabulario",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "🥉"
   },
@@ -2685,7 +2723,8 @@
     "spanish": "Quinto",
     "category": "Vocabulario",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "5️⃣"
   },
@@ -2715,7 +2754,8 @@
     "spanish": "Pelota / Balón / Bola / Bala / Píldora",
     "category": "Objetos",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "🤝"
   },
@@ -2765,7 +2805,8 @@
     "spanish": "Octavo",
     "category": "Vocabulario",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "8️⃣"
   },
@@ -2775,7 +2816,8 @@
     "spanish": "Noveno",
     "category": "Vocabulario",
     "videos": [
-      "VR33xQTbvmE"
+      "VR33xQTbvmE",
+      "9amm5a5itqM"
     ],
     "emoji": "9️⃣"
   },
@@ -2798,5 +2840,26 @@
       "VR33xQTbvmE"
     ],
     "emoji": "🔟"
+  },
+  {
+    "id": 329,
+    "hebrew": "אָרוֹך",
+    "spanish": "Largo",
+    "category": "Adjetivos",
+    "videos": [
+      "LtpoKSA-LU"
+    ],
+    "emoji": "📏"
+  },
+  {
+    "id": 330,
+    "hebrew": "כָּאן",
+    "spanish": "Aquí",
+    "category": "Vocabulario",
+    "videos": [
+      "LtpoKSA-LU",
+      "OS5yEFivgxs"
+    ],
+    "emoji": "📍"
   }
 ]
