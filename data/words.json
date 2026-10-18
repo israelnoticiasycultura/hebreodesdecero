@@ -1009,6 +1009,9 @@
     "hebrew": "בֵּית מִרְקַחַת",
     "spanish": "Farmacia",
     "category": "Lugares",
+    "videos": [
+      "8QFSYHavarI"
+    ],
     "emoji": "💊"
   },
   {
@@ -1016,6 +1019,9 @@
     "hebrew": "בַּנְק",
     "spanish": "Banco",
     "category": "Lugares",
+    "videos": [
+      "8QFSYHavarI"
+    ],
     "emoji": "🏦"
   },
   {
@@ -1895,6 +1901,9 @@
     "hebrew": "מִשְׂרָד",
     "spanish": "Oficina",
     "category": "Lugares",
+    "videos": [
+      "8QFSYHavarI"
+    ],
     "emoji": "🏢"
   },
   {
@@ -2426,7 +2435,8 @@
     "spanish": "Hablaremos",
     "category": "Saludos",
     "videos": [
-      "Pifdhez86P8"
+      "Pifdhez86P8",
+      "Q7TZJ3JDpfo"
     ],
     "emoji": "👋"
   },
@@ -2436,7 +2446,8 @@
     "spanish": "Nos encontraremos",
     "category": "Saludos",
     "videos": [
-      "Pifdhez86P8"
+      "Pifdhez86P8",
+      "Q7TZJ3JDpfo"
     ],
     "emoji": "📍"
   },
@@ -2861,5 +2872,125 @@
       "OS5yEFivgxs"
     ],
     "emoji": "📍"
+  },
+  {
+    "id": 331,
+    "hebrew": "סוֹף שָׁבוּעַ",
+    "spanish": "Fin de semana",
+    "category": "Días de la semana",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "🥂"
+  },
+  {
+    "id": 332,
+    "hebrew": "מַקסִים",
+    "spanish": "Encantador / Magnífico",
+    "category": "Adjetivos",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "✨"
+  },
+  {
+    "id": 333,
+    "hebrew": "סוֹפָ''ש",
+    "spanish": "Fin de semana",
+    "category": "Días de la semana",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "🥂"
+  },
+  {
+    "id": 334,
+    "hebrew": "נָעִים",
+    "spanish": "Agradable",
+    "category": "Adjetivos",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "😊"
+  },
+  {
+    "id": 335,
+    "hebrew": "מוֹצָאֵי שַׁבָּת",
+    "spanish": "Sábado en la noche / Salida del Shabat",
+    "category": "Días de la semana",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "🍷"
+  },
+  {
+    "id": 336,
+    "hebrew": "מוֹצָ''שׁ",
+    "spanish": "Sábado en la noche / Salida del Shabat",
+    "category": "Días de la semana",
+    "videos": [
+      "Q7TZJ3JDpfo"
+    ],
+    "emoji": "🍷"
+  },
+  {
+    "id": 337,
+    "hebrew": "יוֹם א",
+    "spanish": "Domingo",
+    "category": "Días de la semana",
+    "emoji": "1️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 338,
+    "hebrew": "יוֹם ב",
+    "spanish": "Lunes",
+    "category": "Días de la semana",
+    "emoji": "2️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 339,
+    "hebrew": "יוֹם ג",
+    "spanish": "Martes",
+    "category": "Días de la semana",
+    "emoji": "3️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 340,
+    "hebrew": "יוֹם ד",
+    "spanish": "Miércoles",
+    "category": "Días de la semana",
+    "emoji": "4️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 341,
+    "hebrew": "יוֹם ה",
+    "spanish": "Jueves",
+    "category": "Días de la semana",
+    "emoji": "5️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 341,
+    "hebrew": "יוֹם ו",
+    "spanish": "Viernes",
+    "category": "Días de la semana",
+    "emoji": "6️⃣",
+    "videos": [
+      "8QFSYHavarI"
+    ]
   }
 ]
