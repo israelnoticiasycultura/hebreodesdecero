@@ -1144,7 +1144,10 @@
     "hebrew": "קַר",
     "spanish": "Frío / Hace frío",
     "category": "Clima",
-    "emoji": "❄️"
+    "emoji": "❄️",
+    "videos": [
+      "tK1L62hIIM8"
+    ]
   },
   {
     "id": 132,
@@ -2984,13 +2987,53 @@
     ]
   },
   {
-    "id": 341,
+    "id": 342,
     "hebrew": "יוֹם ו",
     "spanish": "Viernes",
     "category": "Días de la semana",
     "emoji": "6️⃣",
     "videos": [
       "8QFSYHavarI"
+    ]
+  },
+  {
+    "id": 343,
+    "hebrew": "יָנוּאָר",
+    "spanish": "Enero",
+    "category": "Tiempo",
+    "emoji": "🎆",
+    "videos": [
+      "tK1L62hIIM8"
+    ]
+  },
+  {
+    "id": 344,
+    "hebrew": "פֶבְּרוּאָר",
+    "spanish": "Febrero",
+    "category": "Tiempo",
+    "emoji": "💝",
+    "videos": [
+      "tK1L62hIIM8"
+    ]
+  },
+  {
+    "id": 345,
+    "hebrew": "קָצָר",
+    "spanish": "Corto",
+    "category": "Adjetivos",
+    "emoji": "🤏",
+    "videos": [
+      "tK1L62hIIM8"
+    ]
+  },
+  {
+    "id": 346,
+    "hebrew": "אַפְּרִיל",
+    "spanish": "Abril",
+    "category": "Tiempo",
+    "emoji": "🌧️",
+    "videos": [
+      "tK1L62hIIM8"
     ]
   }
 ]
